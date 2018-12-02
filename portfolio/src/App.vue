@@ -41,10 +41,10 @@
           <h1 class="mb-0">{{ firstName }}
             <span class="text-primary">{{ lastName }}</span>
           </h1>
-          <div class="subheading mb-5">{{ phoneNumber }}
-            <a href="mailto:yd37574[at]gmail.com">{{ email }}</a>
-          </div>
           <p class="lead mb-5">{{ about }}</p>
+          <div class="subheading mb-4">
+            <a href="./cv_201812.pdf" download>Download CV</a>
+          </div>
           <ul class="list-inline list-social-icons mb-0">
             <li class="list-inline-item">
               <a v-bind:href="facebookURL" target="_blank">
@@ -75,6 +75,22 @@
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a v-bind:href="mediumURL" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-medium fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a v-bind:href="mailto" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
                 </span>
               </a>
             </li>
@@ -197,7 +213,10 @@
               Coursera: Machine Learning</li>
             <li>
               <i class="fa-li fa fa-trophy text-warning"></i>
-              Diploma: Project <a href="http://dl4us.com/">DL4US (Deep Learning for All of Us)</a></li>
+              Diploma: Project <a href="http://dl4us.com/" target="_blank">DL4US (Deep Learning for All of Us)</a></li>
+            <li>
+              <i class="fa-li fa fa-trophy text-warning"></i>
+              Design Lab: <a href="https://trydesignlab.com/certificates/design-101/KentaKudo/" target="_blank">Design 101</a></li>
           </ul>
         </div>
       </section>
@@ -212,13 +231,13 @@ export default {
       firstName: 'Kenta',
       lastName: 'Kudo',
       title: 'My portfolio',
-      phoneNumber: '+44 7397 322375',
-      email: 'yd37574 [at] gmail.com',
+      mailto: 'mailto:yd37574@gmail.com',
       about: 'Self-disciplined software engineer with a passion for solving critical issues with high focus on the true nature of the problems and engineering expertise. An engineer with wide range of experience who is addicted to simple solutions which solves difficult problems with high eciency. Punctual practitioner, logical thinker, and diligent learner who enjoys leading organisations to success coping with team.',
       linkedinURL: 'https://www.linkedin.com/in/kenta-kudo-6a4b15a8/',
       githubURL: 'https://github.com/KentaKudo',
       twitterURL: 'https://twitter.com/_______K_K_',
       facebookURL: 'https://www.facebook.com/kentakudo.kenta',
+      mediumURL: 'https://medium.com/@_______K_K_',
       experiences: [
         {
           position: 'Junior Backend Engineer',
