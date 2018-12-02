@@ -1,3 +1,4 @@
-exclude: [portfolio]
+exclude:
+  - portfolio
 plugins:
   - jekyll-sitemap
