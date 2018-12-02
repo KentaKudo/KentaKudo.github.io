@@ -214,7 +214,7 @@ export default {
       title: 'My portfolio',
       phoneNumber: '+44 7397 322375',
       email: 'yd37574 [at] gmail.com',
-      about: 'Self-disciplined software engineer with a passion for solving critical issues with high focus on the true nature of the problems and engineering expertise. An engineer with wide range of experience who is addicted to simple solutions which solves dicult problems with high eciency. Punctual practitioner, logical thinker, and diligent learner who enjoys leading organisations to success coping with team.',
+      about: 'Self-disciplined software engineer with a passion for solving critical issues with high focus on the true nature of the problems and engineering expertise. An engineer with wide range of experience who is addicted to simple solutions which solves difficult problems with high eciency. Punctual practitioner, logical thinker, and diligent learner who enjoys leading organisations to success coping with team.',
       linkedinURL: 'https://www.linkedin.com/in/kenta-kudo-6a4b15a8/',
       githubURL: 'https://github.com/KentaKudo',
       twitterURL: 'https://twitter.com/_______K_K_',
