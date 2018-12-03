@@ -232,7 +232,7 @@ export default {
       lastName: 'Kudo',
       title: 'My portfolio',
       mailto: 'mailto:yd37574@gmail.com',
-      about: 'Self-disciplined software engineer with a passion for solving critical issues with high focus on the true nature of the problems and engineering expertise. An engineer with wide range of experience who is addicted to simple solutions which solves difficult problems with high eciency. Punctual practitioner, logical thinker, and diligent learner who enjoys leading organisations to success coping with team.',
+      about: 'Self-disciplined software engineer with a passion for solving critical issues with high focus on the true nature of the problems and engineering expertise. An engineer with wide range of experience who loves seeking simple solutions which solves dicult problems with high eciency. Punctual practitioner, logical thinker, and diligent learner who enjoys leading organisations to success coping with team.',
       linkedinURL: 'https://www.linkedin.com/in/kenta-kudo-6a4b15a8/',
       githubURL: 'https://github.com/KentaKudo',
       twitterURL: 'https://twitter.com/_______K_K_',
@@ -242,7 +242,7 @@ export default {
         {
           position: 'Junior Backend Engineer',
           company: 'Mercari UK',
-          description: 'Mercari is the most successful e-commerce ex-unicorn in Japan. I, as a backend engineer, have wide range of responsibilities. I write micro-services in Golang and congure deployment using GAE, GCE, Kubernetes and Spinnaker. I also develop large userbase application written in PHP using OOP and TDD practices. If needed, I run DB migrations and batch commands on production as well.',
+          description: 'Mercari is the most successful e-commerce ex-unicorn in Japan. I, as a backend engineer, have wide range of responsibilities. I write micro-services in Golang and congure deployment using GAE, GCE, Kubernetes and Spinnaker. I also develop large userbase application written in PHP using OOP and TDD practices. I’ve also taken some sysadmin tasks such as running DB migrations and executing batch commands on production.',
           startDate: 'December 2016',
           endDate: 'Present'
         },
@@ -254,7 +254,7 @@ export default {
           endDate: 'March 2017'
         }
       ],
-      interest: 'I embrace minimal life style, and love watching movies (40+/yr), reading books (80+/yr), exercising (6days/w), and traveling (20+ countries so far). Developing my skills is a great fun for me, and worked on personal projects such as building ML models that categorise fashion items from images and implementing original OS which works on Raspberry Pi.'
+      interest: 'I embrace minimal life style, and keeping things simple is a part of my life. Traveling new countries to experience new cultures is a great fun for me. I love sparing my time on developing my skills, and worked on personal projects such as building deep learning models, designing my own website, and implementing original OS which works on Raspberry Pi.'
     }
   },
   mounted () {
