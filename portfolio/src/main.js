@@ -7,6 +7,7 @@ require('bootstrap')
 require('devicons/css/devicons.css')
 require('font-awesome/css/font-awesome.css')
 require('bootstrap/dist/css/bootstrap.css')
+require('./main.css')
 
 Vue.prototype.jquery = jquery
 
