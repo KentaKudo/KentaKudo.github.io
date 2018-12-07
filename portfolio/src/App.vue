@@ -84,8 +84,6 @@
         </div>
       </section>
 
-      <hr class="m-0">
-
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
         <div class="my-auto">
           <h2 class="mb-5">Experience</h2>
@@ -105,8 +103,6 @@
 
       </section>
 
-      <hr class="m-0">
-
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
         <div class="my-auto">
           <h2 class="mb-5">Education</h2>
@@ -124,8 +120,6 @@
 
         </div>
       </section>
-
-      <hr class="m-0">
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
         <div class="my-auto">
@@ -179,16 +173,12 @@
         </div>
       </section>
 
-      <hr class="m-0">
-
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests">
         <div class="my-auto">
           <h2 class="mb-5">Interests</h2>
           <p>{{ interest }}</p>
         </div>
       </section>
-
-      <hr class="m-0">
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards">
         <div class="my-auto">
