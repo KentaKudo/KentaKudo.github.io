@@ -29,7 +29,7 @@
           <h1 class="mb-0">{{ firstName }} {{ lastName }}</h1>
           <p class="lead mb-5">{{ about }}</p>
           <div class="subheading mb-4">
-            <a href="./cv_201812.pdf" download>Download CV</a>
+            <a href="./cv_201901.pdf" download>Download CV</a>
           </div>
           <ul class="list-inline list-social-icons mb-0">
             <li class="list-inline-item">
@@ -209,7 +209,7 @@ export default {
       lastName: 'Kudo',
       title: 'My portfolio',
       mailto: 'mailto:yd37574@gmail.com',
-      about: 'Self-disciplined software engineer with a passion for solving critical issues with high focus on the true nature of the problems and engineering expertise. An engineer with wide range of experience who loves seeking simple solutions which solves dicult problems with high eciency. Punctual practitioner, logical thinker, and diligent learner who enjoys leading organisations to success coping with team.',
+      about: 'Engineering graduate with 3.5+ years of Software Engineering experience. I love problem-solving and turning complicated issues into simplified solutions. I am a logical thinker, diligent, curious, and thrive on teamwork. Mercari are closing down their UK business, thus I am looking for a new challenge with an exciting and growing company.',
       linkedinURL: 'https://www.linkedin.com/in/kenta-kudo-6a4b15a8/',
       githubURL: 'https://github.com/KentaKudo',
       twitterURL: 'https://twitter.com/_______K_K_',
@@ -219,19 +219,19 @@ export default {
         {
           position: 'Junior Backend Engineer',
           company: 'Mercari UK',
-          description: 'Mercari is the most successful e-commerce ex-unicorn in Japan. I, as a backend engineer, have wide range of responsibilities. I write micro-services in Golang and congure deployment using GAE, GCE, Kubernetes and Spinnaker. I also develop large userbase application written in PHP using OOP and TDD practices. I’ve also taken some sysadmin tasks such as running DB migrations and executing batch commands on production.',
+          description: 'Mercari is an e-commerce buying and selling platform. In my role, I write microservices in Golang and deploy them using GAE, GCE, Kubernetes, and Spinnaker. I also develop large userbase applications written in PHP using OOP and TDD practices. Additionally, I deal with some sysadmin tasks such as running DB migrations and executing batch commands on production.',
           startDate: 'December 2016',
           endDate: 'Present'
         },
         {
           position: 'iOS Engineer',
           company: 'Smart Tech Ventures',
-          description: 'Coping with the team of six, I, as an iOS engineer, developed e-commerce client app using MVC architecture in Swift and Objective-C. In the other project, I wrote health care application from scratch alone introducing MVVM architecture and Reactive Programming.',
+          description: 'I developed the e-commerce app using MVC architecture in Swift and Objective-C. I also wrote and created from scratch a healthcare application introducing MVVM architecture and Reactive Programming',
           startDate: 'May 2015',
           endDate: 'March 2017'
         }
       ],
-      interest: 'I embrace minimal life style, and keeping things simple is a part of my life. Traveling new countries to experience new cultures is a great fun for me. I love sparing my time on developing my skills, and worked on personal projects such as building deep learning models, designing my own website, and implementing original OS which works on Raspberry Pi.'
+      interest: 'I embrace a minimalist lifestyle and keeping things in my life simple. I enjoy learning and experiencing new cultures and travelling the world is great fun. I also love developing my skills working on personal projects such as building deep learning models, designing my own website, and implementing original OS, which works on Raspberry Pi.'
     }
   },
   mounted () {
