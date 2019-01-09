@@ -209,7 +209,7 @@ export default {
       lastName: 'Kudo',
       title: 'My portfolio',
       mailto: 'mailto:yd37574@gmail.com',
-      about: 'Engineering graduate with 3.5+ years of Software Engineering experience. I love problem-solving and turning complicated issues into simplified solutions. I am a logical thinker, diligent, curious, and thrive on teamwork. Mercari are closing down their UK business, thus I am looking for a new challenge with an exciting and growing company.',
+      about: 'Engineering graduate with 3.5+ years of Software Engineering experience. I love problem-solving and turning complicated issues into simplified solutions. I am a logical thinker, diligent, curious, and thrive on teamwork. Now I am looking for a new challenge with an exciting and growing company.',
       linkedinURL: 'https://www.linkedin.com/in/kenta-kudo-6a4b15a8/',
       githubURL: 'https://github.com/KentaKudo',
       twitterURL: 'https://twitter.com/_______K_K_',
