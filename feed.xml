@@ -4,7 +4,7 @@
         <title>Blog — Kenta Kudo</title>
         <link>http://localhost:3000/feed.xml</link>
         <description>What I write about when I write about technology</description>
-        <lastBuildDate>Fri, 19 Mar 2021 21:28:26 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 19 Mar 2021 21:44:32 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/nuxt-community/feed-module</generator>
         <item>
