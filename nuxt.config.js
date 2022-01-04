@@ -180,7 +180,7 @@ export default {
   ],
 
   generate: {
-    dir: "doc",
+    dir: "docs",
     async routes() {
       const { $content } = require("@nuxt/content");
       const files = await $content({ deep: true })
