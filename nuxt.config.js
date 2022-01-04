@@ -38,13 +38,6 @@ export default {
    */
   head: {
     title: "Kenta Kudo",
-    script: [
-      {
-        src: "https://www.googletagmanager.com/gtag/js?id=UA-130239932-1",
-        async: true
-      },
-      { src: "/ga.js" }
-    ],
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -135,10 +128,12 @@ export default {
       }
     ]
   },
+
   /*
    ** Customize the progress-bar color
    */
   loading: { color: "#fff" },
+
   /*
    ** Global CSS
    */
@@ -148,14 +143,17 @@ export default {
     "bootstrap/dist/css/bootstrap.css",
     "~/assets/styles/main.css"
   ],
+
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["~/plugins/vue-fragment.js"],
+  plugins: ["~/plugins/vue-fragment.js", "~/plugins/vue-gtag.js"],
+
   /*
    ** Nuxt.js dev-modules
    */
   buildModules: [],
+
   /*
    ** Nuxt.js modules
    */
@@ -190,6 +188,7 @@ export default {
       return files.map(file => (file.path === "/index" ? "/" : file.path));
     }
   },
+
   /*
    ** Build configuration
    */
