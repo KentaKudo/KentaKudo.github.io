@@ -12,6 +12,7 @@ image:
   src: hardware.jpg
   alt: electronics hardware
   credit: Photo by <a href="https://unsplash.com/@jorgedevs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jorge Ramirez</a> on <a href="https://unsplash.com/s/photos/computer-science?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+createdAt: 2021-12-22
 ---
 
 I note in passing that this is NOT based on my personal experience because I was not a CS student at UT. So apologies if I'm not very accurate in some details but I hope I don't miss the big picture.

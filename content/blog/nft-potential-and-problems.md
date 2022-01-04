@@ -18,6 +18,7 @@ image:
   src: blockchain.jpg
   alt: blockchain
   credit: Photo by <a href="https://unsplash.com/@hiteshchoudhary?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Hitesh Choudhary</a> on <a href="https://unsplash.com/s/photos/blockchain?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+createdAt: 2021-04-15
 ---
 
 まずはじめに NFT とはなにか簡単に説明します。

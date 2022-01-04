@@ -19,6 +19,7 @@ image:
   src: electronic-chip.jpg
   alt: electronic chip
   credit: Photo by <a href="https://unsplash.com/@jsshotz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jorge Salvador</a> on <a href="https://unsplash.com/s/photos/electronic-chip?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+createdAt: 2021-03-19
 ---
 
 ## 量子コンピュータとは
