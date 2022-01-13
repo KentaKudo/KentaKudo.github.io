@@ -4,12 +4,11 @@
     <time class="d-block mb-4">{{ formatDate(page.createdAt) }}</time>
     <figure class="mb-5">
       <img
-        class="mb-1"
         v-if="page.image"
         :src="require(`~/assets/img${page.path}/${page.image.src}`)"
         :alt="page.image.alt"
       />
-      <figcaption class="text-center" v-html="page.image.credit" />
+      <figcaption v-html="page.image.credit" />
     </figure>
     <p>{{ page.description }}</p>
     <nav class="bg-light p-4 my-5">
@@ -189,14 +188,42 @@ h6 {
   margin: 32px auto 16px;
 }
 
-img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 2rem;
+figure {
+  margin: 32px 0;
+}
+
+figure * {
+  margin: 0 auto;
 }
 
 figcaption {
-  font-size: 0.75rem;
   color: #868e96;
+  font-size: 0.75rem;
+  margin-top: 4px;
+  text-align: center;
+}
+
+aside {
+  background: #f8f9fa;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  padding: 24px;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 2px;
+  margin: 24px auto;
+  min-width: 400px;
+}
+
+table tr {
+  text-align: center;
+  background: #f8f9fa;
+}
+
+table th,
+table td {
+  padding: 8px 12px;
 }
 </style>
