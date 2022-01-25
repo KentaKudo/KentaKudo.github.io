@@ -137,7 +137,7 @@ export default {
 .container {
   max-width: 720px;
   margin: 0 auto;
-  padding: 5rem 0;
+  padding: 5rem 1.5rem;
 }
 
 time {
@@ -225,5 +225,25 @@ table tr {
 table th,
 table td {
   padding: 8px 12px;
+}
+
+blockquote {
+  background: #f8f9fa;
+  font-style: italic;
+  padding: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote p {
+  display: inline;
 }
 </style>

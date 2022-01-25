@@ -1,7 +1,8 @@
 <style scoped>
 .container {
   max-width: 720px;
-  margin: 5rem auto;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
 }
 
 a {
