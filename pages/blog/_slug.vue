@@ -46,7 +46,7 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: this.page.description
+        content: this.page.description,
       },
       { hid: "og:type", property: "og:type", content: "article" },
       { hid: "og:url", property: "og:url", content: url },
@@ -54,38 +54,38 @@ export default {
       {
         hid: "og:description",
         property: "og:description",
-        content: this.page.description
+        content: this.page.description,
       },
       { hid: "twitter:url", name: "twitter:url", content: url },
       {
         hid: "twitter:title",
         name: "twitter:title",
-        content: this.page.title
+        content: this.page.title,
       },
       {
         hid: "twitter:description",
         name: "twitter:description",
-        content: this.page.description
+        content: this.page.description,
       },
       {
         property: "article:published_time",
-        content: this.page.createdAt
+        content: this.page.createdAt,
       },
       {
         property: "article:modified_time",
-        content: this.page.updatedAt
+        content: this.page.updatedAt,
       },
       {
         property: "article:tag",
-        content: this.page.tags ? this.page.tags.join(",") : ""
+        content: this.page.tags ? this.page.tags.join(",") : "",
       },
       { name: "twitter:label1", content: "Written by" },
       { name: "twitter:data1", content: "Kenta Kudo" },
       { name: "twitter:label2", content: "Filed under" },
       {
         name: "twitter:data2",
-        content: this.page.tags ? this.page.tags.join(",") : ""
-      }
+        content: this.page.tags ? this.page.tags.join(",") : "",
+      },
     ];
 
     return {
@@ -96,40 +96,40 @@ export default {
             {
               hid: "og:image",
               property: "og:image",
-              content: `${SITE_URL}${require(`~/assets/img${this.page.path}/${this.page.image.src}`)}`
+              content: `${SITE_URL}${require(`~/assets/img${this.page.path}/${this.page.image.src}`)}`,
             },
             {
               hid: "twitter:image",
               name: "twitter:image",
-              content: `${SITE_URL}${require(`~/assets/img${this.page.path}/${this.page.image.src}`)}`
-            }
+              content: `${SITE_URL}${require(`~/assets/img${this.page.path}/${this.page.image.src}`)}`,
+            },
           ]
         : meta,
       link: [
         {
           hid: "canonical",
           rel: "canonical",
-          href: url
-        }
-      ]
+          href: url,
+        },
+      ],
     };
   },
   async asyncData({ $content, params, error }) {
     const slug = params.slug || "index";
     const page = await $content("blog", slug)
       .fetch()
-      .catch(err => error({ statusCode: 404, message: "Page not found" }));
+      .catch((err) => error({ statusCode: 404, message: "Page not found" }));
 
     return {
-      page
+      page,
     };
   },
   methods: {
     formatDate(date) {
       const options = { year: "numeric", month: "long", day: "numeric" };
       return new Date(date).toLocaleDateString("en", options);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -245,5 +245,14 @@ blockquote:before {
 
 blockquote p {
   display: inline;
+}
+
+.embed {
+  display: flex;
+  justify-content: center;
+}
+
+.mb {
+  margin-bottom: 1rem;
 }
 </style>

@@ -1,13 +1,22 @@
 <template>
-  <img :src="require(`~/assets/img/${src}`)" :alt="alt" />
+  <figure>
+    <img :src="require(`~/assets/img/${src}`)" :alt="alt" />
+    <figcaption v-if="caption">{{ caption }}</figcaption>
+  </figure>
 </template>
 
 <script>
-// TODO: figure and caption
 export default {
   props: {
     src: String,
-    alt: String
-  }
+    alt: String,
+    caption: String,
+  },
 };
 </script>
+
+<style scoped>
+figure {
+  margin: 1rem 0;
+}
+</style>
