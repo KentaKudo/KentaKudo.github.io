@@ -4,168 +4,9 @@
         <title>Blog — Kenta Kudo</title>
         <link>http://localhost:3000/feed.xml</link>
         <description>What I write about when I write about technology</description>
-        <lastBuildDate>Sun, 30 Jan 2022 21:06:18 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 03 Mar 2022 21:30:45 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/nuxt-community/feed-module</generator>
-        <item>
-            <title><![CDATA[Does integer division overflow?]]></title>
-            <link>http://localhost:3000/blog/division-overflow</link>
-            <guid>http://localhost:3000/blog/division-overflow</guid>
-            <description><![CDATA[In this short post, I'm going to introduce integer overflow and small fun fact that causes overflow in seemingly impossible situation.]]></description>
-            <content:encoded><![CDATA[
-## What's integer overflow?
-
-> In computer programming, an integer overflow occurs when an arithmetic operation attempts to create a numeric value that is outside of the range that can be represented with a given number of digits – either higher than the maximum or lower than the minimum representable value. — [Wikipedia — Integer overflow](https://en.wikipedia.org/wiki/Integer_overflow)
-
-As you may know, addition of two integer numbers can overflow. For example addition of two `int8` number 127 and 1 overflows, and doesn't return mathematically correct answer.
-
-```go
-package main
-
-import "fmt"
-
-func main() {
-        var i, j int8 = 127, 1
-        fmt.Printf("127 + 1 = %d", i+j)
-}
-```
-
-This Go programme outputs `127 + 1 = -128`. For subtraction, if you think about `127 - (-1)`, this is going to overflow as this is the equivalent expression to the addition we just saw.
-
-Likewise, multiplication of two integer numbers can overflow.
-
-```go
-package main
-
-import "fmt"
-
-func main() {
-        var i, j int8 = 64, 2
-        fmt.Printf("64 * 2 = %d", i*j)
-}
-```
-
-This outputs `64 * 2 = -128`.
-
-The reason is because 127 is the biggest number `int8` can represent and any calculation resulting in bigger number than this overflows returning unexpected result.
-
-Here is a question: Can division of two integer numbers ever overflow? If yes, which combination of two integers make it happen?
-
-## Integer division overflow
-
-From mathematical point of view, if the divisor is either bigger than or equal to 1, or smaller than or equal to -1, the absolute value of the quotient is never going to be bigger than that of the dividend, and for any `int8` number this condition is satisfied. So it doesn't seem possible to make overflow happen with two `int8` numbers.
-
-…However, yes it is possible, as you may have guessed.
-
-What do you think is the output of this Go programme?
-
-```go
-package main
-
-import "fmt"
-
-func main() {
-        var i, j int8 = -128, -1
-        fmt.Printf("-128 / -1 = %d", i/j)
-}
-```
-
-Mathematically correct answer is `128`…but wait, **wasn't the biggest number `int8` can represent 127??**
-
-That means this calculation overflows and the output is `-128 / -1 = -128`.
-
-The reason why this happens is while `int8` can represent `2^8 = 256` different numbers, 0 has to be included, which means odd number `255` is left to represent both positive and negative numbers. Most of the computing systems adopt a technique called _two's complement_ to represent signed numbers[^1] and with that technique `int8` is going to have **127 positive numbers and 128 negative numbers**.
-
-As a result by dividing the biggest negative number by -1, we can cause overflow in integer division.
-
-I'd like to know more of this kind of "fun facts", so please share if you know. In the next post I'd like to talk about what two's complement is, and why it is so widely used in the computing systems.
-
-[^1]: Signed numbers: Numbers that consist of both positive and negative numbers
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[NFT — 可能性と問題点]]></title>
-            <link>http://localhost:3000/blog/nft-potential-and-problems</link>
-            <guid>http://localhost:3000/blog/nft-potential-and-problems</guid>
-            <description><![CDATA[NFTの話題が連日テックニュース界隈を賑わせています。きっかけはデジタルアート作品のNFTに$69mの値段がついたことです。作品は Beepleというアーティストによるもので、取引はNFTを扱うオークションサイトのChristie'sで行われました。その後もTwitterの創業者であるJack Dorseyによる、Twitter初のツイートに$3mの値段がつくなど、話題がつきません。
-NFTはデジタル作品を手がけるアーティストを支援する強力なツールとなる可能性がある一方でいくつかの問題も抱えています。ここではNFTのもつ可能性と問題点についてまとめます。]]></description>
-            <content:encoded><![CDATA[
-まずはじめに NFT とはなにか簡単に説明します。
-
-## NFT とは
-
-NFT とは Non-Fungible Token の略で、ブロックチェーンを応用した技術のひとつです。日本語では非代替性トークンと訳されますが、従来のブロックチェーン技術との違いはまさにその非代替性にあります。
-
-ブロックチェーンは基本的にはデータベースです。ビットコインのような仮想通貨を例にとると、そのブロックチェーン上には誰と誰との間でいくらの移動があったかという取引情報が保存されています。現実世界の通貨においてあなたが持つ 100 円玉と僕が持つ 100 円玉の区別をつける必要がないのと同様に、ビットコインであってもそれぞれのアセットの区別をつける必要はありません。これを代替可能(=fungible)と呼びます。
-
-その一方で世の中には代替不可能なものも存在します。一例としてアート作品を想像してみてください。モナリザのコピーは世の中に多数存在しますが、オリジナルはルーブル美術館にある一つだけです。あなたの持つモナリザのコピーをルーブル美術館のオリジナルと交換することはできません。これを代替不可能(=non-fungible)であると言います。NFT を使ったブロックチェーン上にはそれぞれのアセットを表すユニークな ID とその所有者のマッピングが保存されており、そのブロックチェーンを見ればある作品を所有しているのが誰なのか知ることができます。また、仮想通貨と同様にその所有権を移動させることも可能です。
-
-アート作品がしばしばオークションを通して売りに出されるのと同様に、NFT でもオークションを通して所有権が売買されます。それこそが今 NFT 界隈で起こっていることです。ただし違いはそこで売買されているのがモナリザのような絵画ではなく、画像や映像といったデジタルデータだということです。
-
-## なぜ NFT が盛り上がっているか
-
-デジタルなデータが物理的に存在するモノと圧倒的に異なる点は、オリジナルをコストゼロで簡単にコピーできることです。cmd+c を押すだけで本物と全く同じものを無数に作り出すことができます。それゆえ、これまでデジタルデータは実物のように「所有する」ということができませんでした。
-
-そこに出現したのが NFT です。
-
-さきほど説明したように、NFT を使うことによりブロックチェーン上に"誰が何を所有するか"の情報を書き込むことができ、一度書き込まれた内容を勝手に書き換えることはほぼ不可能です。NFT によりデジタルデータを実物のアート作品と同様に、コレクションとしてあるいは投資対象として「所有する」ということが可能になった、というのが NFT がこれだけ盛り上がっている大きな理由です。
-
-このことは NFT がデジタル作品を手がけるアーティストを支援する強力なツールとなる可能性を示しています。これまで著作権という保護はありながらも、無断でコピーされたものから生み出された利益がその作成者に還元されることはありませんでした。残念ながら NFT はその問題自体に解決策を与えてくれるものではありません。しかし「NFT を通して所有権を売る」という、アーティストが収入を得る新たな手段を生み出しました。加えて多くの NFT プラットフォームでは売買のたびに出品者に手数料が入る仕組みを導入しており、売買が行われる限り継続的に収入を得ることができるという実物の取引にはないメリットもあります。
-
-ここまでをみるとデジタルな創作物に正しい評価が与えられるすばらしい発明、と考えられます。しかし実態は少し異なっているようです。
-
-## 「アーティストがお金を稼ぐ手段」が増えてハッピー？
-
-一見すばらしい仕組みにみえる NFT ですが、問題もいくつか抱えています。
-
-### 1. 誰でも出品できるという欠陥
-
-先述のとおり一度ブロックチェーンに書き込まれた内容は変更することができません。そのため正しい情報を書き込むことが大切です。デジタルデータを扱う NFT の場合は「クリエイター＝出品者」であることが求められますが、これを保証してくれるはずの認証システムの信頼性にはプラットフォームによってばらつきがあります。Rarible という NFT プラットフォーム上では、アーティストがある日起きたら自分の作品が勝手に出品され、売買さえも完了していたという事例[3]が実際に発生しています。また別の NFT プラットフォームである OpenSea は「爆発的に増加した出品リクエストに対応する」と言う名目で認証システムを一切無くしました[3]。あるいは盗作や二次創作物などの出品を防ぐ有効な手段もありません。
-
-クリエイターに新たな収入源を与える一方で、違法者やモラルを無視した人にも等しくその利便性が与えられては仕方がありません。
-
-[3]: https://www.theverge.com/2021/3/20/22334527/nft-scams-artists-opensea-rarible-marble-cards-fraud-art
-
-### 2. 「所有権」というものの曖昧さ
-
-NFT における「所有権」とは実際に何を指すのでしょうか。ブロックチェーン上の各ブロックにはそれがどういった作品なのかという情報が書き込まれなければいけません。しかしブロックチェーンに書き込むことができるデータのサイズには限りがあり、作品をそのままデータとして記録することができません。そこで多くのプラットフォームでは作品への URL(正確には作品の URL を含むメタデータへのリンク)だけをブロック上に記録します。この作品へのリンクをもって所有権というものが成立しています。
-
-しかし URL を使うことには大きな問題があります。もしそのリンクをもつサービスが停止してしまったらどうなるでしょうか。ブロックチェーンは残りますがそこに書き込まれたリンクは無効となり、もうアクセスすることはできません。何を所有しているかわからない「所有権」だけが残ることになります。所有権を URL を使って表現することには信頼性という点で疑問が残ります。
-
-いくつかのプラットフォームではこの問題に対応するため、ブロックに IPFS のトークンを書き込む方式を採用しています。IPFS とは Inter-Planetary File System の略で、ファイルを分散ホスト上に展開し、peer-to-peer システムによりアクセス可能にする技術です。IPFS 上のファイルは URL のような場所を特定する情報は持たず、唯一性をもつトークンのみが与えられます。そしてそのファイルをホストするサーバーが一つでも存在する限りファイルが失われることはありません。
-
-しかしこの IPFS にも問題があります。作品のメタデータは分散して保存されており失われることがありませんが、肝心の作品データが特定のサーバー上にしか存在しないということがあります。URL を使ったケースと同様に、そのサーバーを運用するサービスが停止した時点でそのデータにアクセスすることはできなくなります。
-
-NFT のコンセプトの発案者 Anil Dash はこのブロックチェーンにリンクだけを書き込む方式を"shortcut"としています[4]。その"shortcut"はコンセプトの発案から 7 年たった今も使われ続けています。 NFT における「所有権」とは現状、いつなくなるかわからないとても脆弱なものです。
-
-[4]: https://www.theatlantic.com/ideas/archive/2021/04/nfts-werent-supposed-end-like/618488/
-
-### 3. 環境負荷という問題
-
-ブロックチェーンに新たなブロックを書き込む際の環境負荷という点も見逃せません。多くの NFT プラットフォームではデジタルデータを Ethereum という、すでにあるブロックチェーン上に書き込んでいます。この Ethereum というブロックチェーンは、データの改ざんを防ぐためにプルーフオブワークという仕組みを採用しています。このプルーフオブワークにはマイニングという作業が必要になるのですが、このマイニングにはとてつもない量の計算が必要となります。大量の計算にはそれに見合うだけの電力を必要とします。Ethereum が年間に消費する電力量はベラルーシが年間に消費する電力量に匹敵するといわれています[5]。
-
-これは Ethereum というブロックチェーンが抱える問題であるため、NFT 自身の問題とはいえません。しかし NFT が注目を浴びることで利用者が増え、Ethereum でのマイニング作業がより必要となることで結果的に環境に与える負荷が高まるのは間違いありません。事実今年に入ってから Ethereum の電力消費量は激増しています[5]。
-
-[5]: https://digiconomist.net/ethereum-energy-consumption
-
-## NFT が向かう先
-
-「NFT を通したアート作品が\$69m で落札！」 といったセンセーショナルな話題に振り回されていますが、NFT は本来アーティストを保護し、支援するための仕組みだと Anil Dash は述べています。NFT という技術が大きな可能性を秘めているのは間違いありませんが、出現してから日が浅く、未だ多くの課題を抱えているのも事実です。一過性の話題として消費されるにとどまらず、技術が円熟し有益なものとして利用可能になるのを期待しています。
-
----
-
-## 参照
-
-- [Beeple sold an NFT for \$69 million](https://www.theverge.com/2021/3/11/22325054/beeple-christies-nft-sale-cost-everydays-69-million)
-- [Jack Dorsey’s first tweet sold as an NFT for an oddly specific \$2,915,835.47](https://www.theverge.com/2021/3/22/22344937/jack-dorsey-nft-sold-first-tweet-ethereum-cryptocurrency-twitter)
-- [THE CLIMATE CONTROVERSY SWIRLING AROUND NFTS](https://www.theverge.com/2021/3/15/22328203/nft-cryptoart-ethereum-blockchain-climate-change)
-- [NFT MANIA IS HERE, AND SO ARE THE SCAMMERS](https://www.theverge.com/2021/3/20/22334527/nft-scams-artists-opensea-rarible-marble-cards-fraud-art)
-- [YOUR MILLION-DOLLAR NFT CAN BREAK TOMORROW IF YOU’RE NOT CAREFUL](https://www.theverge.com/2021/3/25/22349242/nft-metadata-explained-art-crypto-urls-links-ipfs)
-- [Do You Really\* Own Your NFT? Chances Are, You Don’t](https://thedefiant.io/do-you-really-own-your-nft-chances-are-you-dont/)
-- [NFTs Weren’t Supposed to End Like This](https://www.theatlantic.com/ideas/archive/2021/04/nfts-werent-supposed-end-like/618488/)
-- [The Non-Fungible Token Bible: Everything you need to know about NFTs](https://opensea.io/blog/guides/non-fungible-tokens)
-]]></content:encoded>
-        </item>
         <item>
             <title><![CDATA[CPU Experiment at the University of Tokyo]]></title>
             <link>http://localhost:3000/blog/cpu-experiment</link>
@@ -284,98 +125,349 @@ Even though most of them are written in Japanese, I'll leave some links for thos
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[Subtraction as Addition]]></title>
-            <link>http://localhost:3000/blog/subtraction-as-addition</link>
-            <guid>http://localhost:3000/blog/subtraction-as-addition</guid>
-            <description><![CDATA[In modern computing system, a technique called two's complement is used to represent negative integers. The reason it's so commonly used is it makes computing system much simpler. In this post, I'd like to show what two's complement is and how it helps keeping it simple.]]></description>
+            <title><![CDATA[Does integer division overflow?]]></title>
+            <link>http://localhost:3000/blog/division-overflow</link>
+            <guid>http://localhost:3000/blog/division-overflow</guid>
+            <description><![CDATA[In this short post, I'm going to introduce integer overflow and small fun fact that causes overflow in seemingly impossible situation.]]></description>
             <content:encoded><![CDATA[
-To make the discussion simple I'm going to use 4 bit integer, `int4` throughout the post.
+## What's integer overflow?
 
-NOTE: I expect you to have a basic understanding of binary number system. If you're not familiar with it, take a moment and have a look at [this article](https://www.mathsisfun.com/binary-number-system.html) first.
+> In computer programming, an integer overflow occurs when an arithmetic operation attempts to create a numeric value that is outside of the range that can be represented with a given number of digits – either higher than the maximum or lower than the minimum representable value. — [Wikipedia — Integer overflow](https://en.wikipedia.org/wiki/Integer_overflow)
 
-## What's two's complement?
+As you may know, addition of two integer numbers can overflow. For example addition of two `int8` number 127 and 1 overflows, and doesn't return mathematically correct answer.
 
-It's one way of representing signed integers[^1]. `int4` can represent `2^4 = 16` different numbers, and two's complement assigns 16 integers ranging from -8 to 7 to each bit pattern. The mapping rules go like this:
+```go
+package main
 
-- Map from 0 to 7 to binary numbers starting from `0000` to `0111`. This is same as how we represent positive integers in binary.
-- For negative numbers, assign the smallest negative number -8 to `1000`, then assign -7 to the one bigger binary `1001`, -6 to `1010` …and so on up to `1111`. `1111` is going to be -1.
+import "fmt"
 
-If they aren't very clear, have a look at the table showing full mapping below and examine the rules again.
+func main() {
+        var i, j int8 = 127, 1
+        fmt.Printf("127 + 1 = %d", i+j)
+}
+```
 
-| Decimal | Binary |
-| :-----: | :----: |
-|    7    |  0111  |
-|    6    |  0110  |
-|    5    |  0101  |
-|    4    |  0100  |
-|    3    |  0011  |
-|    2    |  0010  |
-|    1    |  0001  |
-|    0    |  0000  |
-|   -1    |  1111  |
-|   -2    |  1110  |
-|   -3    |  1101  |
-|   -4    |  1100  |
-|   -5    |  1011  |
-|   -6    |  1010  |
-|   -7    |  1001  |
-|   -8    |  1000  |
+This Go programme outputs `127 + 1 = -128`. For subtraction, if you think about `127 - (-1)`, this is going to overflow as this is the equivalent expression to the addition we just saw.
 
-Just by looking at it, it doesn't make much sense why it does such a tricky mapping for negative numbers. There's a reason powerful enough to justify this trickiness.
+Likewise, multiplication of two integer numbers can overflow.
 
-## Why is it so widely used?
+```go
+package main
 
-The reason why two's complement is widely used is it makes hardware simple in a way that **it enables hardware to use the addition unit to also calculate subtraction**.
+import "fmt"
 
-You may be surprised to know that computers don't do subtraction. What it actually does instead is addition of the negative number. For example, `5 - 3` is calculated as `5 + (-3)` inside a computer. By converting subtraction to addition, it's now free from minding how to go about subtraction, which is a big deal from hardware engineering point of view.
+func main() {
+        var i, j int8 = 64, 2
+        fmt.Printf("64 * 2 = %d", i*j)
+}
+```
 
-However, we need to carefully pick a way to represent negative numbers in order to get correct answers. Two's complement is one of such representations[^2] that makes it happen. Let's look at an example.
+This outputs `64 * 2 = -128`.
 
-Let's do `5 + (-3)`. In two's complement 5 and -3 are represented as `0101` and `1101` respectively. The addition of these two is `0101 + 1101 = 0010`. If you look back at the table in the previous section, you can find it represents 2, which **corresponds to the answer of `5 + (-3)`**.
+The reason is because 127 is the biggest number `int8` can represent and any calculation resulting in bigger number than this overflows returning unexpected result.
 
-You may still wonder "so what? what's so special about this?" because my first impression was like that. Let's see what happens if it did NOT use two's complement.
+Here is a question: Can division of two integer numbers ever overflow? If yes, which combination of two integers make it happen?
 
-### Another way of representing minus numbers
+## Integer division overflow
 
-I'm going to use the first bit solely as a flag that indicates sign: 0 to be positive, and 1 to be negative. The rest of three bits are used to represent number part, for example, `0001` is 1 and `1001` is -1.
+From mathematical point of view, if the divisor is either bigger than or equal to 1, or smaller than or equal to -1, the absolute value of the quotient is never going to be bigger than that of the dividend, and for any `int8` number this condition is satisfied. So it doesn't seem possible to make overflow happen with two `int8` numbers.
 
-This is the mapping table of this system.
+…However, yes it is possible, as you may have guessed.
 
-| Decimal | Binary |
-| :-----: | :----: |
-|    7    |  0111  |
-|    6    |  0110  |
-|    5    |  0101  |
-|    4    |  0100  |
-|    3    |  0011  |
-|    2    |  0010  |
-|    1    |  0001  |
-|    0    |  0000  |
-|   -0    |  1000  |
-|   -1    |  1001  |
-|   -2    |  1010  |
-|   -3    |  1011  |
-|   -4    |  1100  |
-|   -5    |  1101  |
-|   -6    |  1110  |
-|   -7    |  1111  |
+What do you think is the output of this Go programme?
 
-Probably this is more intuitive way of representing negative numbers. This system is called _signed magnitude representation_, and was actually used in early computers. Be aware **it has two zeros**.
+```go
+package main
 
-Now let's see how `5 + (-3)` looks like in this system.
+import "fmt"
 
-In this system, 5 and -3 are represented `0101` and `1011` respectively. If we add these two binary numbers, the result is `0101 + 1011 = 0000`. `0000` is simply 0, which is clearly wrong answer for `5 + (-3)`.
+func main() {
+        var i, j int8 = -128, -1
+        fmt.Printf("-128 / -1 = %d", i/j)
+}
+```
 
-This means it can't use the addition hardware to perform this calculation, and to get the right answer it needs another hardware dedicated for subtraction.
+Mathematically correct answer is `128`…but wait, **wasn't the biggest number `int8` can represent 127??**
 
-Being able to calculate subtraction as addition is a very unique characteristic two's complement has, and it's the reason why it's so popular in computing systems.
+That means this calculation overflows and the output is `-128 / -1 = -128`.
 
-<aside>
-Indeed, <i>method of complement</i> (ones' complement, two's complement, etc) is <b>designed to implement subtraction as addition</b> of its complement number.
-</aside>
+The reason why this happens is while `int8` can represent `2^8 = 256` different numbers, 0 has to be included, which means odd number `255` is left to represent both positive and negative numbers. Most of the computing systems adopt a technique called _two's complement_ to represent signed numbers[^1] and with that technique `int8` is going to have **127 positive numbers and 128 negative numbers**.
+
+As a result by dividing the biggest negative number by -1, we can cause overflow in integer division.
+
+I'd like to know more of this kind of "fun facts", so please share if you know. In the next post I'd like to talk about what two's complement is, and why it is so widely used in the computing systems.
 
 [^1]: Signed numbers: Numbers that consist of both positive and negative numbers
-[^2]: Ones' complement is another way to realise subtraction as addition. See [Stack Overflow — Advantage of 2's complement over 1's complement?](https://stackoverflow.com/questions/11054213/advantage-of-2s-complement-over-1s-complement) if you're interested in why two's complement is more preferred.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Ray Tracer on Web]]></title>
+            <link>http://localhost:3000/blog/ray-tracer-on-web</link>
+            <guid>http://localhost:3000/blog/ray-tracer-on-web</guid>
+            <description><![CDATA[I have been working on writing a ray tracer in Rust in the last few weeks. This post is to show off what I could achieve:)]]></description>
+            <content:encoded><![CDATA[
+First things first: demonstration. Try clicking the Run button below. It's going to take a bit while until the result pops up, so please be patient:)
+
+(NOTE: Web Worker must be [supported](https://caniuse.com/webworkers) on your browser.)
+
+<ray-tracer-canvas></ray-tracer-canvas>
+
+It didn't load the image but **generated it on your device** using the power of Web Assembly. Because it has some random factor, it produces slightly different images every time you run it.
+
+It's cool, isn't it?
+
+I'm first going to touch on what ray tracer / ray tracing is for those who are not familiar with it. Then look at details of how I ran it in the browser.
+
+<aside>
+Many thanks to <a href="https://twitter.com/Peter_shirley">@Peter_shirley</a> who wrote a phenomenal tutorial <a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html">Ray Tracing In One Weekend</a>. I just followed his tutorial using Rust instead of C++.
+</aside>
+
+The source code is available on [GitHub](https://github.com/KentaKudo/wasm-raytracer), and also published as a [NPM package](https://www.npmjs.com/package/wasm-raytracer).
+
+## What's ray tracing?
+
+Ray tracing is a technique used to render a scene. Pay close attention to the shadows and the reflection on water, walls, floors, and glasses in this video.
+
+<div class="embed mb">
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/Xf2QCdScU6o"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
+</div>
+
+You may find the scene rendered by ray tracing more natural.
+
+While ray tracing is computationaly more expensive than the widely used method _rasterisation_, it's been increasing its presence in movie and game rendering with the help of the latest advance in GPU technology.
+
+Programatically, it calculates the colour of each pixel in the image from top left to right bottom tracing "rays" from a "camera" to the "scene".
+
+### Scene
+
+A scene is the world where all the objects, for example cars, lights, buildings, and so on, are placed. My ray tracer only has simple spheres as they're easy to model, but you can put literally any objects in any positions if you manage to model it.
+
+You can add other factors to objects to make it look more real. One such factor is a **material** the object is made of. Depending on the material, the object behaves differently when a ray hits. Materials supported by my version of ray tracer are:
+
+- Lambertian — a material that reflects the ray to a random direction,
+- Metal — a material that reflects the ray to the direction calculated from the incoming ray's angle, and
+- Dielectric (glasses) — a material that refracts the ray to the inside of the object.
+
+<nuxt-image src="blog/ray-tracer-on-web/materials.png" alt="Lambertian casts a ray to a random direction, Metal reflects, Dielectric refracts" caption="Each material baheves differently when a ray hits it"></nuxt-image>
+
+Once you define a scene, the next thing you need to do is to specify where you look at the scene from.
+
+### Camera
+
+A camera is your eyes. All the rays start their journey from the camera. It's defined with two main parameters:
+
+- position — the place where you look at the scene from, and
+- atitude — the direction of its gaze
+
+In addition to them, you also need to configure
+(1) a viewport which has the same aspect ratio as the final image, think it as a window which you look at the scene through, and
+(2) the distance between the camera and the viewport, which is called "focal length".
+
+Once the camera is positioned, it's ready to start casting rays.
+
+### Ray
+
+A ray is casted from the camera to the direction of the pixel it's interested in at the time. The casted ray may or may not hit objects placed in the scene. If it hits something, it first records the color of the object surface. Then, it produces another ray, the direction of which depends on the material of the object as explained in the scene section, from the hit point.
+
+The tracing of the ray stops either
+(1) when the ray goes deep into the shadow or
+(2) when it doesn't hit anything anymore, which means it reaches the ambient light (or sky so to speak).
+The final colour of the pixel is calculated at that point.
+
+<nuxt-image src="blog/ray-tracer-on-web/ray.png" alt="A ray is cast from a camera to the scene through a frame in between them calculating the final colour of the pixel" caption="Tracing the journey of the ray"></nuxt-image>
+
+This is a quick explanation of what the ray tracer is. See the [_References_](#references) section to continue reading more about ray tracing if you're interested.
+
+Now, let's talk about what I did to run it on web browser.
+
+## Ray tracer + Web Assembly
+
+The first thing I had to do was make a decision on how JavaScript and Rust should communicate each other; more precisely, how to pass images from Rust to JavaScript.
+
+### Canvas API
+
+To draw an image on the screen, I used the \<canvas\> HTML element. Its `putImageData()` API receives input image as an `ImageData` object, and the image data is given as `Uint8ClampedArray`, which is expected to be an array containing the pixel data in the RGBA order.
+
+<nuxt-image src="blog/ray-tracer-on-web/canvas-api.png" alt="Uint8ClampedArray is used for ImageData then passed to canvas HTML element."></nuxt-image>
+
+Long story short, the goal is to return a properly serialised `Uint8ClampedArray` from the Rust programme.
+
+### wasm-bindgen
+
+[wasm-bindgen](https://github.com/rustwasm/wasm-bindgen) is a library that bridges the gap between JavaScript and the Web Assembly module written in Rust.
+
+What I needed to do so the `render` function can be called from JavaScript and return `Uint8ClampedArray` was to add a `#[wasm_bindgen]` annotation and modify the return type:
+
+```rust
+use wasm_bindgen::prelude::*;
+
+#[wasm_bindgen]
+pub fn render(width: u16, height: u16) -> Uint8ClampedArray {
+
+  // ...setup a scene and a camera
+
+  let mut img = vec![];
+
+  // ...build image
+
+  // convert from [u8] to Uint8ClampedArray using Into trait.
+  img[..].into()
+}
+```
+
+This is basically everything I needed to run the ray tracer in web browser, but there was one issue when I tried it: the browser got stuck while running the ray tracer. What I was missing was to follow this advice:
+
+> The main thread in a browser cannot block. This means that if you run WebAssembly code on the main thread you can never block, meaning you can't do so much as acquire a mutex. This is an extremely difficult limitation to work with on the web, although one workaround is to run wasm exclusively in web workers and run JS on the main thread. It is possible to run the same wasm across all threads, but you need to be extremely vigilant about synchronization with the main thread. —— [Parallel Raytracing#caveats](https://rustwasm.github.io/wasm-bindgen/examples/raytrace.html#caveats)
+
+Because ray tracing takes some time and blocks the thread where it runs, running it on the main thread is a no-no; I made a first encounter to Web Worker...!
+
+### Web Worker
+
+Regardless of its unfriendly interface ([Comlink](https://github.com/GoogleChromeLabs/comlink) can be a help for it), using Web Worker is not super complicated.
+
+The main thread needs to (1) instantiate a worker specifying the path to the worker file, (2) invoke it passing arguments via `postMessage` API, and (3) listen to the result by registering an `onmessage` callback:
+
+```js
+const w = new Worker("../path/to/the/worker/file");
+w.postMessage([WIDTH, HEIGHT]);
+w.onmessage = ({ data: rendered }) => {
+  const imageData = new ImageData(rendered, WIDTH);
+  canvas.getContext("2d").putImageData(imageData, 0, 0);
+};
+```
+
+The worker in return defines an `onmessage` method, calls the wasm function, and pass back the result using `postMessage` API:
+
+```js
+onmessage = async function (e) {
+  const { render } = await import("wasm-raytracer");
+  const rendered = render(e.data[0], e.data[1]);
+  postMessage(rendered);
+};
+```
+
+This was all I needed to run ray tracer on a dedicated thread.
+
+Before closing the section, I address the performance issue I tried to solve.
+
+### Multi-threading
+
+Even though now it's separated from the main thread, running it on a single thread takes a bit of time. To improve performance, I looked at options to run it on multiple threads.
+
+The calculation of each pixel can be done in isolatation from each other, and _fork-join parallelism_, which is to _fork_ to start a new thread and to join to _wait_ for it to finish, can be applied using libraries such as [Rayon](https://github.com/rayon-rs/rayon).
+
+Even though it wasn't difficult to turn the programme into the multi-thread version, there were a couple of challenges to run it in the browser environment:
+
+- WebAssembly threads are not supported by [some browsers](https://webassembly.org/roadmap/) yet.
+- To enable it, [COOP and COEP headers](https://web.dev/coop-coep/) need to be configured properly, which is not possble for GitHub pages where this blog is hosted as of today.
+- Because Rust's wasm build target doesn't assume it's going to be run in browsers, the standard library `std::thread` is not aware of Web Workers that enable WebAssembly threads on browser environments.
+- The [`wasm-bindgen-rayon` library](https://github.com/GoogleChromeLabs/wasm-bindgen-rayon) enables compiling multi-thread code written with the Rayon library into threads aware wasm, but only with the nightly version of Rust.
+
+For those reasons, I gave up multi-threading for now hoping I can introduce it in the near future.
+
+## Why ray tracer?
+
+This is kind of a detour from my journey of the [CPU experiment](/blog/cpu-experiment) aimed at understanding what ray tracer is and how to implement it (+ not to mention learning Rust). Next challenge is to migrate the ray tracer programme to the Hack/Jack system I built while I was reading the book I introduced in the last section of the [The Power of NAND](/blog/the-power-of-nand) post. Bye for now:)
+
+## References
+
+- [Ray Tracing In One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
+- [The joy of building a ray tracer, for fun, in Rust.](https://blog.singleton.io/posts/2022-01-02-raytracing-with-rust/)
+- [Writing a Raytracer in Rust](https://bheisler.github.io/post/writing-raytracer-in-rust-part-1/)
+- [Shaking Off the Rust 2: Ray Tracing in WebAssembly](https://clayto.com/2021/07/shaking-off-the-rust-2-ray-tracing-in-webassembly/)
+- [Parallel Raytracing](https://rustwasm.github.io/wasm-bindgen/examples/raytrace.html)
+- [Using WebAssembly threads from C, C++ and Rust](https://web.dev/webassembly-threads/)
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[NFT — 可能性と問題点]]></title>
+            <link>http://localhost:3000/blog/nft-potential-and-problems</link>
+            <guid>http://localhost:3000/blog/nft-potential-and-problems</guid>
+            <description><![CDATA[NFTの話題が連日テックニュース界隈を賑わせています。きっかけはデジタルアート作品のNFTに$69mの値段がついたことです。作品は Beepleというアーティストによるもので、取引はNFTを扱うオークションサイトのChristie'sで行われました。その後もTwitterの創業者であるJack Dorseyによる、Twitter初のツイートに$3mの値段がつくなど、話題がつきません。
+NFTはデジタル作品を手がけるアーティストを支援する強力なツールとなる可能性がある一方でいくつかの問題も抱えています。ここではNFTのもつ可能性と問題点についてまとめます。]]></description>
+            <content:encoded><![CDATA[
+まずはじめに NFT とはなにか簡単に説明します。
+
+## NFT とは
+
+NFT とは Non-Fungible Token の略で、ブロックチェーンを応用した技術のひとつです。日本語では非代替性トークンと訳されますが、従来のブロックチェーン技術との違いはまさにその非代替性にあります。
+
+ブロックチェーンは基本的にはデータベースです。ビットコインのような仮想通貨を例にとると、そのブロックチェーン上には誰と誰との間でいくらの移動があったかという取引情報が保存されています。現実世界の通貨においてあなたが持つ 100 円玉と僕が持つ 100 円玉の区別をつける必要がないのと同様に、ビットコインであってもそれぞれのアセットの区別をつける必要はありません。これを代替可能(=fungible)と呼びます。
+
+その一方で世の中には代替不可能なものも存在します。一例としてアート作品を想像してみてください。モナリザのコピーは世の中に多数存在しますが、オリジナルはルーブル美術館にある一つだけです。あなたの持つモナリザのコピーをルーブル美術館のオリジナルと交換することはできません。これを代替不可能(=non-fungible)であると言います。NFT を使ったブロックチェーン上にはそれぞれのアセットを表すユニークな ID とその所有者のマッピングが保存されており、そのブロックチェーンを見ればある作品を所有しているのが誰なのか知ることができます。また、仮想通貨と同様にその所有権を移動させることも可能です。
+
+アート作品がしばしばオークションを通して売りに出されるのと同様に、NFT でもオークションを通して所有権が売買されます。それこそが今 NFT 界隈で起こっていることです。ただし違いはそこで売買されているのがモナリザのような絵画ではなく、画像や映像といったデジタルデータだということです。
+
+## なぜ NFT が盛り上がっているか
+
+デジタルなデータが物理的に存在するモノと圧倒的に異なる点は、オリジナルをコストゼロで簡単にコピーできることです。cmd+c を押すだけで本物と全く同じものを無数に作り出すことができます。それゆえ、これまでデジタルデータは実物のように「所有する」ということができませんでした。
+
+そこに出現したのが NFT です。
+
+さきほど説明したように、NFT を使うことによりブロックチェーン上に"誰が何を所有するか"の情報を書き込むことができ、一度書き込まれた内容を勝手に書き換えることはほぼ不可能です。NFT によりデジタルデータを実物のアート作品と同様に、コレクションとしてあるいは投資対象として「所有する」ということが可能になった、というのが NFT がこれだけ盛り上がっている大きな理由です。
+
+このことは NFT がデジタル作品を手がけるアーティストを支援する強力なツールとなる可能性を示しています。これまで著作権という保護はありながらも、無断でコピーされたものから生み出された利益がその作成者に還元されることはありませんでした。残念ながら NFT はその問題自体に解決策を与えてくれるものではありません。しかし「NFT を通して所有権を売る」という、アーティストが収入を得る新たな手段を生み出しました。加えて多くの NFT プラットフォームでは売買のたびに出品者に手数料が入る仕組みを導入しており、売買が行われる限り継続的に収入を得ることができるという実物の取引にはないメリットもあります。
+
+ここまでをみるとデジタルな創作物に正しい評価が与えられるすばらしい発明、と考えられます。しかし実態は少し異なっているようです。
+
+## 「アーティストがお金を稼ぐ手段」が増えてハッピー？
+
+一見すばらしい仕組みにみえる NFT ですが、問題もいくつか抱えています。
+
+### 1. 誰でも出品できるという欠陥
+
+先述のとおり一度ブロックチェーンに書き込まれた内容は変更することができません。そのため正しい情報を書き込むことが大切です。デジタルデータを扱う NFT の場合は「クリエイター＝出品者」であることが求められますが、これを保証してくれるはずの認証システムの信頼性にはプラットフォームによってばらつきがあります。Rarible という NFT プラットフォーム上では、アーティストがある日起きたら自分の作品が勝手に出品され、売買さえも完了していたという事例[3]が実際に発生しています。また別の NFT プラットフォームである OpenSea は「爆発的に増加した出品リクエストに対応する」と言う名目で認証システムを一切無くしました[3]。あるいは盗作や二次創作物などの出品を防ぐ有効な手段もありません。
+
+クリエイターに新たな収入源を与える一方で、違法者やモラルを無視した人にも等しくその利便性が与えられては仕方がありません。
+
+[3]: https://www.theverge.com/2021/3/20/22334527/nft-scams-artists-opensea-rarible-marble-cards-fraud-art
+
+### 2. 「所有権」というものの曖昧さ
+
+NFT における「所有権」とは実際に何を指すのでしょうか。ブロックチェーン上の各ブロックにはそれがどういった作品なのかという情報が書き込まれなければいけません。しかしブロックチェーンに書き込むことができるデータのサイズには限りがあり、作品をそのままデータとして記録することができません。そこで多くのプラットフォームでは作品への URL(正確には作品の URL を含むメタデータへのリンク)だけをブロック上に記録します。この作品へのリンクをもって所有権というものが成立しています。
+
+しかし URL を使うことには大きな問題があります。もしそのリンクをもつサービスが停止してしまったらどうなるでしょうか。ブロックチェーンは残りますがそこに書き込まれたリンクは無効となり、もうアクセスすることはできません。何を所有しているかわからない「所有権」だけが残ることになります。所有権を URL を使って表現することには信頼性という点で疑問が残ります。
+
+いくつかのプラットフォームではこの問題に対応するため、ブロックに IPFS のトークンを書き込む方式を採用しています。IPFS とは Inter-Planetary File System の略で、ファイルを分散ホスト上に展開し、peer-to-peer システムによりアクセス可能にする技術です。IPFS 上のファイルは URL のような場所を特定する情報は持たず、唯一性をもつトークンのみが与えられます。そしてそのファイルをホストするサーバーが一つでも存在する限りファイルが失われることはありません。
+
+しかしこの IPFS にも問題があります。作品のメタデータは分散して保存されており失われることがありませんが、肝心の作品データが特定のサーバー上にしか存在しないということがあります。URL を使ったケースと同様に、そのサーバーを運用するサービスが停止した時点でそのデータにアクセスすることはできなくなります。
+
+NFT のコンセプトの発案者 Anil Dash はこのブロックチェーンにリンクだけを書き込む方式を"shortcut"としています[4]。その"shortcut"はコンセプトの発案から 7 年たった今も使われ続けています。 NFT における「所有権」とは現状、いつなくなるかわからないとても脆弱なものです。
+
+[4]: https://www.theatlantic.com/ideas/archive/2021/04/nfts-werent-supposed-end-like/618488/
+
+### 3. 環境負荷という問題
+
+ブロックチェーンに新たなブロックを書き込む際の環境負荷という点も見逃せません。多くの NFT プラットフォームではデジタルデータを Ethereum という、すでにあるブロックチェーン上に書き込んでいます。この Ethereum というブロックチェーンは、データの改ざんを防ぐためにプルーフオブワークという仕組みを採用しています。このプルーフオブワークにはマイニングという作業が必要になるのですが、このマイニングにはとてつもない量の計算が必要となります。大量の計算にはそれに見合うだけの電力を必要とします。Ethereum が年間に消費する電力量はベラルーシが年間に消費する電力量に匹敵するといわれています[5]。
+
+これは Ethereum というブロックチェーンが抱える問題であるため、NFT 自身の問題とはいえません。しかし NFT が注目を浴びることで利用者が増え、Ethereum でのマイニング作業がより必要となることで結果的に環境に与える負荷が高まるのは間違いありません。事実今年に入ってから Ethereum の電力消費量は激増しています[5]。
+
+[5]: https://digiconomist.net/ethereum-energy-consumption
+
+## NFT が向かう先
+
+「NFT を通したアート作品が\$69m で落札！」 といったセンセーショナルな話題に振り回されていますが、NFT は本来アーティストを保護し、支援するための仕組みだと Anil Dash は述べています。NFT という技術が大きな可能性を秘めているのは間違いありませんが、出現してから日が浅く、未だ多くの課題を抱えているのも事実です。一過性の話題として消費されるにとどまらず、技術が円熟し有益なものとして利用可能になるのを期待しています。
+
+---
+
+## 参照
+
+- [Beeple sold an NFT for \$69 million](https://www.theverge.com/2021/3/11/22325054/beeple-christies-nft-sale-cost-everydays-69-million)
+- [Jack Dorsey’s first tweet sold as an NFT for an oddly specific \$2,915,835.47](https://www.theverge.com/2021/3/22/22344937/jack-dorsey-nft-sold-first-tweet-ethereum-cryptocurrency-twitter)
+- [THE CLIMATE CONTROVERSY SWIRLING AROUND NFTS](https://www.theverge.com/2021/3/15/22328203/nft-cryptoart-ethereum-blockchain-climate-change)
+- [NFT MANIA IS HERE, AND SO ARE THE SCAMMERS](https://www.theverge.com/2021/3/20/22334527/nft-scams-artists-opensea-rarible-marble-cards-fraud-art)
+- [YOUR MILLION-DOLLAR NFT CAN BREAK TOMORROW IF YOU’RE NOT CAREFUL](https://www.theverge.com/2021/3/25/22349242/nft-metadata-explained-art-crypto-urls-links-ipfs)
+- [Do You Really\* Own Your NFT? Chances Are, You Don’t](https://thedefiant.io/do-you-really-own-your-nft-chances-are-you-dont/)
+- [NFTs Weren’t Supposed to End Like This](https://www.theatlantic.com/ideas/archive/2021/04/nfts-werent-supposed-end-like/618488/)
+- [The Non-Fungible Token Bible: Everything you need to know about NFTs](https://opensea.io/blog/guides/non-fungible-tokens)
 ]]></content:encoded>
         </item>
         <item>
@@ -499,6 +591,101 @@ Microsoft は Q#言語とその SDK を開発、提供しています。SDK に�
 昨年末には中国が独自に開発する光子を利用した量子コンピュータで量子超越性を達成したことを発表[10]しました。量子超越性とその先にある万能量子コンピュータの実現に向け、各社・各国開発競争を進める中でどうエラー耐性を獲得していくのか。今後も量子コンピュータ関連の話題から目が離せません。
 
 [10]: https://science.sciencemag.org/content/370/6523/1460
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Subtraction as Addition]]></title>
+            <link>http://localhost:3000/blog/subtraction-as-addition</link>
+            <guid>http://localhost:3000/blog/subtraction-as-addition</guid>
+            <description><![CDATA[In modern computing system, a technique called two's complement is used to represent negative integers. The reason it's so commonly used is it makes computing system much simpler. In this post, I'd like to show what two's complement is and how it helps keeping it simple.]]></description>
+            <content:encoded><![CDATA[
+To make the discussion simple I'm going to use 4 bit integer, `int4` throughout the post.
+
+NOTE: I expect you to have a basic understanding of binary number system. If you're not familiar with it, take a moment and have a look at [this article](https://www.mathsisfun.com/binary-number-system.html) first.
+
+## What's two's complement?
+
+It's one way of representing signed integers[^1]. `int4` can represent `2^4 = 16` different numbers, and two's complement assigns 16 integers ranging from -8 to 7 to each bit pattern. The mapping rules go like this:
+
+- Map from 0 to 7 to binary numbers starting from `0000` to `0111`. This is same as how we represent positive integers in binary.
+- For negative numbers, assign the smallest negative number -8 to `1000`, then assign -7 to the one bigger binary `1001`, -6 to `1010` …and so on up to `1111`. `1111` is going to be -1.
+
+If they aren't very clear, have a look at the table showing full mapping below and examine the rules again.
+
+| Decimal | Binary |
+| :-----: | :----: |
+|    7    |  0111  |
+|    6    |  0110  |
+|    5    |  0101  |
+|    4    |  0100  |
+|    3    |  0011  |
+|    2    |  0010  |
+|    1    |  0001  |
+|    0    |  0000  |
+|   -1    |  1111  |
+|   -2    |  1110  |
+|   -3    |  1101  |
+|   -4    |  1100  |
+|   -5    |  1011  |
+|   -6    |  1010  |
+|   -7    |  1001  |
+|   -8    |  1000  |
+
+Just by looking at it, it doesn't make much sense why it does such a tricky mapping for negative numbers. There's a reason powerful enough to justify this trickiness.
+
+## Why is it so widely used?
+
+The reason why two's complement is widely used is it makes hardware simple in a way that **it enables hardware to use the addition unit to also calculate subtraction**.
+
+You may be surprised to know that computers don't do subtraction. What it actually does instead is addition of the negative number. For example, `5 - 3` is calculated as `5 + (-3)` inside a computer. By converting subtraction to addition, it's now free from minding how to go about subtraction, which is a big deal from hardware engineering point of view.
+
+However, we need to carefully pick a way to represent negative numbers in order to get correct answers. Two's complement is one of such representations[^2] that makes it happen. Let's look at an example.
+
+Let's do `5 + (-3)`. In two's complement 5 and -3 are represented as `0101` and `1101` respectively. The addition of these two is `0101 + 1101 = 0010`. If you look back at the table in the previous section, you can find it represents 2, which **corresponds to the answer of `5 + (-3)`**.
+
+You may still wonder "so what? what's so special about this?" because my first impression was like that. Let's see what happens if it did NOT use two's complement.
+
+### Another way of representing minus numbers
+
+I'm going to use the first bit solely as a flag that indicates sign: 0 to be positive, and 1 to be negative. The rest of three bits are used to represent number part, for example, `0001` is 1 and `1001` is -1.
+
+This is the mapping table of this system.
+
+| Decimal | Binary |
+| :-----: | :----: |
+|    7    |  0111  |
+|    6    |  0110  |
+|    5    |  0101  |
+|    4    |  0100  |
+|    3    |  0011  |
+|    2    |  0010  |
+|    1    |  0001  |
+|    0    |  0000  |
+|   -0    |  1000  |
+|   -1    |  1001  |
+|   -2    |  1010  |
+|   -3    |  1011  |
+|   -4    |  1100  |
+|   -5    |  1101  |
+|   -6    |  1110  |
+|   -7    |  1111  |
+
+Probably this is more intuitive way of representing negative numbers. This system is called _signed magnitude representation_, and was actually used in early computers. Be aware **it has two zeros**.
+
+Now let's see how `5 + (-3)` looks like in this system.
+
+In this system, 5 and -3 are represented `0101` and `1011` respectively. If we add these two binary numbers, the result is `0101 + 1011 = 0000`. `0000` is simply 0, which is clearly wrong answer for `5 + (-3)`.
+
+This means it can't use the addition hardware to perform this calculation, and to get the right answer it needs another hardware dedicated for subtraction.
+
+Being able to calculate subtraction as addition is a very unique characteristic two's complement has, and it's the reason why it's so popular in computing systems.
+
+<aside>
+Indeed, <i>method of complement</i> (ones' complement, two's complement, etc) is <b>designed to implement subtraction as addition</b> of its complement number.
+</aside>
+
+[^1]: Signed numbers: Numbers that consist of both positive and negative numbers
+[^2]: Ones' complement is another way to realise subtraction as addition. See [Stack Overflow — Advantage of 2's complement over 1's complement?](https://stackoverflow.com/questions/11054213/advantage-of-2s-complement-over-1s-complement) if you're interested in why two's complement is more preferred.
 ]]></content:encoded>
         </item>
         <item>

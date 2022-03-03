@@ -19,11 +19,13 @@
     "jquery": "^3.5.0",
     "nuxt": "^2.0.0",
     "popper.js": "^1.16.1",
-    "vue-gtag": "^1.16.1"
+    "vue-gtag": "^1.16.1",
+    "wasm-raytracer": "^0.5.2"
   },
   "devDependencies": {
     "vue-fragment": "^1.5.1",
     "vue-svg-loader": "^0.16.0",
-    "vue-template-compiler": "^2.6.12"
+    "vue-template-compiler": "^2.6.12",
+    "worker-loader": "^3.0.8"
   }
 }
