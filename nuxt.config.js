@@ -146,12 +146,12 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["~/plugins/vue-fragment.client.js", "~/plugins/vue-gtag.js"],
+  plugins: ["~/plugins/vue-fragment.client.js"],
 
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: [],
+  buildModules: ["@nuxtjs/google-gtag"],
 
   /*
    ** Nuxt.js modules
@@ -218,4 +218,9 @@ export default {
   components: true,
 
   target: "static",
+
+  "google-gtag": {
+    id: "G-91RNY5BKLD",
+    debug: true,
+  },
 };

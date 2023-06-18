@@ -14,12 +14,12 @@
     "@fortawesome/fontawesome-free": "^5.15.2",
     "@nuxt/content": "^1.13.1",
     "@nuxtjs/feed": "^2.0.0",
+    "@nuxtjs/google-gtag": "^1.0.4",
     "bootstrap": "^4.4.1",
     "devicons": "^1.8.0",
     "jquery": "^3.5.0",
     "nuxt": "^2.0.0",
     "popper.js": "^1.16.1",
-    "vue-gtag": "^1.16.1",
     "wasm-raytracer": "^0.5.2"
   },
   "devDependencies": {
