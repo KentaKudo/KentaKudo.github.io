@@ -146,7 +146,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["~/plugins/vue-fragment.js", "~/plugins/vue-gtag.js"],
+  plugins: ["~/plugins/vue-fragment.client.js", "~/plugins/vue-gtag.js"],
 
   /*
    ** Nuxt.js dev-modules
