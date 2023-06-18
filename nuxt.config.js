@@ -220,7 +220,7 @@ export default {
   target: "static",
 
   "google-gtag": {
-    id: "G-91RNY5BKLD",
+    id: "G-FC2KF4RL0P",
     debug: true,
   },
 };
