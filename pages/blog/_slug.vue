@@ -11,7 +11,7 @@
       <figcaption v-html="page.image.credit" />
     </figure>
     <p>{{ page.description }}</p>
-    <nav class="bg-light p-4 my-5">
+    <nav v-if="page.toc.length > 0" class="bg-light p-4 my-5">
       <h6>Table of Contents</h6>
       <ul class="pl-3">
         <li
