@@ -4,7 +4,7 @@
         <title>Blog — Kenta Kudo</title>
         <link>http://localhost:3000/feed.xml</link>
         <description>What I write about when I write about technology</description>
-        <lastBuildDate>Wed, 20 Sep 2023 09:02:20 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 17 Oct 2023 12:42:20 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/nuxt-community/feed-module</generator>
         <item>
@@ -87,475 +87,6 @@
 - [Predictable low
   latency](https://forum.equinix.com/assets/images/files/Cinnober_on_GC_pause_free_Java_applications.pdf)
   - Java システムの GC のレイテンシに対応するため、ノードを primary-secondary 構成にして、先にレスポンスを返した方の結果を採用する仕組み。どれだけ効果があるのかは不明だが、興味深い。
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[WebGLについて]]></title>
-            <link>http://localhost:3000/blog/about-webgl</link>
-            <guid>http://localhost:3000/blog/about-webgl</guid>
-            <description><![CDATA[アニメーションがかっこいいサイトに WebGL という技術が使われているらしいということは小耳に挟んでおり、WebGL について気にはなってはいたものの、ちゃんと調べたことはまだなかった。
-この度仕事で使う可能性が出てきたということで、少し調べてみたのでまとめてみた。]]></description>
-            <content:encoded><![CDATA[
-## WebGL とは
-
-WebGL は Web Graphics Library の略であり、その名の通りウェブアプリ、つまりは **JavaScript でグラフィック操作を行うためのライブラリ**である。
-
-そもそもアプリから 2D/3D の描画をする際には OpenGL という C 言語のライブラリが存在し、広く使われている。
-ネイティブなアプリであれば OpenGL を使えば良いのだが、当然ながらウェブ上のアプリからも綺麗なアニメーションを表示したいという要求が出てくる。
-
-そこで 2006 年に Firefox ブラウザを開発する Mozilla がウェブ上で 3D 描画をするプロトタイプを発表。2009 年、そこに OpenGL の仕様を策定しているクロノスグループが参加しワーキンググループが発足、主要なブラウザベンダーである Apple や Google も参加したことにより標準化の動きが生まれた。
-
-WebGL は OpenGL(より正確には組込みシステム用に定義されたサブセットである OpenGL ES)をベースに定義されており、この仕様をもとに各ブラウザが機能を
-提供している。
-
-2017 年にリリースされた WenGL 2.0 が最新の API となっており、2023 年 6 月現在モバイルを含む主要な各ブラウザでサポートされている。(https://caniuse.com/webgl2)
-
-## WebGL のメリット
-
-ウェブ上で 2D/3D を描画する方法にはそれまで Flush Player や Unity Web Player といった技術が存在した。
-
-これらの既存技術はブラウザへのプラグインという形で提供されるため、ユーザーのブラウザにプラグインがインストールされていないと動作しないという欠点がある。
-セキュリティの観点からプラグインの導入が敬遠されていることもあり、せっかくかっこいいウェブサイトを作っても動作環境が整わない可能性があった。
-
-これに対し、WebGL は JavaScript の API であり、仕様策定のワーキンググループに主要なブラウザベンダーが参加していることもあり、**多くのブラウザに標準でサポートされている**。
-
-「GPU が OpenGL をサポートしていないといけない」という制限はあるものの、WebGL の登場により JavaScript さえ動けばほとんどのブラウザ環境で 2D/3D が好きなように描画できる状況が生まれた。
-
-## WebGL のその先
-
-現在 WebGL を置き換える次世代のインターフェイスとして WebGPU が提案されている。
-(2023 年 6 月現在デスクトップ版の Chrome のみが正式にサポートしている。)
-
-そもそも OpenGL は GPU を利用することで描画演算を高速に処理することを実現しているが、近年のハードウェア性能の向上や機械学習の盛り上がりを背景に、この GPU を取り巻く環境が大きく変化し、1990 年代前半に登場した**OpenGL では満足いかないケースが増えてきた**。
-
-より具体的には、OpenGL は抽象度が高い API のため、GPU 利用を細かくチューニングすることが難しい。加えて、機械学習を中心に、GPU をグラフィックスだけでなく、一般的な計算リソースとして利用したいというニーズが高まりつつある(GPGPU: General Purpose GPU と呼ばれる)。
-
-そこで GPU をより効率的に利用したい各社がより低レベルの API を発表する流れが生まれた。GPU チップメーカーの NVIDIA から CUDA(CUDA はコンピューティングプラットフォーム全体の名称であり、API はその一部)が、Apple からは Metal、そしてクロノスグループからも Vulcan という仕様がそれぞれ発表されている。
-
-これらの動きを背景に、WebGL も次世代 API へと置き換える流れが生まれ、WebGPU という仕様が登場。標準化の動きが進んでいる。
-
----
-
-WebGL とは何なのか、WebGL が生まれた背景、そしてこれからの動きについて追ってきた。
-
-このほかのトピックに Three.js といった WebGL をよりラクに利用するためのライブラリや、シェーダーを記述するための言語である GLSL などがあり、次回以降この辺りにも踏み込んでいけたらと思っている。
-
-それではまた。
-
-## References
-
-- [Wikipedia — WebGL](https://ja.wikipedia.org/wiki/WebGL)
-- [WebGPU がついに利用可能に WebGL 以上の高速な描画と、計算処理への可能性](https://ics.media/entry/230426/)
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[シェーダーについて (1)]]></title>
-            <link>http://localhost:3000/blog/about-shader-1</link>
-            <guid>http://localhost:3000/blog/about-shader-1</guid>
-            <content:encoded><![CDATA[
-WebGL について調べていく中で、シェーダーというのが出てくる。
-
-チュートリアルなどでは「シェーダーとは陰影処理をするプログラムである」などと説明はそこそこに、「ではシェーダーを書いてみましょう」となるのだが、シェーダーの理解が覚束ないためサンプルのプログラムが何をしているのかいまいちよく掴めない、ということがよくあった。
-
-シェーダーを理解する上で非常に役に立ったのが、その全体像を把握することだった。
-
-そもそもやりたいことというのは、手元に 3D のデータがあり、これを 2D である画面への描画、つまりピクセルごとの色情報の列に変換することだ。ちなみに入力である 3D データがどこからくるかというと、Blender などのソフトを使ってモデリングという作業を行うわけだが、そういったことを含めて 3DCG という技術全体が成り立っている。
-
-話を戻して描画に関して、この 3D から 2D への変換を一般的にレンダリングと呼ぶ。さらにこのレンダリングはパイプライン処理、つまりタスク全体をより小さいサブタスクに分けた上でバケツリレー形式で処理されるため、レンダリングパイプラインまたはグラフィックスパイプラインと呼ばれる。
-
-シェーダーはこのレンダリングパイプラインの中で陰影をつける役割 (に今は限られず、様々な処理を行う) を担うのだが、ポイントは**プログラム可能である**というところだ。
-
-元々レンダリング処理は全て CPU 上で行なわれていたが、専用ハードウェアを用意することで高速化が図られた、というのが GPU の始まりである。
-
-<aside>
-時とともにGPUが担当する処理が増え、処理内容も複雑化、さらには機械学習を中心にレンダリング以外の用途への転用と発展し、年を増すごとにGPUの重要度が大きくなっている。
-今年 5 月には GPU の老舗、NVIDIA の時価総額が 1 兆円を突破するなど、非常にホットな領域である。
-</aside>
-
-こうして登場した初期の GPU は機能が全て固定されて提供されていた。そのため新しい処理を実装したい場合にはハードウェアのリリースを待たなければいけなかった。
-
-3D 技術が急速に発展し、要求も多様化するのに伴い、ハードウェアアップデートを待たずに機能を実装したいというニーズが生まれた。GPU ベンダーはハードウェアの一部をプログラム可能にすることでこの要求に応えた。
-
-このプログラムこそが、「陰影処理をするプログラム」であるシェーダーである。
-
----
-
-先にも書いたが、近年シェーダーの守備範囲は陰影処理に限られなくなっている。
-
-シェーダーが実際にレンダリングパイプラインの中でどういった処理を行なっているのかについて、次回見ていきたい。
-
-では、また。
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Subtraction as Addition]]></title>
-            <link>http://localhost:3000/blog/subtraction-as-addition</link>
-            <guid>http://localhost:3000/blog/subtraction-as-addition</guid>
-            <description><![CDATA[In modern computing system, a technique called two's complement is used to represent negative integers. The reason it's so commonly used is it makes computing system much simpler. In this post, I'd like to show what two's complement is and how it helps keeping it simple.]]></description>
-            <content:encoded><![CDATA[
-To make the discussion simple I'm going to use 4 bit integer, `int4` throughout the post.
-
-NOTE: I expect you to have a basic understanding of binary number system. If you're not familiar with it, take a moment and have a look at [this article](https://www.mathsisfun.com/binary-number-system.html) first.
-
-## What's two's complement?
-
-It's one way of representing signed integers[^1]. `int4` can represent `2^4 = 16` different numbers, and two's complement assigns 16 integers ranging from -8 to 7 to each bit pattern. The mapping rules go like this:
-
-- Map from 0 to 7 to binary numbers starting from `0000` to `0111`. This is same as how we represent positive integers in binary.
-- For negative numbers, assign the smallest negative number -8 to `1000`, then assign -7 to the one bigger binary `1001`, -6 to `1010` …and so on up to `1111`. `1111` is going to be -1.
-
-If they aren't very clear, have a look at the table showing full mapping below and examine the rules again.
-
-| Decimal | Binary |
-| :-----: | :----: |
-|    7    |  0111  |
-|    6    |  0110  |
-|    5    |  0101  |
-|    4    |  0100  |
-|    3    |  0011  |
-|    2    |  0010  |
-|    1    |  0001  |
-|    0    |  0000  |
-|   -1    |  1111  |
-|   -2    |  1110  |
-|   -3    |  1101  |
-|   -4    |  1100  |
-|   -5    |  1011  |
-|   -6    |  1010  |
-|   -7    |  1001  |
-|   -8    |  1000  |
-
-Just by looking at it, it doesn't make much sense why it does such a tricky mapping for negative numbers. There's a reason powerful enough to justify this trickiness.
-
-## Why is it so widely used?
-
-The reason why two's complement is widely used is it makes hardware simple in a way that **it enables hardware to use the addition unit to also calculate subtraction**.
-
-You may be surprised to know that computers don't do subtraction. What it actually does instead is addition of the negative number. For example, `5 - 3` is calculated as `5 + (-3)` inside a computer. By converting subtraction to addition, it's now free from minding how to go about subtraction, which is a big deal from hardware engineering point of view.
-
-However, we need to carefully pick a way to represent negative numbers in order to get correct answers. Two's complement is one of such representations[^2] that makes it happen. Let's look at an example.
-
-Let's do `5 + (-3)`. In two's complement 5 and -3 are represented as `0101` and `1101` respectively. The addition of these two is `0101 + 1101 = 0010`. If you look back at the table in the previous section, you can find it represents 2, which **corresponds to the answer of `5 + (-3)`**.
-
-You may still wonder "so what? what's so special about this?" because my first impression was like that. Let's see what happens if it did NOT use two's complement.
-
-### Another way of representing minus numbers
-
-I'm going to use the first bit solely as a flag that indicates sign: 0 to be positive, and 1 to be negative. The rest of three bits are used to represent number part, for example, `0001` is 1 and `1001` is -1.
-
-This is the mapping table of this system.
-
-| Decimal | Binary |
-| :-----: | :----: |
-|    7    |  0111  |
-|    6    |  0110  |
-|    5    |  0101  |
-|    4    |  0100  |
-|    3    |  0011  |
-|    2    |  0010  |
-|    1    |  0001  |
-|    0    |  0000  |
-|   -0    |  1000  |
-|   -1    |  1001  |
-|   -2    |  1010  |
-|   -3    |  1011  |
-|   -4    |  1100  |
-|   -5    |  1101  |
-|   -6    |  1110  |
-|   -7    |  1111  |
-
-Probably this is more intuitive way of representing negative numbers. This system is called _signed magnitude representation_, and was actually used in early computers. Be aware **it has two zeros**.
-
-Now let's see how `5 + (-3)` looks like in this system.
-
-In this system, 5 and -3 are represented `0101` and `1011` respectively. If we add these two binary numbers, the result is `0101 + 1011 = 0000`. `0000` is simply 0, which is clearly wrong answer for `5 + (-3)`.
-
-This means it can't use the addition hardware to perform this calculation, and to get the right answer it needs another hardware dedicated for subtraction.
-
-Being able to calculate subtraction as addition is a very unique characteristic two's complement has, and it's the reason why it's so popular in computing systems.
-
-<aside>
-Indeed, <i>method of complement</i> (ones' complement, two's complement, etc) is <b>designed to implement subtraction as addition</b> of its complement number.
-</aside>
-
-[^1]: Signed numbers: Numbers that consist of both positive and negative numbers
-[^2]: Ones' complement is another way to realise subtraction as addition. See [Stack Overflow — Advantage of 2's complement over 1's complement?](https://stackoverflow.com/questions/11054213/advantage-of-2s-complement-over-1s-complement) if you're interested in why two's complement is more preferred.
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[NFT — 可能性と問題点]]></title>
-            <link>http://localhost:3000/blog/nft-potential-and-problems</link>
-            <guid>http://localhost:3000/blog/nft-potential-and-problems</guid>
-            <description><![CDATA[NFTの話題が連日テックニュース界隈を賑わせています。きっかけはデジタルアート作品のNFTに$69mの値段がついたことです。作品は Beepleというアーティストによるもので、取引はNFTを扱うオークションサイトのChristie'sで行われました。その後もTwitterの創業者であるJack Dorseyによる、Twitter初のツイートに$3mの値段がつくなど、話題がつきません。
-NFTはデジタル作品を手がけるアーティストを支援する強力なツールとなる可能性がある一方でいくつかの問題も抱えています。ここではNFTのもつ可能性と問題点についてまとめます。]]></description>
-            <content:encoded><![CDATA[
-まずはじめに NFT とはなにか簡単に説明します。
-
-## NFT とは
-
-NFT とは Non-Fungible Token の略で、ブロックチェーンを応用した技術のひとつです。日本語では非代替性トークンと訳されますが、従来のブロックチェーン技術との違いはまさにその非代替性にあります。
-
-ブロックチェーンは基本的にはデータベースです。ビットコインのような仮想通貨を例にとると、そのブロックチェーン上には誰と誰との間でいくらの移動があったかという取引情報が保存されています。現実世界の通貨においてあなたが持つ 100 円玉と僕が持つ 100 円玉の区別をつける必要がないのと同様に、ビットコインであってもそれぞれのアセットの区別をつける必要はありません。これを代替可能(=fungible)と呼びます。
-
-その一方で世の中には代替不可能なものも存在します。一例としてアート作品を想像してみてください。モナリザのコピーは世の中に多数存在しますが、オリジナルはルーブル美術館にある一つだけです。あなたの持つモナリザのコピーをルーブル美術館のオリジナルと交換することはできません。これを代替不可能(=non-fungible)であると言います。NFT を使ったブロックチェーン上にはそれぞれのアセットを表すユニークな ID とその所有者のマッピングが保存されており、そのブロックチェーンを見ればある作品を所有しているのが誰なのか知ることができます。また、仮想通貨と同様にその所有権を移動させることも可能です。
-
-アート作品がしばしばオークションを通して売りに出されるのと同様に、NFT でもオークションを通して所有権が売買されます。それこそが今 NFT 界隈で起こっていることです。ただし違いはそこで売買されているのがモナリザのような絵画ではなく、画像や映像といったデジタルデータだということです。
-
-## なぜ NFT が盛り上がっているか
-
-デジタルなデータが物理的に存在するモノと圧倒的に異なる点は、オリジナルをコストゼロで簡単にコピーできることです。cmd+c を押すだけで本物と全く同じものを無数に作り出すことができます。それゆえ、これまでデジタルデータは実物のように「所有する」ということができませんでした。
-
-そこに出現したのが NFT です。
-
-さきほど説明したように、NFT を使うことによりブロックチェーン上に"誰が何を所有するか"の情報を書き込むことができ、一度書き込まれた内容を勝手に書き換えることはほぼ不可能です。NFT によりデジタルデータを実物のアート作品と同様に、コレクションとしてあるいは投資対象として「所有する」ということが可能になった、というのが NFT がこれだけ盛り上がっている大きな理由です。
-
-このことは NFT がデジタル作品を手がけるアーティストを支援する強力なツールとなる可能性を示しています。これまで著作権という保護はありながらも、無断でコピーされたものから生み出された利益がその作成者に還元されることはありませんでした。残念ながら NFT はその問題自体に解決策を与えてくれるものではありません。しかし「NFT を通して所有権を売る」という、アーティストが収入を得る新たな手段を生み出しました。加えて多くの NFT プラットフォームでは売買のたびに出品者に手数料が入る仕組みを導入しており、売買が行われる限り継続的に収入を得ることができるという実物の取引にはないメリットもあります。
-
-ここまでをみるとデジタルな創作物に正しい評価が与えられるすばらしい発明、と考えられます。しかし実態は少し異なっているようです。
-
-## 「アーティストがお金を稼ぐ手段」が増えてハッピー？
-
-一見すばらしい仕組みにみえる NFT ですが、問題もいくつか抱えています。
-
-### 1. 誰でも出品できるという欠陥
-
-先述のとおり一度ブロックチェーンに書き込まれた内容は変更することができません。そのため正しい情報を書き込むことが大切です。デジタルデータを扱う NFT の場合は「クリエイター＝出品者」であることが求められますが、これを保証してくれるはずの認証システムの信頼性にはプラットフォームによってばらつきがあります。Rarible という NFT プラットフォーム上では、アーティストがある日起きたら自分の作品が勝手に出品され、売買さえも完了していたという事例[3]が実際に発生しています。また別の NFT プラットフォームである OpenSea は「爆発的に増加した出品リクエストに対応する」と言う名目で認証システムを一切無くしました[3]。あるいは盗作や二次創作物などの出品を防ぐ有効な手段もありません。
-
-クリエイターに新たな収入源を与える一方で、違法者やモラルを無視した人にも等しくその利便性が与えられては仕方がありません。
-
-[3]: https://www.theverge.com/2021/3/20/22334527/nft-scams-artists-opensea-rarible-marble-cards-fraud-art
-
-### 2. 「所有権」というものの曖昧さ
-
-NFT における「所有権」とは実際に何を指すのでしょうか。ブロックチェーン上の各ブロックにはそれがどういった作品なのかという情報が書き込まれなければいけません。しかしブロックチェーンに書き込むことができるデータのサイズには限りがあり、作品をそのままデータとして記録することができません。そこで多くのプラットフォームでは作品への URL(正確には作品の URL を含むメタデータへのリンク)だけをブロック上に記録します。この作品へのリンクをもって所有権というものが成立しています。
-
-しかし URL を使うことには大きな問題があります。もしそのリンクをもつサービスが停止してしまったらどうなるでしょうか。ブロックチェーンは残りますがそこに書き込まれたリンクは無効となり、もうアクセスすることはできません。何を所有しているかわからない「所有権」だけが残ることになります。所有権を URL を使って表現することには信頼性という点で疑問が残ります。
-
-いくつかのプラットフォームではこの問題に対応するため、ブロックに IPFS のトークンを書き込む方式を採用しています。IPFS とは Inter-Planetary File System の略で、ファイルを分散ホスト上に展開し、peer-to-peer システムによりアクセス可能にする技術です。IPFS 上のファイルは URL のような場所を特定する情報は持たず、唯一性をもつトークンのみが与えられます。そしてそのファイルをホストするサーバーが一つでも存在する限りファイルが失われることはありません。
-
-しかしこの IPFS にも問題があります。作品のメタデータは分散して保存されており失われることがありませんが、肝心の作品データが特定のサーバー上にしか存在しないということがあります。URL を使ったケースと同様に、そのサーバーを運用するサービスが停止した時点でそのデータにアクセスすることはできなくなります。
-
-NFT のコンセプトの発案者 Anil Dash はこのブロックチェーンにリンクだけを書き込む方式を"shortcut"としています[4]。その"shortcut"はコンセプトの発案から 7 年たった今も使われ続けています。 NFT における「所有権」とは現状、いつなくなるかわからないとても脆弱なものです。
-
-[4]: https://www.theatlantic.com/ideas/archive/2021/04/nfts-werent-supposed-end-like/618488/
-
-### 3. 環境負荷という問題
-
-ブロックチェーンに新たなブロックを書き込む際の環境負荷という点も見逃せません。多くの NFT プラットフォームではデジタルデータを Ethereum という、すでにあるブロックチェーン上に書き込んでいます。この Ethereum というブロックチェーンは、データの改ざんを防ぐためにプルーフオブワークという仕組みを採用しています。このプルーフオブワークにはマイニングという作業が必要になるのですが、このマイニングにはとてつもない量の計算が必要となります。大量の計算にはそれに見合うだけの電力を必要とします。Ethereum が年間に消費する電力量はベラルーシが年間に消費する電力量に匹敵するといわれています[5]。
-
-これは Ethereum というブロックチェーンが抱える問題であるため、NFT 自身の問題とはいえません。しかし NFT が注目を浴びることで利用者が増え、Ethereum でのマイニング作業がより必要となることで結果的に環境に与える負荷が高まるのは間違いありません。事実今年に入ってから Ethereum の電力消費量は激増しています[5]。
-
-[5]: https://digiconomist.net/ethereum-energy-consumption
-
-## NFT が向かう先
-
-「NFT を通したアート作品が\$69m で落札！」 といったセンセーショナルな話題に振り回されていますが、NFT は本来アーティストを保護し、支援するための仕組みだと Anil Dash は述べています。NFT という技術が大きな可能性を秘めているのは間違いありませんが、出現してから日が浅く、未だ多くの課題を抱えているのも事実です。一過性の話題として消費されるにとどまらず、技術が円熟し有益なものとして利用可能になるのを期待しています。
-
----
-
-## 参照
-
-- [Beeple sold an NFT for \$69 million](https://www.theverge.com/2021/3/11/22325054/beeple-christies-nft-sale-cost-everydays-69-million)
-- [Jack Dorsey’s first tweet sold as an NFT for an oddly specific \$2,915,835.47](https://www.theverge.com/2021/3/22/22344937/jack-dorsey-nft-sold-first-tweet-ethereum-cryptocurrency-twitter)
-- [THE CLIMATE CONTROVERSY SWIRLING AROUND NFTS](https://www.theverge.com/2021/3/15/22328203/nft-cryptoart-ethereum-blockchain-climate-change)
-- [NFT MANIA IS HERE, AND SO ARE THE SCAMMERS](https://www.theverge.com/2021/3/20/22334527/nft-scams-artists-opensea-rarible-marble-cards-fraud-art)
-- [YOUR MILLION-DOLLAR NFT CAN BREAK TOMORROW IF YOU’RE NOT CAREFUL](https://www.theverge.com/2021/3/25/22349242/nft-metadata-explained-art-crypto-urls-links-ipfs)
-- [Do You Really\* Own Your NFT? Chances Are, You Don’t](https://thedefiant.io/do-you-really-own-your-nft-chances-are-you-dont/)
-- [NFTs Weren’t Supposed to End Like This](https://www.theatlantic.com/ideas/archive/2021/04/nfts-werent-supposed-end-like/618488/)
-- [The Non-Fungible Token Bible: Everything you need to know about NFTs](https://opensea.io/blog/guides/non-fungible-tokens)
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[CPU Experiment at the University of Tokyo]]></title>
-            <link>http://localhost:3000/blog/cpu-experiment</link>
-            <guid>http://localhost:3000/blog/cpu-experiment</guid>
-            <description><![CDATA["CPU Experiment" at the University of Tokyo (UT) CS undergrad course is one of the most famous (either in a good way or bad way) programmes among those who are concerned.
-
-Here, I want to introduce what the programme is, and what kind of exciting stuff are going on there.]]></description>
-            <content:encoded><![CDATA[
-I note in passing that this is NOT based on my personal experience because I was not a CS student at UT. So apologies if I'm not very accurate in some details but I hope I don't miss the big picture.
-
-## What's CPU Experiment
-
-The programme is held in the autumn-winter term in the third year. CS undergrads are divided into a group of 3–5 people, and they'll be given a credit if they can successfully run the ray-tracing app written in MinCaml (a subset of OCaml), which is handed out at the introduction, at the end term presentation.
-
-The rules and conditions have changed over time but basically what they need to do are:
-
-- define ISA (original or based on PowerPC, MIPS, RISC-V, etc.)
-- build a CPU core on a provided FPGA ([KCU105](https://www.xilinx.com/products/boards-and-kits/kcu105.html))
-- write an assembler
-- extend a [MinCaml compiler](https://github.com/esumii/min-caml) so it can compile the given ray-tracing app
-- write a simulator to debug the compiler/assembler
-- compile & run the required ray-tracing app on the self-built CPU
-
-Each team member is assigned to one of the four tasks: CPU (core), FPU, simulator, and compiler. Conventionally the assembler seems to be done by a member who is responsible for the simulator.
-
-What's cool about this on-the-job style programme I think is not only you can learn how to integrate the computer science knowledge you learned through the course, but also you need to finish the project in time collaborating with other team members.
-
-## That's not the end of the story
-
-This is where things get even more exciting.
-
-For most of them it's not very difficult to run the required ray-tracing app, and actually they succeed in running the app in less than 3months.
-
-How do they spend the rest of the term?
-
-It's up to them how to use the time: Most of the teams try to optimise the system to amaze people by how fast they can run the app at the end term presentation.
-
-The optimisation ideas include:
-
-- design richer ISA
-- introduce pipelining
-- optimise compiler to reduce the number of instructions
-- and so on
-
-The current record seems to be 5s, which was made in 2017(\*), and generally speaking under 20s is considered to be brazing fast.
-
-(\* The team realised multi-core CPU & the compiler that utilises it.)
-
-However, some teams decide to venture into the wild adventure…
-
-## Creative (crazy) ideas they try
-
-As long as the ray-tracing app works, you can be credited for the course. There's nothing to prevent them from tackling their creative ideas such as:
-
-- run an OS such as xv6, Linux, or even write an original OS
-- run the ray-tracing app on the OS
-- implement a single instruction that runs the ray-tracing
-- etc.
-
-There are lots of things involved to achieve these: To run an OS you'll need much richer ISA than just running the ray-tracing app. If you want to run the existing OS written in C on your original ISA, you'll need a C compiler that targets the ISA …and so on.
-
-Some of them were realised by their exhaustive effort, while the others are yet to come true. So exciting, aren't they?
-
-## Why am I writing this?
-
-Some may wonder why I'm writing a post to introduce something I didn't do. Well, there are two reasons:
-
-First of all, I think the programme is very cool and worth sharing. There are lots of blog posts written by students but most of them are in Japanese (see the next section), and only few resources are available in English for their cool stuff.
-
-And the second one, rather personal one, is that I'm interested in tracing this "CPU Experiment" as my personal project. I've been working as a software engineer for almost 7 years. Thankfully I could grow a lot in this space, yet I've been feeling I missed chances to learn computer science basics. I thought it's a great idea to follow what they do to fill this gap.
-
-I hope I can give updates on my project soon:)
-
-## References
-
-Even though most of them are written in Japanese, I'll leave some links for those who are interested so you can at least have a look at their code:)
-
-2010
-
-- [CPU 実験](https://wata-orz.hatenadiary.org/entry/20100319/1268998396)
-
-2015
-
-- [CPU 実験で自作 CPU に UNIX ライク OS (xv6) を移植した話](https://nullpo-head.hateblo.jp/entry/2015/03/24/205419)
-- [EN][how we ran a unix-like os (xv6) on our home-built cpu with our home-built c compiler](https://fuel.edby.coffee/posts/how-we-ported-xv6-os-to-a-home-built-cpu-with-a-home-built-c-compiler/)
-  - This is basically the same article as the one above but in English.
-- [自作 CPU 向け C コンパイラをつくって OS 動かした話 (CPU 実験まとめ)](https://kw-udon.hatenablog.com/entry/2015/03/19/171921)
-
-2016
-
-- [東大理情名物の CPU 実験で毎週徹夜したお話（概要編）](https://medium.com/eureka-engineering/%E6%9D%B1%E5%A4%A7%E7%90%86%E6%83%85%E5%90%8D%E7%89%A9%E3%81%AEcpu%E5%AE%9F%E9%A8%93%E3%81%A7%E6%AF%8E%E9%80%B1%E5%BE%B9%E5%A4%9C%E3%81%97%E3%81%9F%E3%81%8A%E8%A9%B1-%E6%A6%82%E8%A6%81%E7%B7%A8-6cb8c155cb64)
-
-2017
-
-- [CPU 実験：マルチコアで並列実行するまで（コンパイラ係目線）](https://eguchishi.hatenablog.com/entry/2017/09/09/150229)
-- [CPU 実験 2016 年度 D 班コア係（CPU 実験でマルチコア）](https://sueki743.hatenablog.jp/entry/2017/03/30/151822)
-
-2018
-
-- [東大の CPU 実験で自作コア上の自作 OS 上で自作シェルを動かした話](https://travelingresearcher.com/entry/2018/02/27/172417)
-
-2019
-
-- [RISC V に従う CPU の上で動作する OS を Rust で書く（CPU 実験余興）](https://moraprogramming.hateblo.jp/entry/2019/03/17/165802)
-
-2020
-
-- [Linux が動作する RISC-V CPU を自作した (2019 年度 CPU 実験 余興)](https://diary.shift-js.info/building-a-riscv-cpu-for-linux/)
-- [CPU 実験が終わりました 〜コア係目線〜](https://misteer.hatenablog.com/entry/cpuex)
-- [CPU 実験の振り返り (コンパイラ係目線)](https://okuraofvegetable.hatenablog.com/entry/2020/02/29/230201)
-
-2021
-
-- [CPU 実験振り返り(シミュレータ・FPU 係目線)](https://note.com/tomo_stleq/n/ncc8a1ff8ba20)
-- [ああ CPU 実験](https://cfkazu.hatenablog.com/entry/2020/12/05/000416)
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Does integer division overflow?]]></title>
-            <link>http://localhost:3000/blog/division-overflow</link>
-            <guid>http://localhost:3000/blog/division-overflow</guid>
-            <description><![CDATA[In this short post, I'm going to introduce integer overflow and small fun fact that causes overflow in seemingly impossible situation.]]></description>
-            <content:encoded><![CDATA[
-## What's integer overflow?
-
-> In computer programming, an integer overflow occurs when an arithmetic operation attempts to create a numeric value that is outside of the range that can be represented with a given number of digits – either higher than the maximum or lower than the minimum representable value. — [Wikipedia — Integer overflow](https://en.wikipedia.org/wiki/Integer_overflow)
-
-As you may know, addition of two integer numbers can overflow. For example addition of two `int8` number 127 and 1 overflows, and doesn't return mathematically correct answer.
-
-```go
-package main
-
-import "fmt"
-
-func main() {
-        var i, j int8 = 127, 1
-        fmt.Printf("127 + 1 = %d", i+j)
-}
-```
-
-This Go programme outputs `127 + 1 = -128`. For subtraction, if you think about `127 - (-1)`, this is going to overflow as this is the equivalent expression to the addition we just saw.
-
-Likewise, multiplication of two integer numbers can overflow.
-
-```go
-package main
-
-import "fmt"
-
-func main() {
-        var i, j int8 = 64, 2
-        fmt.Printf("64 * 2 = %d", i*j)
-}
-```
-
-This outputs `64 * 2 = -128`.
-
-The reason is because 127 is the biggest number `int8` can represent and any calculation resulting in bigger number than this overflows returning unexpected result.
-
-Here is a question: Can division of two integer numbers ever overflow? If yes, which combination of two integers make it happen?
-
-## Integer division overflow
-
-From mathematical point of view, if the divisor is either bigger than or equal to 1, or smaller than or equal to -1, the absolute value of the quotient is never going to be bigger than that of the dividend, and for any `int8` number this condition is satisfied. So it doesn't seem possible to make overflow happen with two `int8` numbers.
-
-…However, yes it is possible, as you may have guessed.
-
-What do you think is the output of this Go programme?
-
-```go
-package main
-
-import "fmt"
-
-func main() {
-        var i, j int8 = -128, -1
-        fmt.Printf("-128 / -1 = %d", i/j)
-}
-```
-
-Mathematically correct answer is `128`…but wait, **wasn't the biggest number `int8` can represent 127??**
-
-That means this calculation overflows and the output is `-128 / -1 = -128`.
-
-The reason why this happens is while `int8` can represent `2^8 = 256` different numbers, 0 has to be included, which means odd number `255` is left to represent both positive and negative numbers. Most of the computing systems adopt a technique called _two's complement_ to represent signed numbers[^1] and with that technique `int8` is going to have **127 positive numbers and 128 negative numbers**.
-
-As a result by dividing the biggest negative number by -1, we can cause overflow in integer division.
-
-I'd like to know more of this kind of "fun facts", so please share if you know. In the next post I'd like to talk about what two's complement is, and why it is so widely used in the computing systems.
-
-[^1]: Signed numbers: Numbers that consist of both positive and negative numbers
 ]]></content:encoded>
         </item>
         <item>
@@ -679,6 +210,444 @@ Microsoft は Q#言語とその SDK を開発、提供しています。SDK に�
 昨年末には中国が独自に開発する光子を利用した量子コンピュータで量子超越性を達成したことを発表[10]しました。量子超越性とその先にある万能量子コンピュータの実現に向け、各社・各国開発競争を進める中でどうエラー耐性を獲得していくのか。今後も量子コンピュータ関連の話題から目が離せません。
 
 [10]: https://science.sciencemag.org/content/370/6523/1460
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[CPU Experiment at the University of Tokyo]]></title>
+            <link>http://localhost:3000/blog/cpu-experiment</link>
+            <guid>http://localhost:3000/blog/cpu-experiment</guid>
+            <description><![CDATA["CPU Experiment" at the University of Tokyo (UT) CS undergrad course is one of the most famous (either in a good way or bad way) programmes among those who are concerned.
+
+Here, I want to introduce what the programme is, and what kind of exciting stuff are going on there.]]></description>
+            <content:encoded><![CDATA[
+I note in passing that this is NOT based on my personal experience because I was not a CS student at UT. So apologies if I'm not very accurate in some details but I hope I don't miss the big picture.
+
+## What's CPU Experiment
+
+The programme is held in the autumn-winter term in the third year. CS undergrads are divided into a group of 3–5 people, and they'll be given a credit if they can successfully run the ray-tracing app written in MinCaml (a subset of OCaml), which is handed out at the introduction, at the end term presentation.
+
+The rules and conditions have changed over time but basically what they need to do are:
+
+- define ISA (original or based on PowerPC, MIPS, RISC-V, etc.)
+- build a CPU core on a provided FPGA ([KCU105](https://www.xilinx.com/products/boards-and-kits/kcu105.html))
+- write an assembler
+- extend a [MinCaml compiler](https://github.com/esumii/min-caml) so it can compile the given ray-tracing app
+- write a simulator to debug the compiler/assembler
+- compile & run the required ray-tracing app on the self-built CPU
+
+Each team member is assigned to one of the four tasks: CPU (core), FPU, simulator, and compiler. Conventionally the assembler seems to be done by a member who is responsible for the simulator.
+
+What's cool about this on-the-job style programme I think is not only you can learn how to integrate the computer science knowledge you learned through the course, but also you need to finish the project in time collaborating with other team members.
+
+## That's not the end of the story
+
+This is where things get even more exciting.
+
+For most of them it's not very difficult to run the required ray-tracing app, and actually they succeed in running the app in less than 3months.
+
+How do they spend the rest of the term?
+
+It's up to them how to use the time: Most of the teams try to optimise the system to amaze people by how fast they can run the app at the end term presentation.
+
+The optimisation ideas include:
+
+- design richer ISA
+- introduce pipelining
+- optimise compiler to reduce the number of instructions
+- and so on
+
+The current record seems to be 5s, which was made in 2017(\*), and generally speaking under 20s is considered to be brazing fast.
+
+(\* The team realised multi-core CPU & the compiler that utilises it.)
+
+However, some teams decide to venture into the wild adventure…
+
+## Creative (crazy) ideas they try
+
+As long as the ray-tracing app works, you can be credited for the course. There's nothing to prevent them from tackling their creative ideas such as:
+
+- run an OS such as xv6, Linux, or even write an original OS
+- run the ray-tracing app on the OS
+- implement a single instruction that runs the ray-tracing
+- etc.
+
+There are lots of things involved to achieve these: To run an OS you'll need much richer ISA than just running the ray-tracing app. If you want to run the existing OS written in C on your original ISA, you'll need a C compiler that targets the ISA …and so on.
+
+Some of them were realised by their exhaustive effort, while the others are yet to come true. So exciting, aren't they?
+
+## Why am I writing this?
+
+Some may wonder why I'm writing a post to introduce something I didn't do. Well, there are two reasons:
+
+First of all, I think the programme is very cool and worth sharing. There are lots of blog posts written by students but most of them are in Japanese (see the next section), and only few resources are available in English for their cool stuff.
+
+And the second one, rather personal one, is that I'm interested in tracing this "CPU Experiment" as my personal project. I've been working as a software engineer for almost 7 years. Thankfully I could grow a lot in this space, yet I've been feeling I missed chances to learn computer science basics. I thought it's a great idea to follow what they do to fill this gap.
+
+I hope I can give updates on my project soon:)
+
+## References
+
+Even though most of them are written in Japanese, I'll leave some links for those who are interested so you can at least have a look at their code:)
+
+2010
+
+- [CPU 実験](https://wata-orz.hatenadiary.org/entry/20100319/1268998396)
+
+2015
+
+- [CPU 実験で自作 CPU に UNIX ライク OS (xv6) を移植した話](https://nullpo-head.hateblo.jp/entry/2015/03/24/205419)
+- [EN][how we ran a unix-like os (xv6) on our home-built cpu with our home-built c compiler](https://fuel.edby.coffee/posts/how-we-ported-xv6-os-to-a-home-built-cpu-with-a-home-built-c-compiler/)
+  - This is basically the same article as the one above but in English.
+- [自作 CPU 向け C コンパイラをつくって OS 動かした話 (CPU 実験まとめ)](https://kw-udon.hatenablog.com/entry/2015/03/19/171921)
+
+2016
+
+- [東大理情名物の CPU 実験で毎週徹夜したお話（概要編）](https://medium.com/eureka-engineering/%E6%9D%B1%E5%A4%A7%E7%90%86%E6%83%85%E5%90%8D%E7%89%A9%E3%81%AEcpu%E5%AE%9F%E9%A8%93%E3%81%A7%E6%AF%8E%E9%80%B1%E5%BE%B9%E5%A4%9C%E3%81%97%E3%81%9F%E3%81%8A%E8%A9%B1-%E6%A6%82%E8%A6%81%E7%B7%A8-6cb8c155cb64)
+
+2017
+
+- [CPU 実験：マルチコアで並列実行するまで（コンパイラ係目線）](https://eguchishi.hatenablog.com/entry/2017/09/09/150229)
+- [CPU 実験 2016 年度 D 班コア係（CPU 実験でマルチコア）](https://sueki743.hatenablog.jp/entry/2017/03/30/151822)
+
+2018
+
+- [東大の CPU 実験で自作コア上の自作 OS 上で自作シェルを動かした話](https://travelingresearcher.com/entry/2018/02/27/172417)
+
+2019
+
+- [RISC V に従う CPU の上で動作する OS を Rust で書く（CPU 実験余興）](https://moraprogramming.hateblo.jp/entry/2019/03/17/165802)
+
+2020
+
+- [Linux が動作する RISC-V CPU を自作した (2019 年度 CPU 実験 余興)](https://diary.shift-js.info/building-a-riscv-cpu-for-linux/)
+- [CPU 実験が終わりました 〜コア係目線〜](https://misteer.hatenablog.com/entry/cpuex)
+- [CPU 実験の振り返り (コンパイラ係目線)](https://okuraofvegetable.hatenablog.com/entry/2020/02/29/230201)
+
+2021
+
+- [CPU 実験振り返り(シミュレータ・FPU 係目線)](https://note.com/tomo_stleq/n/ncc8a1ff8ba20)
+- [ああ CPU 実験](https://cfkazu.hatenablog.com/entry/2020/12/05/000416)
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[DDIA 読書ノート 【第10章】]]></title>
+            <link>http://localhost:3000/blog/ddia-chapter-10</link>
+            <guid>http://localhost:3000/blog/ddia-chapter-10</guid>
+            <description><![CDATA[第10章はバッチ処理について、MapReduceを中心に展開していく。]]></description>
+            <content:encoded><![CDATA[
+第 9 章が難しかったこともあり、読書ノートがまだ書ききれてないんですが、なんとか完成させようとは思っているのでとりあえず 10 章の話をどうぞ。。
+
+<aside>
+<p><a href="https://open.spotify.com/show/0J8LZwfrGB9BJLihy4Ldb1">London Tech Talk</a> というポッドキャストを運営している <a href="https://twitter.com/tommyasai">@tommyasai</a> さん・<a href="https://twitter.com/kenwagatsuma">@kenwagatsuma</a> さん主催で DDIA の輪読会が行われており、それに向けて DDIA を読んでいるのでその際のまとめです。今回は第 10 章。</p>
+<p>理解したこと、考えたことをそのまま書き落としていくので読み物としては読みづらいかと思いますがその点は悪しからず。<p>
+</aside>
+
+第 10 章からはチャプターが変わり、チャプター 3。このチャプターではそれぞれに特性の異なるシステムを組み合わせてより大きなシステムを構築する方法が紹介されている。
+
+システムは単体で全てのニーズに応えることが難しい and/or 非効率なため、どう組み合わせるか、といういうのは見落とされがちだが重要なトピックになってくる。
+
+その中で第 10 章はバッチ処理について。MapReduce に関する話題を中心に展開されている。
+
+## Unix 再訪
+
+唐突に感じるところもあるがまず取り上げているのが Unix の哲学とそれに基づいた Unix ツール群、というのも MapReduce はこの Unix の概念や教訓と共通する部分が多いため、馴染みのある Unix がまず最初に取り上げられている。
+
+特に重要なのが Unix がファイルを介した、**一様なインターフェイスを持つ**という点で、MapReduce も同様に分散ファイルシステムをインターフェイスとして、それぞれの Job がお互いを意識することなく入出力をやりとりできるようにデザインされている。
+
+Unix の考え方は様々なところで引用されており、馴染みが深いが、ここにも顔を出すその影響の大きさに改めて驚いた。
+
+この Unix の特徴を踏まえた上で MapReduce の詳細説明に入っていく。
+
+## MapReduce について
+
+MapReduce にはその名にあるように、mapper と呼ばれるステップと reducer と呼ばれるステップがある。
+
+mapper では先に触れたように分散ファイルシステム上のファイルを通して受け取る入力のデータを key-value のペアにマッピングする。この key-value のペアはソートされたのち key ごとに同一の reducer に送られる。
+
+reducer では mapper から送られてくる key-value を元に好きなことをすればよく[^1]、例えば検索エンジンのインデックス構築であったり、出力をそのまま key-value ストアのデータとして利用するといった用法があるが、最もよく使われる使い道はなんといっても別の Job のインプットにする、ということだ。
+
+先にも触れたように MapReduce は分散ファイルシステムという一様なインターフェイスを持つ。reducer の出力は入力として受け取ったのと同様に分散ファイルシステムに書き出されるため、次の Job はその入力が前の Job の出力である、ということを知ることなく実行できる。これはまさに Unix ツールがファイルを介して連携している点と対応している。
+
+[^1]: といってもそれは冪等な操作に限る。Job が失敗した際、失敗した計算のみを自動で再実行することで耐障害性を高めているため、実行する度に結果が変わる、というのでは困ってしまう。
+
+このように、ユーザーは mapper と reducer で何をするかだけを考えればよく、I/O や分散ネットワークについて頭を悩ませることなく Job と Job を繋ぎ合わせて大量のデータを効率よく処理することができるのが MapReduce の特徴である。
+
+MapReduce は大量のデータに対するバッチ計算処理のフレームワークを提供したわけだが、そのことにより、収集したデータはひとまずどこかに保存してしまい、それを処理するのは別のタスクとして切り出す、というアプローチが広まった。これによりデータの収集よりもデータの解釈に重きが重要視されるきっかけになったり、生のデータの方が加工されたデータよりも有用だ、という考え方(sushi principle、寿司原則と呼ばれる)に繋がった。
+
+## MapReduce から時を経て
+
+と、このように MapReduce はデータ処理に対するアプローチを変える画期的なアイデアだったわけだが、論文が発表されたのは 2004 年。それから月日が経ち、MapReduce のある意味シンプルすぎる考え方から発展させて、より最適化が図られた手法が次々と開発されており、今日では MapReduce をそのまま利用する、ということは少なくなっている。
+
+具体的には、MapReduce は Job の都度ファイルへの書き出しが行われるため、読み書きのオーバーヘッドが発生する。Apache Spark や Apache Tez では mapper の出力を別の mapper に繋げたり、reducer の出力を直接次の mapper に繋げたりすることで、DAG(Direct Acyclic Graph: 有向非巡回グラフ)を構築、全体を一つの Job とすることでファイル書き出しのオーバーヘッドを減らす工夫がされている。
+
+この他にも中間層の不要なソーティングを無くしたり、耐障害性を高めるなど MapReduce を元により最適なバッチ処理のプラットフォームが実現されている。
+
+## 次章、ストリーム処理
+
+このように MapReduce を通して分散バッチ処理について紹介されてきたが、次章のトピックはストリーム処理となる。両者の１番の違いは処理するデータのサイズが事前にわかるかどうか、という点だ。
+
+今回も学びが多かったので、次章もとても楽しみ。
+
+この章に限らず DDIA の本それ自体に対してもそう言えるのだけど、これまでキャリアがかなり計算・ロジック(あるいはオンラインシステムとも言えるかも知れない)の方に偏っているので、データの方の知識・経験も増やしていきたいと思っている。
+
+もしこのあたりのトピックに関しておすすめの本やリソースなどがあれば(Hadoop などの個別トピックでも全然いいので)紹介してほしいです！
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Does integer division overflow?]]></title>
+            <link>http://localhost:3000/blog/division-overflow</link>
+            <guid>http://localhost:3000/blog/division-overflow</guid>
+            <description><![CDATA[In this short post, I'm going to introduce integer overflow and small fun fact that causes overflow in seemingly impossible situation.]]></description>
+            <content:encoded><![CDATA[
+## What's integer overflow?
+
+> In computer programming, an integer overflow occurs when an arithmetic operation attempts to create a numeric value that is outside of the range that can be represented with a given number of digits – either higher than the maximum or lower than the minimum representable value. — [Wikipedia — Integer overflow](https://en.wikipedia.org/wiki/Integer_overflow)
+
+As you may know, addition of two integer numbers can overflow. For example addition of two `int8` number 127 and 1 overflows, and doesn't return mathematically correct answer.
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+        var i, j int8 = 127, 1
+        fmt.Printf("127 + 1 = %d", i+j)
+}
+```
+
+This Go programme outputs `127 + 1 = -128`. For subtraction, if you think about `127 - (-1)`, this is going to overflow as this is the equivalent expression to the addition we just saw.
+
+Likewise, multiplication of two integer numbers can overflow.
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+        var i, j int8 = 64, 2
+        fmt.Printf("64 * 2 = %d", i*j)
+}
+```
+
+This outputs `64 * 2 = -128`.
+
+The reason is because 127 is the biggest number `int8` can represent and any calculation resulting in bigger number than this overflows returning unexpected result.
+
+Here is a question: Can division of two integer numbers ever overflow? If yes, which combination of two integers make it happen?
+
+## Integer division overflow
+
+From mathematical point of view, if the divisor is either bigger than or equal to 1, or smaller than or equal to -1, the absolute value of the quotient is never going to be bigger than that of the dividend, and for any `int8` number this condition is satisfied. So it doesn't seem possible to make overflow happen with two `int8` numbers.
+
+…However, yes it is possible, as you may have guessed.
+
+What do you think is the output of this Go programme?
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+        var i, j int8 = -128, -1
+        fmt.Printf("-128 / -1 = %d", i/j)
+}
+```
+
+Mathematically correct answer is `128`…but wait, **wasn't the biggest number `int8` can represent 127??**
+
+That means this calculation overflows and the output is `-128 / -1 = -128`.
+
+The reason why this happens is while `int8` can represent `2^8 = 256` different numbers, 0 has to be included, which means odd number `255` is left to represent both positive and negative numbers. Most of the computing systems adopt a technique called _two's complement_ to represent signed numbers[^1] and with that technique `int8` is going to have **127 positive numbers and 128 negative numbers**.
+
+As a result by dividing the biggest negative number by -1, we can cause overflow in integer division.
+
+I'd like to know more of this kind of "fun facts", so please share if you know. In the next post I'd like to talk about what two's complement is, and why it is so widely used in the computing systems.
+
+[^1]: Signed numbers: Numbers that consist of both positive and negative numbers
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[シェーダーについて (1)]]></title>
+            <link>http://localhost:3000/blog/about-shader-1</link>
+            <guid>http://localhost:3000/blog/about-shader-1</guid>
+            <content:encoded><![CDATA[
+WebGL について調べていく中で、シェーダーというのが出てくる。
+
+チュートリアルなどでは「シェーダーとは陰影処理をするプログラムである」などと説明はそこそこに、「ではシェーダーを書いてみましょう」となるのだが、シェーダーの理解が覚束ないためサンプルのプログラムが何をしているのかいまいちよく掴めない、ということがよくあった。
+
+シェーダーを理解する上で非常に役に立ったのが、その全体像を把握することだった。
+
+そもそもやりたいことというのは、手元に 3D のデータがあり、これを 2D である画面への描画、つまりピクセルごとの色情報の列に変換することだ。ちなみに入力である 3D データがどこからくるかというと、Blender などのソフトを使ってモデリングという作業を行うわけだが、そういったことを含めて 3DCG という技術全体が成り立っている。
+
+話を戻して描画に関して、この 3D から 2D への変換を一般的にレンダリングと呼ぶ。さらにこのレンダリングはパイプライン処理、つまりタスク全体をより小さいサブタスクに分けた上でバケツリレー形式で処理されるため、レンダリングパイプラインまたはグラフィックスパイプラインと呼ばれる。
+
+シェーダーはこのレンダリングパイプラインの中で陰影をつける役割 (に今は限られず、様々な処理を行う) を担うのだが、ポイントは**プログラム可能である**というところだ。
+
+元々レンダリング処理は全て CPU 上で行なわれていたが、専用ハードウェアを用意することで高速化が図られた、というのが GPU の始まりである。
+
+<aside>
+時とともにGPUが担当する処理が増え、処理内容も複雑化、さらには機械学習を中心にレンダリング以外の用途への転用と発展し、年を増すごとにGPUの重要度が大きくなっている。
+今年 5 月には GPU の老舗、NVIDIA の時価総額が 1 兆円を突破するなど、非常にホットな領域である。
+</aside>
+
+こうして登場した初期の GPU は機能が全て固定されて提供されていた。そのため新しい処理を実装したい場合にはハードウェアのリリースを待たなければいけなかった。
+
+3D 技術が急速に発展し、要求も多様化するのに伴い、ハードウェアアップデートを待たずに機能を実装したいというニーズが生まれた。GPU ベンダーはハードウェアの一部をプログラム可能にすることでこの要求に応えた。
+
+このプログラムこそが、「陰影処理をするプログラム」であるシェーダーである。
+
+---
+
+先にも書いたが、近年シェーダーの守備範囲は陰影処理に限られなくなっている。
+
+シェーダーが実際にレンダリングパイプラインの中でどういった処理を行なっているのかについて、次回見ていきたい。
+
+では、また。
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[NFT — 可能性と問題点]]></title>
+            <link>http://localhost:3000/blog/nft-potential-and-problems</link>
+            <guid>http://localhost:3000/blog/nft-potential-and-problems</guid>
+            <description><![CDATA[NFTの話題が連日テックニュース界隈を賑わせています。きっかけはデジタルアート作品のNFTに$69mの値段がついたことです。作品は Beepleというアーティストによるもので、取引はNFTを扱うオークションサイトのChristie'sで行われました。その後もTwitterの創業者であるJack Dorseyによる、Twitter初のツイートに$3mの値段がつくなど、話題がつきません。
+NFTはデジタル作品を手がけるアーティストを支援する強力なツールとなる可能性がある一方でいくつかの問題も抱えています。ここではNFTのもつ可能性と問題点についてまとめます。]]></description>
+            <content:encoded><![CDATA[
+まずはじめに NFT とはなにか簡単に説明します。
+
+## NFT とは
+
+NFT とは Non-Fungible Token の略で、ブロックチェーンを応用した技術のひとつです。日本語では非代替性トークンと訳されますが、従来のブロックチェーン技術との違いはまさにその非代替性にあります。
+
+ブロックチェーンは基本的にはデータベースです。ビットコインのような仮想通貨を例にとると、そのブロックチェーン上には誰と誰との間でいくらの移動があったかという取引情報が保存されています。現実世界の通貨においてあなたが持つ 100 円玉と僕が持つ 100 円玉の区別をつける必要がないのと同様に、ビットコインであってもそれぞれのアセットの区別をつける必要はありません。これを代替可能(=fungible)と呼びます。
+
+その一方で世の中には代替不可能なものも存在します。一例としてアート作品を想像してみてください。モナリザのコピーは世の中に多数存在しますが、オリジナルはルーブル美術館にある一つだけです。あなたの持つモナリザのコピーをルーブル美術館のオリジナルと交換することはできません。これを代替不可能(=non-fungible)であると言います。NFT を使ったブロックチェーン上にはそれぞれのアセットを表すユニークな ID とその所有者のマッピングが保存されており、そのブロックチェーンを見ればある作品を所有しているのが誰なのか知ることができます。また、仮想通貨と同様にその所有権を移動させることも可能です。
+
+アート作品がしばしばオークションを通して売りに出されるのと同様に、NFT でもオークションを通して所有権が売買されます。それこそが今 NFT 界隈で起こっていることです。ただし違いはそこで売買されているのがモナリザのような絵画ではなく、画像や映像といったデジタルデータだということです。
+
+## なぜ NFT が盛り上がっているか
+
+デジタルなデータが物理的に存在するモノと圧倒的に異なる点は、オリジナルをコストゼロで簡単にコピーできることです。cmd+c を押すだけで本物と全く同じものを無数に作り出すことができます。それゆえ、これまでデジタルデータは実物のように「所有する」ということができませんでした。
+
+そこに出現したのが NFT です。
+
+さきほど説明したように、NFT を使うことによりブロックチェーン上に"誰が何を所有するか"の情報を書き込むことができ、一度書き込まれた内容を勝手に書き換えることはほぼ不可能です。NFT によりデジタルデータを実物のアート作品と同様に、コレクションとしてあるいは投資対象として「所有する」ということが可能になった、というのが NFT がこれだけ盛り上がっている大きな理由です。
+
+このことは NFT がデジタル作品を手がけるアーティストを支援する強力なツールとなる可能性を示しています。これまで著作権という保護はありながらも、無断でコピーされたものから生み出された利益がその作成者に還元されることはありませんでした。残念ながら NFT はその問題自体に解決策を与えてくれるものではありません。しかし「NFT を通して所有権を売る」という、アーティストが収入を得る新たな手段を生み出しました。加えて多くの NFT プラットフォームでは売買のたびに出品者に手数料が入る仕組みを導入しており、売買が行われる限り継続的に収入を得ることができるという実物の取引にはないメリットもあります。
+
+ここまでをみるとデジタルな創作物に正しい評価が与えられるすばらしい発明、と考えられます。しかし実態は少し異なっているようです。
+
+## 「アーティストがお金を稼ぐ手段」が増えてハッピー？
+
+一見すばらしい仕組みにみえる NFT ですが、問題もいくつか抱えています。
+
+### 1. 誰でも出品できるという欠陥
+
+先述のとおり一度ブロックチェーンに書き込まれた内容は変更することができません。そのため正しい情報を書き込むことが大切です。デジタルデータを扱う NFT の場合は「クリエイター＝出品者」であることが求められますが、これを保証してくれるはずの認証システムの信頼性にはプラットフォームによってばらつきがあります。Rarible という NFT プラットフォーム上では、アーティストがある日起きたら自分の作品が勝手に出品され、売買さえも完了していたという事例[3]が実際に発生しています。また別の NFT プラットフォームである OpenSea は「爆発的に増加した出品リクエストに対応する」と言う名目で認証システムを一切無くしました[3]。あるいは盗作や二次創作物などの出品を防ぐ有効な手段もありません。
+
+クリエイターに新たな収入源を与える一方で、違法者やモラルを無視した人にも等しくその利便性が与えられては仕方がありません。
+
+[3]: https://www.theverge.com/2021/3/20/22334527/nft-scams-artists-opensea-rarible-marble-cards-fraud-art
+
+### 2. 「所有権」というものの曖昧さ
+
+NFT における「所有権」とは実際に何を指すのでしょうか。ブロックチェーン上の各ブロックにはそれがどういった作品なのかという情報が書き込まれなければいけません。しかしブロックチェーンに書き込むことができるデータのサイズには限りがあり、作品をそのままデータとして記録することができません。そこで多くのプラットフォームでは作品への URL(正確には作品の URL を含むメタデータへのリンク)だけをブロック上に記録します。この作品へのリンクをもって所有権というものが成立しています。
+
+しかし URL を使うことには大きな問題があります。もしそのリンクをもつサービスが停止してしまったらどうなるでしょうか。ブロックチェーンは残りますがそこに書き込まれたリンクは無効となり、もうアクセスすることはできません。何を所有しているかわからない「所有権」だけが残ることになります。所有権を URL を使って表現することには信頼性という点で疑問が残ります。
+
+いくつかのプラットフォームではこの問題に対応するため、ブロックに IPFS のトークンを書き込む方式を採用しています。IPFS とは Inter-Planetary File System の略で、ファイルを分散ホスト上に展開し、peer-to-peer システムによりアクセス可能にする技術です。IPFS 上のファイルは URL のような場所を特定する情報は持たず、唯一性をもつトークンのみが与えられます。そしてそのファイルをホストするサーバーが一つでも存在する限りファイルが失われることはありません。
+
+しかしこの IPFS にも問題があります。作品のメタデータは分散して保存されており失われることがありませんが、肝心の作品データが特定のサーバー上にしか存在しないということがあります。URL を使ったケースと同様に、そのサーバーを運用するサービスが停止した時点でそのデータにアクセスすることはできなくなります。
+
+NFT のコンセプトの発案者 Anil Dash はこのブロックチェーンにリンクだけを書き込む方式を"shortcut"としています[4]。その"shortcut"はコンセプトの発案から 7 年たった今も使われ続けています。 NFT における「所有権」とは現状、いつなくなるかわからないとても脆弱なものです。
+
+[4]: https://www.theatlantic.com/ideas/archive/2021/04/nfts-werent-supposed-end-like/618488/
+
+### 3. 環境負荷という問題
+
+ブロックチェーンに新たなブロックを書き込む際の環境負荷という点も見逃せません。多くの NFT プラットフォームではデジタルデータを Ethereum という、すでにあるブロックチェーン上に書き込んでいます。この Ethereum というブロックチェーンは、データの改ざんを防ぐためにプルーフオブワークという仕組みを採用しています。このプルーフオブワークにはマイニングという作業が必要になるのですが、このマイニングにはとてつもない量の計算が必要となります。大量の計算にはそれに見合うだけの電力を必要とします。Ethereum が年間に消費する電力量はベラルーシが年間に消費する電力量に匹敵するといわれています[5]。
+
+これは Ethereum というブロックチェーンが抱える問題であるため、NFT 自身の問題とはいえません。しかし NFT が注目を浴びることで利用者が増え、Ethereum でのマイニング作業がより必要となることで結果的に環境に与える負荷が高まるのは間違いありません。事実今年に入ってから Ethereum の電力消費量は激増しています[5]。
+
+[5]: https://digiconomist.net/ethereum-energy-consumption
+
+## NFT が向かう先
+
+「NFT を通したアート作品が\$69m で落札！」 といったセンセーショナルな話題に振り回されていますが、NFT は本来アーティストを保護し、支援するための仕組みだと Anil Dash は述べています。NFT という技術が大きな可能性を秘めているのは間違いありませんが、出現してから日が浅く、未だ多くの課題を抱えているのも事実です。一過性の話題として消費されるにとどまらず、技術が円熟し有益なものとして利用可能になるのを期待しています。
+
+---
+
+## 参照
+
+- [Beeple sold an NFT for \$69 million](https://www.theverge.com/2021/3/11/22325054/beeple-christies-nft-sale-cost-everydays-69-million)
+- [Jack Dorsey’s first tweet sold as an NFT for an oddly specific \$2,915,835.47](https://www.theverge.com/2021/3/22/22344937/jack-dorsey-nft-sold-first-tweet-ethereum-cryptocurrency-twitter)
+- [THE CLIMATE CONTROVERSY SWIRLING AROUND NFTS](https://www.theverge.com/2021/3/15/22328203/nft-cryptoart-ethereum-blockchain-climate-change)
+- [NFT MANIA IS HERE, AND SO ARE THE SCAMMERS](https://www.theverge.com/2021/3/20/22334527/nft-scams-artists-opensea-rarible-marble-cards-fraud-art)
+- [YOUR MILLION-DOLLAR NFT CAN BREAK TOMORROW IF YOU’RE NOT CAREFUL](https://www.theverge.com/2021/3/25/22349242/nft-metadata-explained-art-crypto-urls-links-ipfs)
+- [Do You Really\* Own Your NFT? Chances Are, You Don’t](https://thedefiant.io/do-you-really-own-your-nft-chances-are-you-dont/)
+- [NFTs Weren’t Supposed to End Like This](https://www.theatlantic.com/ideas/archive/2021/04/nfts-werent-supposed-end-like/618488/)
+- [The Non-Fungible Token Bible: Everything you need to know about NFTs](https://opensea.io/blog/guides/non-fungible-tokens)
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[WebGLについて]]></title>
+            <link>http://localhost:3000/blog/about-webgl</link>
+            <guid>http://localhost:3000/blog/about-webgl</guid>
+            <description><![CDATA[アニメーションがかっこいいサイトに WebGL という技術が使われているらしいということは小耳に挟んでおり、WebGL について気にはなってはいたものの、ちゃんと調べたことはまだなかった。
+この度仕事で使う可能性が出てきたということで、少し調べてみたのでまとめてみた。]]></description>
+            <content:encoded><![CDATA[
+## WebGL とは
+
+WebGL は Web Graphics Library の略であり、その名の通りウェブアプリ、つまりは **JavaScript でグラフィック操作を行うためのライブラリ**である。
+
+そもそもアプリから 2D/3D の描画をする際には OpenGL という C 言語のライブラリが存在し、広く使われている。
+ネイティブなアプリであれば OpenGL を使えば良いのだが、当然ながらウェブ上のアプリからも綺麗なアニメーションを表示したいという要求が出てくる。
+
+そこで 2006 年に Firefox ブラウザを開発する Mozilla がウェブ上で 3D 描画をするプロトタイプを発表。2009 年、そこに OpenGL の仕様を策定しているクロノスグループが参加しワーキンググループが発足、主要なブラウザベンダーである Apple や Google も参加したことにより標準化の動きが生まれた。
+
+WebGL は OpenGL(より正確には組込みシステム用に定義されたサブセットである OpenGL ES)をベースに定義されており、この仕様をもとに各ブラウザが機能を
+提供している。
+
+2017 年にリリースされた WenGL 2.0 が最新の API となっており、2023 年 6 月現在モバイルを含む主要な各ブラウザでサポートされている。(https://caniuse.com/webgl2)
+
+## WebGL のメリット
+
+ウェブ上で 2D/3D を描画する方法にはそれまで Flush Player や Unity Web Player といった技術が存在した。
+
+これらの既存技術はブラウザへのプラグインという形で提供されるため、ユーザーのブラウザにプラグインがインストールされていないと動作しないという欠点がある。
+セキュリティの観点からプラグインの導入が敬遠されていることもあり、せっかくかっこいいウェブサイトを作っても動作環境が整わない可能性があった。
+
+これに対し、WebGL は JavaScript の API であり、仕様策定のワーキンググループに主要なブラウザベンダーが参加していることもあり、**多くのブラウザに標準でサポートされている**。
+
+「GPU が OpenGL をサポートしていないといけない」という制限はあるものの、WebGL の登場により JavaScript さえ動けばほとんどのブラウザ環境で 2D/3D が好きなように描画できる状況が生まれた。
+
+## WebGL のその先
+
+現在 WebGL を置き換える次世代のインターフェイスとして WebGPU が提案されている。
+(2023 年 6 月現在デスクトップ版の Chrome のみが正式にサポートしている。)
+
+そもそも OpenGL は GPU を利用することで描画演算を高速に処理することを実現しているが、近年のハードウェア性能の向上や機械学習の盛り上がりを背景に、この GPU を取り巻く環境が大きく変化し、1990 年代前半に登場した**OpenGL では満足いかないケースが増えてきた**。
+
+より具体的には、OpenGL は抽象度が高い API のため、GPU 利用を細かくチューニングすることが難しい。加えて、機械学習を中心に、GPU をグラフィックスだけでなく、一般的な計算リソースとして利用したいというニーズが高まりつつある(GPGPU: General Purpose GPU と呼ばれる)。
+
+そこで GPU をより効率的に利用したい各社がより低レベルの API を発表する流れが生まれた。GPU チップメーカーの NVIDIA から CUDA(CUDA はコンピューティングプラットフォーム全体の名称であり、API はその一部)が、Apple からは Metal、そしてクロノスグループからも Vulcan という仕様がそれぞれ発表されている。
+
+これらの動きを背景に、WebGL も次世代 API へと置き換える流れが生まれ、WebGPU という仕様が登場。標準化の動きが進んでいる。
+
+---
+
+WebGL とは何なのか、WebGL が生まれた背景、そしてこれからの動きについて追ってきた。
+
+このほかのトピックに Three.js といった WebGL をよりラクに利用するためのライブラリや、シェーダーを記述するための言語である GLSL などがあり、次回以降この辺りにも踏み込んでいけたらと思っている。
+
+それではまた。
+
+## References
+
+- [Wikipedia — WebGL](https://ja.wikipedia.org/wiki/WebGL)
+- [WebGPU がついに利用可能に WebGL 以上の高速な描画と、計算処理への可能性](https://ics.media/entry/230426/)
 ]]></content:encoded>
         </item>
         <item>
@@ -866,6 +835,101 @@ This is kind of a detour from my journey of the [CPU experiment](/blog/cpu-exper
 - [Shaking Off the Rust 2: Ray Tracing in WebAssembly](https://clayto.com/2021/07/shaking-off-the-rust-2-ray-tracing-in-webassembly/)
 - [Parallel Raytracing](https://rustwasm.github.io/wasm-bindgen/examples/raytrace.html)
 - [Using WebAssembly threads from C, C++ and Rust](https://web.dev/webassembly-threads/)
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Subtraction as Addition]]></title>
+            <link>http://localhost:3000/blog/subtraction-as-addition</link>
+            <guid>http://localhost:3000/blog/subtraction-as-addition</guid>
+            <description><![CDATA[In modern computing system, a technique called two's complement is used to represent negative integers. The reason it's so commonly used is it makes computing system much simpler. In this post, I'd like to show what two's complement is and how it helps keeping it simple.]]></description>
+            <content:encoded><![CDATA[
+To make the discussion simple I'm going to use 4 bit integer, `int4` throughout the post.
+
+NOTE: I expect you to have a basic understanding of binary number system. If you're not familiar with it, take a moment and have a look at [this article](https://www.mathsisfun.com/binary-number-system.html) first.
+
+## What's two's complement?
+
+It's one way of representing signed integers[^1]. `int4` can represent `2^4 = 16` different numbers, and two's complement assigns 16 integers ranging from -8 to 7 to each bit pattern. The mapping rules go like this:
+
+- Map from 0 to 7 to binary numbers starting from `0000` to `0111`. This is same as how we represent positive integers in binary.
+- For negative numbers, assign the smallest negative number -8 to `1000`, then assign -7 to the one bigger binary `1001`, -6 to `1010` …and so on up to `1111`. `1111` is going to be -1.
+
+If they aren't very clear, have a look at the table showing full mapping below and examine the rules again.
+
+| Decimal | Binary |
+| :-----: | :----: |
+|    7    |  0111  |
+|    6    |  0110  |
+|    5    |  0101  |
+|    4    |  0100  |
+|    3    |  0011  |
+|    2    |  0010  |
+|    1    |  0001  |
+|    0    |  0000  |
+|   -1    |  1111  |
+|   -2    |  1110  |
+|   -3    |  1101  |
+|   -4    |  1100  |
+|   -5    |  1011  |
+|   -6    |  1010  |
+|   -7    |  1001  |
+|   -8    |  1000  |
+
+Just by looking at it, it doesn't make much sense why it does such a tricky mapping for negative numbers. There's a reason powerful enough to justify this trickiness.
+
+## Why is it so widely used?
+
+The reason why two's complement is widely used is it makes hardware simple in a way that **it enables hardware to use the addition unit to also calculate subtraction**.
+
+You may be surprised to know that computers don't do subtraction. What it actually does instead is addition of the negative number. For example, `5 - 3` is calculated as `5 + (-3)` inside a computer. By converting subtraction to addition, it's now free from minding how to go about subtraction, which is a big deal from hardware engineering point of view.
+
+However, we need to carefully pick a way to represent negative numbers in order to get correct answers. Two's complement is one of such representations[^2] that makes it happen. Let's look at an example.
+
+Let's do `5 + (-3)`. In two's complement 5 and -3 are represented as `0101` and `1101` respectively. The addition of these two is `0101 + 1101 = 0010`. If you look back at the table in the previous section, you can find it represents 2, which **corresponds to the answer of `5 + (-3)`**.
+
+You may still wonder "so what? what's so special about this?" because my first impression was like that. Let's see what happens if it did NOT use two's complement.
+
+### Another way of representing minus numbers
+
+I'm going to use the first bit solely as a flag that indicates sign: 0 to be positive, and 1 to be negative. The rest of three bits are used to represent number part, for example, `0001` is 1 and `1001` is -1.
+
+This is the mapping table of this system.
+
+| Decimal | Binary |
+| :-----: | :----: |
+|    7    |  0111  |
+|    6    |  0110  |
+|    5    |  0101  |
+|    4    |  0100  |
+|    3    |  0011  |
+|    2    |  0010  |
+|    1    |  0001  |
+|    0    |  0000  |
+|   -0    |  1000  |
+|   -1    |  1001  |
+|   -2    |  1010  |
+|   -3    |  1011  |
+|   -4    |  1100  |
+|   -5    |  1101  |
+|   -6    |  1110  |
+|   -7    |  1111  |
+
+Probably this is more intuitive way of representing negative numbers. This system is called _signed magnitude representation_, and was actually used in early computers. Be aware **it has two zeros**.
+
+Now let's see how `5 + (-3)` looks like in this system.
+
+In this system, 5 and -3 are represented `0101` and `1011` respectively. If we add these two binary numbers, the result is `0101 + 1011 = 0000`. `0000` is simply 0, which is clearly wrong answer for `5 + (-3)`.
+
+This means it can't use the addition hardware to perform this calculation, and to get the right answer it needs another hardware dedicated for subtraction.
+
+Being able to calculate subtraction as addition is a very unique characteristic two's complement has, and it's the reason why it's so popular in computing systems.
+
+<aside>
+Indeed, <i>method of complement</i> (ones' complement, two's complement, etc) is <b>designed to implement subtraction as addition</b> of its complement number.
+</aside>
+
+[^1]: Signed numbers: Numbers that consist of both positive and negative numbers
+[^2]: Ones' complement is another way to realise subtraction as addition. See [Stack Overflow — Advantage of 2's complement over 1's complement?](https://stackoverflow.com/questions/11054213/advantage-of-2s-complement-over-1s-complement) if you're interested in why two's complement is more preferred.
 ]]></content:encoded>
         </item>
         <item>
