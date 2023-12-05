@@ -1,31 +1,32 @@
 {
-  "name": "portfolio",
-  "version": "1.0.0",
-  "description": "👋 This is Kenta — Software Engineer based in London. ",
-  "author": "Kenta Kudo",
+  "name": "my-remix-app",
   "private": true,
+  "sideEffects": false,
+  "type": "module",
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate"
+    "build": "remix build",
+    "dev": "remix dev --manual",
+    "start": "remix-serve ./build/index.js",
+    "typecheck": "tsc"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.2",
-    "@nuxt/content": "^1.13.1",
-    "@nuxtjs/feed": "^2.0.0",
-    "@nuxtjs/google-gtag": "^1.0.4",
-    "bootstrap": "^4.4.1",
-    "devicons": "^1.8.0",
-    "jquery": "^3.5.0",
-    "nuxt": "^2.0.0",
-    "popper.js": "^1.16.1",
-    "wasm-raytracer": "^0.5.2"
+    "@remix-run/css-bundle": "^2.3.1",
+    "@remix-run/node": "^2.3.1",
+    "@remix-run/react": "^2.3.1",
+    "@remix-run/serve": "^2.3.1",
+    "isbot": "^3.6.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "vue-fragment": "^1.5.1",
-    "vue-svg-loader": "^0.16.0",
-    "vue-template-compiler": "^2.6.12",
-    "worker-loader": "^3.0.8"
+    "@remix-run/dev": "^2.3.1",
+    "@remix-run/eslint-config": "^2.3.1",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "eslint": "^8.38.0",
+    "typescript": "^5.1.6"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
