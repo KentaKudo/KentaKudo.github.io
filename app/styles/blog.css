@@ -36,13 +36,6 @@ h4,
 h5,
 h6 {
   font-weight: bold;
-}
-
-.nuxt-content h2,
-.nuxt-content h3,
-.nuxt-content h4,
-.nuxt-content h5,
-.nuxt-content h6 {
   margin: 32px auto 16px;
 }
 
