@@ -13,11 +13,15 @@ meta:
   - createdAt: 2023-10-17
 ---
 
-# DDIA 読書ノート 【第 10 章】
+# {meta.filter((record) => 'title' in record).pop().title}
 
+import { EyeCatch } from "~/components/EyeCatch";
 import eyeCatcheImageSrc from "~/images/jonathan-farber-6jpdeeA2GBU-unsplash.jpg";
 
-<img src={eyeCatcheImageSrc} />
+{/* prettier-ignore */}
+<EyeCatch src={eyeCatcheImageSrc} alt="batch of doughnuts">
+  Photo by <a href="https://unsplash.com/@farber?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jonathan Farber</a> on <a href="https://unsplash.com/photos/6jpdeeA2GBU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+</EyeCatch>
 
 第 9 章が難しかったこともあり、読書ノートがまだ書ききれてないんですが、なんとか完成させようとは思っているのでとりあえず 10 章の話をどうぞ。。
 
