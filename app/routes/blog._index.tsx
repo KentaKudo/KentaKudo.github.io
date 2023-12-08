@@ -1,13 +1,14 @@
 import { json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 
-import * as ddiaChapter10 from "./blog.ddia-chapter-10.mdx";
+import * as ddiaChapter10 from "./blog._entries.ddia-chapter-10.mdx";
 
 export async function loader() {
   return json([
     {
       slug: ddiaChapter10.filename
         .replace(/^blog\./, "")
+        .replace(/^_entries\./, "")
         .replace(/\.mdx?$/, ""),
       ...ddiaChapter10.attributes.meta.reduce(
         (acc: Record<string, any>, cur: Record<string, any>) => ({
