@@ -106,3 +106,15 @@ blockquote p {
 .mb {
   margin-bottom: 1rem;
 }
+
+pre:has(code.hljs) {
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
+    drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+}
+
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}

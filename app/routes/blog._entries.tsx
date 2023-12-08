@@ -2,8 +2,12 @@ import { Outlet } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 
 import styles from "~/styles/blog.css";
+import highlightStylesHref from "highlight.js/styles/a11y-dark.css";
 
-export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: styles },
+  { rel: "stylesheet", href: highlightStylesHref },
+];
 
 // const ENTRY_MAPPING = {
 //   "ddia-chapter-10": ddiaChapter10,

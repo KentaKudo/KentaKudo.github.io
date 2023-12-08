@@ -17,6 +17,9 @@ dependencies:
   '@remix-run/serve':
     specifier: ^2.3.1
     version: 2.3.1(typescript@5.1.6)
+  highlight.js:
+    specifier: ^11.9.0
+    version: 11.9.0
   isbot:
     specifier: ^3.6.8
     version: 3.6.8
