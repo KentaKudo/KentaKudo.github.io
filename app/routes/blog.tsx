@@ -3,14 +3,7 @@ import { Breadcrumbs } from "~/components/Breadcrumbs";
 
 const Layout = () => {
   return (
-    <main
-      style={{
-        width: "100%",
-        maxWidth: "720px",
-        margin: "auto",
-        padding: "5rem 1.5rem",
-      }}
-    >
+    <main className="w-full max-w-3xl m-auto py-10 sm:py-20 px-6 sm:px-0">
       <Breadcrumbs />
       <Outlet />
       <hr />
