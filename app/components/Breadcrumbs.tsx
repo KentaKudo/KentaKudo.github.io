@@ -12,19 +12,15 @@ export const Breadcrumbs: FC = () => {
     }, []);
 
   return (
-    <ol
-      style={{
-        padding: 0,
-        listStyleType: "none",
-        display: "flex",
-        gap: "1rem",
-      }}
-    >
+    <ol className="flex">
       {paths.map((p) => {
         const elem = p.split("/").pop();
 
         return (
-          <li key={p}>
+          <li
+            key={p}
+            className="[&:not(:last-child)]:after:content-['/'] after:p-4"
+          >
             {p === pathname ? (
               <p>{elem !== "" ? elem : "home"}</p>
             ) : (
