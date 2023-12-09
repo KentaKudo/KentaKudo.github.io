@@ -20,7 +20,8 @@
     "react-dom": "^18.2.0",
     "rehype-highlight": "^7.0.0",
     "remark-gfm": "^4.0.0",
-    "remark-toc": "^9.0.0"
+    "remark-toc": "^9.0.0",
+    "wasm-raytracer": "^0.5.2"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.3.1",
