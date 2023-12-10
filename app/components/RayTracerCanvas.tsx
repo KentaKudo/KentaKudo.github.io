@@ -4,8 +4,12 @@ export const RayTracerCanvas = () => {
   const canvasRef = useRef(null);
 
   const run = useCallback(() => {
-    console.log("run!");
     // draw in canvas
+    const myWorker = new Worker("/worker.js");
+    myWorker.postMessage(["hello", "world"]);
+    myWorker.onmessage = (e) => {
+      console.log(`Message received from worker: ${e.data}`);
+    };
   }, []);
 
   return (
