@@ -39,8 +39,8 @@ dependencies:
     specifier: ^9.0.0
     version: 9.0.0
   wasm-raytracer:
-    specifier: ^1.0.3
-    version: 1.0.3
+    specifier: ^1.0.4
+    version: 1.0.4
 
 devDependencies:
   '@remix-run/dev':
@@ -6927,8 +6927,8 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /wasm-raytracer@1.0.3:
-    resolution: {integrity: sha512-7R4XecfKGerEfhKZ5/HIWh0O+TNO9e2RogEcae1iy86gZXfo7TobG4Aw0uwpZOs+JVSzTRqzRIXpv+8KHRv73Q==}
+  /wasm-raytracer@1.0.4:
+    resolution: {integrity: sha512-4AkvMw7Hji6ABdwZWnMcwkB4IaIPcdgfR4vYCQhPrM97a5Gm8XccAXb1+A1gN26N9ENy+HAJ2Q+XmpvqUm2OmQ==}
     dev: false
 
   /wcwidth@1.0.1:
