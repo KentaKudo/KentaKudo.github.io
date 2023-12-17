@@ -1,22 +1,41 @@
 ---
-title: Ray Tracer on Web
-description: I have been working on writing a ray tracer in Rust in the last few weeks. This post is to show off what I could achieve:)
-language: en/GB
-tags:
-  - raytracing
-  - rust
-image:
-  src: laser.jpg
-  alt: Laser beams in darkness
-  credit: Photo by <a href="https://unsplash.com/@clyde_he?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Clyde He</a> on <a href="https://unsplash.com/s/photos/light?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-createdAt: 2022-03-03
+meta:
+  - title: Ray Tracer on Web
+  - description: I have been working on writing a ray tracer in Rust in the last few weeks. This post is to show off what I could achieve:)
+  - language: en/GB
+  - tags:
+      - raytracing
+      - rust
+  - src: laser.jpg
+    alt: Laser beams in darkness
+    credit: Photo by <a href="https://unsplash.com/@clyde_he?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Clyde He</a> on <a href="https://unsplash.com/s/photos/light?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
+componentProps:
+  PublishedAt:
+    at: 2022-03-03
 ---
+
+# {meta.filter((record) => 'title' in record).pop().title}
+
+import { PublishedAt } from "~/components/PublishedAt";
+
+<PublishedAt {...attributes.componentProps.PublishedAt} />
+
+import { EyeCatch } from "~/components/EyeCatch";
+import eyeCatcheImageSrc from "~/images/laser.jpg";
+
+{/* prettier-ignore */}
+<EyeCatch src={eyeCatcheImageSrc} alt="batch of doughnuts">
+  Photo by <a href="https://unsplash.com/@clyde_he?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Clyde He</a> on <a href="https://unsplash.com/s/photos/light?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+</EyeCatch>
 
 First things first: demonstration. Try clicking the Run button below. It's going to take a bit while until the result pops up, so please be patient:)
 
 (NOTE: Web Worker must be [supported](https://caniuse.com/webworkers) on your browser.)
 
-<ray-tracer-canvas></ray-tracer-canvas>
+import { RayTracerCanvas } from "~/components/RayTracerCanvas";
+
+<RayTracerCanvas />
 
 It didn't load the image but **generated it on your device** using the power of Web Assembly. Because it has some random factor, it produces slightly different images every time you run it.
 
@@ -24,8 +43,9 @@ It's cool, isn't it?
 
 I'm first going to touch on what ray tracer / ray tracing is for those who are not familiar with it. Then look at details of how I ran it in the browser.
 
+{/* prettier-ignore */}
 <aside>
-Many thanks to <a href="https://twitter.com/Peter_shirley">@Peter_shirley</a> who wrote a phenomenal tutorial <a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html">Ray Tracing In One Weekend</a>. I just followed his tutorial using Rust instead of C++.
+  Many thanks to <a href="https://twitter.com/Peter_shirley">@Peter_shirley</a> who wrote a phenomenal tutorial <a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html">Ray Tracing In One Weekend</a>. I just followed his tutorial using Rust instead of C++.
 </aside>
 
 The source code is available on [GitHub](https://github.com/KentaKudo/wasm-raytracer), and also published as a [NPM package](https://www.npmjs.com/package/wasm-raytracer).
@@ -62,7 +82,15 @@ You can add other factors to objects to make it look more real. One such factor 
 - Metal — a material that reflects the ray to the direction calculated from the incoming ray's angle, and
 - Dielectric (glasses) — a material that refracts the ray to the inside of the object.
 
-<nuxt-image src="blog/ray-tracer-on-web/materials.png" alt="Lambertian casts a ray to a random direction, Metal reflects, Dielectric refracts" caption="Each material baheves differently when a ray hits it"></nuxt-image>
+import materialsImageSrc from "~/images/materials.png";
+
+<figure>
+  <img
+    src={materialsImageSrc}
+    alt="Lambertian casts a ray to a random direction, Metal reflects, Dielectric refracts"
+  />
+  <figcaption>Each material baheves differently when a ray hits it</figcaption>
+</figure>
 
 Once you define a scene, the next thing you need to do is to specify where you look at the scene from.
 
@@ -88,7 +116,15 @@ The tracing of the ray stops either
 (2) when it doesn't hit anything anymore, which means it reaches the ambient light (or sky so to speak).
 The final colour of the pixel is calculated at that point.
 
-<nuxt-image src="blog/ray-tracer-on-web/ray.png" alt="A ray is cast from a camera to the scene through a frame in between them calculating the final colour of the pixel" caption="Tracing the journey of the ray"></nuxt-image>
+import rayImageSrc from "~/images/ray.png";
+
+<figure>
+  <img
+    src={rayImageSrc}
+    alt="A ray is cast from a camera to the scene through a frame in between them calculating the final colour of the pixel"
+  />
+  <figcaption>Tracing the journey of the ray</figcaption>
+</figure>
 
 This is a quick explanation of what the ray tracer is. See the [_References_](#references) section to continue reading more about ray tracing if you're interested.
 
@@ -102,7 +138,14 @@ The first thing I had to do was make a decision on how JavaScript and Rust shoul
 
 To draw an image on the screen, I used the \<canvas\> HTML element. Its `putImageData()` API receives input image as an `ImageData` object, and the image data is given as `Uint8ClampedArray`, which is expected to be an array containing the pixel data in the RGBA order.
 
-<nuxt-image src="blog/ray-tracer-on-web/canvas-api.png" alt="Uint8ClampedArray is used for ImageData then passed to canvas HTML element."></nuxt-image>
+import canvasApiImageSrc from "~/images/canvas-api.png";
+
+<figure>
+  <img
+    src={canvasApiImageSrc}
+    alt="Uint8ClampedArray is used for ImageData then passed to canvas HTML element."
+  />
+</figure>
 
 Long story short, the goal is to return a properly serialised `Uint8ClampedArray` from the Rust programme.
 
