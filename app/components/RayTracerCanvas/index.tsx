@@ -2,8 +2,6 @@ import type { FC } from "react";
 import { useCallback, useRef, useState } from "react";
 import { render } from "./raytracer.client";
 
-// import { render } from "wasm-raytracer";
-
 export const RayTracerCanvas: FC = () => {
   const [status, setStatus] = useState<"notRunYet" | "running" | "hasRun">(
     "notRunYet"
@@ -11,23 +9,16 @@ export const RayTracerCanvas: FC = () => {
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const run = useCallback(async () => {
-    if (!canvasRef.current) return;
-
-    setStatus("running");
-    // const myWorker = new Worker("/raytracer.worker.js");
-    // myWorker.postMessage(["hello", "world"]);
-    // myWorker.onmessage = (e) => {
-    //   console.log(`Message received from worker: ${e.data}`);
-    // };
-    // const { render } = await import("wasm-raytracer");
-    // const rendered = render(400, 255);
-    // const imageData = new ImageData(rendered, 400);
-    const imageData = await render(400, 255);
-
-    canvasRef.current?.getContext("2d")?.putImageData(imageData, 0, 0);
-    setStatus("hasRun");
-  }, []);
+  const run = useCallback(
+    () =>
+      Promise.resolve(() => setStatus("running"))
+        .then(() => render(400, 255))
+        .then((imageData) =>
+          canvasRef.current?.getContext("2d")?.putImageData(imageData, 0, 0)
+        )
+        .finally(() => setStatus("hasRun")),
+    []
+  );
 
   return (
     <div className="relative flex flex-col items-center">
