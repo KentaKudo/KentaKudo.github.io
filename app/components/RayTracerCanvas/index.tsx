@@ -1,14 +1,19 @@
+import type { FC } from "react";
 import { useCallback, useRef, useState } from "react";
 import { render } from "./raytracer.client";
+
 // import { render } from "wasm-raytracer";
 
-export const RayTracerCanvas = () => {
+export const RayTracerCanvas: FC = () => {
   const [status, setStatus] = useState<"notRunYet" | "running" | "hasRun">(
     "notRunYet"
   );
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const run = useCallback(async () => {
+    if (!canvasRef.current) return;
+
     setStatus("running");
     // const myWorker = new Worker("/raytracer.worker.js");
     // myWorker.postMessage(["hello", "world"]);
@@ -18,7 +23,8 @@ export const RayTracerCanvas = () => {
     // const { render } = await import("wasm-raytracer");
     // const rendered = render(400, 255);
     // const imageData = new ImageData(rendered, 400);
-    const imageData = await render();
+    const imageData = await render(400, 255);
+
     canvasRef.current?.getContext("2d")?.putImageData(imageData, 0, 0);
     setStatus("hasRun");
   }, []);
@@ -40,7 +46,7 @@ export const RayTracerCanvas = () => {
         {status === "running" && <p>running...</p>}
       </div>
 
-      <canvas ref={canvasRef} />
+      <canvas className="w-full max-w-screen-sm aspect-video" ref={canvasRef} />
     </div>
   );
 };
