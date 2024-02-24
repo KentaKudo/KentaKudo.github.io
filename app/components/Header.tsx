@@ -8,15 +8,15 @@ export const Header: FC = () => {
         <Link to="/" className="font-bold text-xl">
           Kenta Kudo
         </Link>
-        <nav>
-          <ul className="flex gap-4 font-bold">
-            <li>
+        <nav className="font-bold text-slate-500">
+          <ul className="flex gap-4">
+            <li className="hover:text-foreground">
               <Link to="/">Home</Link>
             </li>
-            <li>
+            <li className="hover:text-foreground">
               <Link to="/about">About</Link>
             </li>
-            <li>
+            <li className="hover:text-foreground">
               <Link to="/blog">Blog</Link>
             </li>
           </ul>

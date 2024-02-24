@@ -23,10 +23,7 @@ export default function Index() {
           >
             <div>
               <h2 className="font-bold text-xl">{frontmatter.title}</h2>
-              <PublishedAt
-                at={frontmatter.published}
-                className="italic text-sm text-slate-400"
-              />
+              <PublishedAt at={frontmatter.published} className="text-sm" />
               {frontmatter.description ? (
                 <p className="mt-2 line-clamp-3">{frontmatter.description}</p>
               ) : null}
