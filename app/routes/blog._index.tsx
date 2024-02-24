@@ -1,49 +1,22 @@
-import { json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
+import { mapping } from "~/contents";
 
-import * as ddiaChapter10 from "./blog._entries.ddia-chapter-10.mdx";
-import * as rayTracerOnWeb from "./blog._entries.ray-tracer-on-web.mdx";
-
-export async function loader() {
-  return json([
-    {
-      slug: ddiaChapter10.filename
-        .replace(/^blog\./, "")
-        .replace(/^_entries\./, "")
-        .replace(/\.mdx?$/, ""),
-      ...ddiaChapter10.attributes.meta.reduce(
-        (acc: Record<string, any>, cur: Record<string, any>) => ({
-          ...acc,
-          ...cur,
-        }),
-        {}
-      ),
-    },
-    {
-      slug: rayTracerOnWeb.filename
-        .replace(/^blog\./, "")
-        .replace(/^_entries\./, "")
-        .replace(/\.mdx?$/, ""),
-      ...rayTracerOnWeb.attributes.meta.reduce(
-        (acc: Record<string, any>, cur: Record<string, any>) => ({
-          ...acc,
-          ...cur,
-        }),
-        {}
-      ),
-    },
-  ]);
-}
+export const clientLoader = () => {
+  return Object.entries(mapping).map(([slug, [, frontmatter]]) => ({
+    slug,
+    frontmatter,
+  }));
+};
 
 export default function Index() {
-  const posts = useLoaderData<typeof loader>();
+  const posts = useLoaderData<typeof clientLoader>();
 
   return (
     <ul>
-      {posts.map((post) => (
-        <li key={post.slug}>
-          <Link to={post.slug}>{post.title}</Link>
-          {post.description ? <p>{post.description}</p> : null}
+      {posts.map(({ slug, frontmatter }) => (
+        <li key={slug}>
+          <Link to={`/blog/${slug}`}>{frontmatter.title}</Link>
+          {frontmatter.description ? <p>{frontmatter.description}</p> : null}
         </li>
       ))}
     </ul>

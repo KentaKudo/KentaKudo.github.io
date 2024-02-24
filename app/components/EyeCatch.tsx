@@ -1,16 +1,16 @@
-import type { FC, ReactNode } from "react";
+import type { FC } from "react";
 
 type Props = {
   src: string;
   alt: string;
-  children: ReactNode;
+  children: TrustedHTML;
 };
 
 export const EyeCatch: FC<Props> = ({ src, alt, children: caption }) => {
   return (
     <figure>
       <img src={src} alt={alt} />
-      <figcaption>{caption}</figcaption>
+      <figcaption dangerouslySetInnerHTML={{ __html: caption }} />
     </figure>
   );
 };

@@ -1,5 +1,5 @@
 import init, { render as wasmRender } from "wasm-raytracer";
-import wasm from "wasm-raytracer/binary.wasm";
+import wasm from "wasm-raytracer/binary.wasm?init";
 
 export const render = async (width: number, height: number) => {
   await init(wasm);
