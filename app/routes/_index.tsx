@@ -9,24 +9,13 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix (SPA Mode)</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/future/spa-mode"
-            rel="noreferrer"
-          >
-            SPA Mode Guide
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+    <>
+      <h1 className="hidden">Kenta Kudo</h1>
+      <img
+        src="/images/river-themes.jpg"
+        alt="The river Themes"
+        className="-z-10 w-full h-screen absolute top-0 right-0 bottom-0 left-0 object-center object-cover"
+      />
+    </>
   );
 }
