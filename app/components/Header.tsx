@@ -3,7 +3,7 @@ import { FC } from "react";
 
 export const Header: FC = () => {
   return (
-    <header>
+    <header className="sticky top-0 px-4 backdrop-blur-sm">
       <div className="h-20 mx-auto w-full max-w-screen-lg flex items-center justify-between">
         <Link to="/" className="font-bold text-xl">
           Kenta Kudo
