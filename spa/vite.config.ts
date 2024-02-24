@@ -4,12 +4,16 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import mdx from "@mdx-js/rollup";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+import rehypeHighlight from "rehype-highlight";
 
 export default defineConfig({
   plugins: [
     {
       enforce: "pre",
-      ...mdx({ remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter] }),
+      ...mdx({
+        remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
+        rehypePlugins: [rehypeHighlight],
+      }),
     },
     remix({ ssr: false }),
     tsconfigPaths(),

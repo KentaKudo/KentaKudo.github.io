@@ -3,7 +3,7 @@ declare module "*.mdx" {
     title: string;
     description: string;
     published: string;
-    image: {
+    image?: {
       src: string;
       alt: string;
       credit: string;

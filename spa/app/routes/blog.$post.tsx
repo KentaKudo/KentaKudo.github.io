@@ -39,12 +39,14 @@ export default function Post() {
     <>
       <h1>{frontmatter.title}</h1>
       <PublishedAt at={frontmatter.published} />
-      <EyeCatch
-        src={`/images/${frontmatter.image.src}`}
-        alt={frontmatter.image.alt}
-      >
-        {frontmatter.image.credit}
-      </EyeCatch>
+      {frontmatter.image && (
+        <EyeCatch
+          src={`/images/${frontmatter.image.src}`}
+          alt={frontmatter.image.alt}
+        >
+          {frontmatter.image.credit}
+        </EyeCatch>
+      )}
       <main>
         <Component />
       </main>
