@@ -20,7 +20,9 @@
     "react-dom": "^18.2.0",
     "rehype-highlight": "^7.0.0",
     "remark-frontmatter": "^5.0.0",
-    "remark-mdx-frontmatter": "^4.0.0"
+    "remark-gfm": "^4.0.0",
+    "remark-mdx-frontmatter": "^4.0.0",
+    "remark-toc": "^9.0.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.7.2",
