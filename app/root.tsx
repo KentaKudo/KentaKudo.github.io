@@ -14,6 +14,11 @@ import { Header } from "./components/Header";
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
   { rel: "stylesheet", href: globalStylesHref },
+  { rel: "preconnect", href: "https://fonts.gstatic.com" },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@400;700&display=swap",
+  },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {

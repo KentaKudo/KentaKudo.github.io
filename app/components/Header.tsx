@@ -1,12 +1,21 @@
-import { Link } from "@remix-run/react";
+import { Link, useLocation } from "@remix-run/react";
 import { FC } from "react";
+import { cn } from "~/lib/utils";
 
 export const Header: FC = () => {
+  const location = useLocation();
+
   return (
     <header className="sticky top-0 px-4 backdrop-blur-sm">
       <div className="h-20 mx-auto w-full max-w-screen-lg flex items-center justify-between">
-        <Link to="/" className="font-bold text-xl">
-          Kenta Kudo
+        <Link
+          to="/"
+          className={cn(
+            "font-bold font-permanent-marker text-2xl",
+            location.pathname === "/" && "text-primary-foreground"
+          )}
+        >
+          {location.pathname === "/" ? "Kenta Kudo" : "K"}
         </Link>
         <nav className="font-bold text-slate-500">
           <ul className="flex gap-4">
