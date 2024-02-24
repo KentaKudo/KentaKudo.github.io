@@ -1,9 +1,9 @@
 import { LinksFunction, MetaFunction } from "@remix-run/node";
 import { ClientLoaderFunctionArgs, useLoaderData } from "@remix-run/react";
 import highlightStylesHref from "highlight.js/styles/a11y-dark.css?url";
+
 import { EyeCatch } from "~/components/EyeCatch";
 import { PublishedAt } from "~/components/PublishedAt";
-
 import { Key, mapping } from "~/contents";
 import styles from "~/styles/blog.css?url";
 

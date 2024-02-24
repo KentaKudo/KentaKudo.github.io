@@ -8,7 +8,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import globalStylesHref from "~/styles/global.css?url";
+import globalStylesHref from "./globals.css?url";
 import { Header } from "./components/Header";
 
 export const links: LinksFunction = () => [
