@@ -10,6 +10,7 @@ import {
 
 import globalStylesHref from "./globals.css?url";
 import { Header } from "./components/Header";
+import { LoadingSpinner } from "./components/LoadingSpinner";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
@@ -45,5 +46,9 @@ export default function App() {
 }
 
 export function HydrateFallback() {
-  return <p>Loading...</p>;
+  return (
+    <div className="-z-10 absolute top-0 right-0 bottom-0 left-0 h-screen w-full flex items-center justify-center bg-slate-500">
+      <LoadingSpinner className="text-primary-foreground" />
+    </div>
+  );
 }
