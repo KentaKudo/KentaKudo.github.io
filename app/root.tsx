@@ -18,12 +18,9 @@ export const meta: MetaFunction = () => {
   return [
     { title: "Kenta Kudo" },
     { name: "description", content: "Welcome my page!" },
-    { name: "og:title", content: "Kenta Kudo" },
-    { name: "og:description", content: "Welcome my page!" },
-    {
-      name: "og:image",
-      content: "https://kentakudo.com/images/river-themes.jpg",
-    },
+    { property: "og:title", content: "Kenta Kudo" },
+    { property: "og:description", content: "Welcome my page!" },
+    { property: "og:image", content: "/images/river-themes.jpg" },
     { name: "twitter:card", content: "summary" },
     { name: "twitter:creator", content: "@___________k_k_" },
   ];
