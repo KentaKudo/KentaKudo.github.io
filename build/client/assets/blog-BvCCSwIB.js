@@ -1,0 +1,1 @@
+import{j as t}from"./jsx-runtime-BlSqMCxk.js";import{O as o}from"./index-DEVGeT0Z.js";const r=()=>[{title:"Kenta Kudo | Blog"}],a=()=>t.jsx("main",{className:"w-full max-w-screen-md mx-auto py-4 px-4",children:t.jsx(o,{})}),m=a;export{m as default,r as meta};

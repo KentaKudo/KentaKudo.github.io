@@ -1,0 +1,1 @@
+import{j as e}from"./jsx-runtime-BlSqMCxk.js";const l=()=>[{title:"Kenta Kudo | About me"}];function a(){return e.jsxs("main",{className:"w-full max-w-screen-lg mx-auto py-4 flex flex-col gap-4",children:[e.jsx("h1",{className:"font-bold text-4xl",children:"Kenta Kudo"}),e.jsx("p",{children:"WIP"})]})}export{a as default,l as meta};
