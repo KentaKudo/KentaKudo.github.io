@@ -1,12 +1,3 @@
-import type { MetaFunction } from "@remix-run/node";
-
-export const meta: MetaFunction = () => {
-  return [
-    { title: "Kenta Kudo" },
-    { name: "description", content: "Welcome my page!" },
-  ];
-};
-
 export default function Index() {
   return (
     <>

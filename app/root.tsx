@@ -1,5 +1,5 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import {
   Links,
   Meta,
@@ -13,6 +13,18 @@ import { Header } from "./components/Header";
 import { LoadingSpinner } from "./components/LoadingSpinner";
 import { Footer } from "./components/Footer";
 import { GTag } from "./GTag";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Kenta Kudo" },
+    { name: "description", content: "Welcome my page!" },
+    { name: "og:title", content: "Kenta Kudo" },
+    { name: "og:description", content: "Welcome my page!" },
+    { name: "og:image", content: "/images/river-themes.jpg" },
+    { name: "twitter:card", content: "summary" },
+    { name: "twitter:creator", content: "@___________k_k_" },
+  ];
+};
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
