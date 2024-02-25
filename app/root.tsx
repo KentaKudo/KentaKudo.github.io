@@ -11,6 +11,8 @@ import {
 import globalStylesHref from "./globals.css?url";
 import { Header } from "./components/Header";
 import { LoadingSpinner } from "./components/LoadingSpinner";
+import { Footer } from "./components/Footer";
+import { GTag } from "./GTag";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
@@ -30,10 +32,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <GTag />
       </head>
       <body>
         <Header />
         {children}
+        <Footer />
         <ScrollRestoration />
         <Scripts />
       </body>
