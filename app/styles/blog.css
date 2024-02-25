@@ -35,15 +35,6 @@ blockquote p {
   display: inline;
 }
 
-.embed {
-  display: flex;
-  justify-content: center;
-}
-
-.mb {
-  margin-bottom: 1rem;
-}
-
 pre:has(code.hljs) {
   filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
     drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));

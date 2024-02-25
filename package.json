@@ -21,6 +21,7 @@
     "lucide-react": "^0.338.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rehype-autolink-headings": "^7.1.0",
     "rehype-highlight": "^7.0.0",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.0",

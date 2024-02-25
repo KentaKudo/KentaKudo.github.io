@@ -1,0 +1,105 @@
+---
+title: Subtraction as Addition
+description: |-
+  In modern computing system, a technique called two's complement is used to represent negative integers. The reason it's so commonly used is it makes computing system much simpler. In this post, I'd like to show what two's complement is and how it helps keeping it simple.
+language: en/GB
+tags:
+  - computerscience
+  - systemprogramming
+  - twoscomplement
+image:
+  src: complementary.jpg
+  alt: An orange coloured in blue outside (complementary colours)
+  credit: Photo by <a href="https://unsplash.com/@davisuko?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">davisuko</a> on <a href="https://unsplash.com/s/photos/complementary-colors?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+published: "2022-01-30"
+---
+
+To make the discussion simple I'm going to use 4 bit integer, `int4` throughout the post.
+
+NOTE: I expect you to have a basic understanding of binary number system. If you're not familiar with it, take a moment and have a look at [this article](https://www.mathsisfun.com/binary-number-system.html) first.
+
+## What's two's complement?
+
+It's one way of representing signed integers[^1]. `int4` can represent `2^4 = 16` different numbers, and two's complement assigns 16 integers ranging from -8 to 7 to each bit pattern. The mapping rules go like this:
+
+- Map from 0 to 7 to binary numbers starting from `0000` to `0111`. This is same as how we represent positive integers in binary.
+- For negative numbers, assign the smallest negative number -8 to `1000`, then assign -7 to the one bigger binary `1001`, -6 to `1010` …and so on up to `1111`. `1111` is going to be -1.
+
+If they aren't very clear, have a look at the table showing full mapping below and examine the rules again.
+
+| Decimal | Binary |
+| :-----: | :----: |
+|    7    |  0111  |
+|    6    |  0110  |
+|    5    |  0101  |
+|    4    |  0100  |
+|    3    |  0011  |
+|    2    |  0010  |
+|    1    |  0001  |
+|    0    |  0000  |
+|   -1    |  1111  |
+|   -2    |  1110  |
+|   -3    |  1101  |
+|   -4    |  1100  |
+|   -5    |  1011  |
+|   -6    |  1010  |
+|   -7    |  1001  |
+|   -8    |  1000  |
+
+Just by looking at it, it doesn't make much sense why it does such a tricky mapping for negative numbers. There's a reason powerful enough to justify this trickiness.
+
+## Why is it so widely used?
+
+The reason why two's complement is widely used is it makes hardware simple in a way that **it enables hardware to use the addition unit to also calculate subtraction**.
+
+You may be surprised to know that computers don't do subtraction. What it actually does instead is addition of the negative number. For example, `5 - 3` is calculated as `5 + (-3)` inside a computer. By converting subtraction to addition, it's now free from minding how to go about subtraction, which is a big deal from hardware engineering point of view.
+
+However, we need to carefully pick a way to represent negative numbers in order to get correct answers. Two's complement is one of such representations[^2] that makes it happen. Let's look at an example.
+
+Let's do `5 + (-3)`. In two's complement 5 and -3 are represented as `0101` and `1101` respectively. The addition of these two is `0101 + 1101 = 0010`. If you look back at the table in the previous section, you can find it represents 2, which **corresponds to the answer of `5 + (-3)`**.
+
+You may still wonder "so what? what's so special about this?" because my first impression was like that. Let's see what happens if it did NOT use two's complement.
+
+### Another way of representing minus numbers
+
+I'm going to use the first bit solely as a flag that indicates sign: 0 to be positive, and 1 to be negative. The rest of three bits are used to represent number part, for example, `0001` is 1 and `1001` is -1.
+
+This is the mapping table of this system.
+
+| Decimal | Binary |
+| :-----: | :----: |
+|    7    |  0111  |
+|    6    |  0110  |
+|    5    |  0101  |
+|    4    |  0100  |
+|    3    |  0011  |
+|    2    |  0010  |
+|    1    |  0001  |
+|    0    |  0000  |
+|   -0    |  1000  |
+|   -1    |  1001  |
+|   -2    |  1010  |
+|   -3    |  1011  |
+|   -4    |  1100  |
+|   -5    |  1101  |
+|   -6    |  1110  |
+|   -7    |  1111  |
+
+Probably this is more intuitive way of representing negative numbers. This system is called _signed magnitude representation_, and was actually used in early computers. Be aware **it has two zeros**.
+
+Now let's see how `5 + (-3)` looks like in this system.
+
+In this system, 5 and -3 are represented `0101` and `1011` respectively. If we add these two binary numbers, the result is `0101 + 1011 = 0000`. `0000` is simply 0, which is clearly wrong answer for `5 + (-3)`.
+
+This means it can't use the addition hardware to perform this calculation, and to get the right answer it needs another hardware dedicated for subtraction.
+
+Being able to calculate subtraction as addition is a very unique characteristic two's complement has, and it's the reason why it's so popular in computing systems.
+
+<aside>
+  Indeed, <i>method of complement</i> (ones' complement, two's complement, etc)
+  is <b>designed to implement subtraction as addition</b> of its complement
+  number.
+</aside>
+
+[^1]: Signed numbers: Numbers that consist of both positive and negative numbers
+[^2]: Ones' complement is another way to realise subtraction as addition. See [Stack Overflow — Advantage of 2's complement over 1's complement?](https://stackoverflow.com/questions/11054213/advantage-of-2s-complement-over-1s-complement) if you're interested in why two's complement is more preferred.

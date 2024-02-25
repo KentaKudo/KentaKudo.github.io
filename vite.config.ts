@@ -5,6 +5,7 @@ import mdx from "@mdx-js/rollup";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import rehypeHighlight from "rehype-highlight";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
 
@@ -19,7 +20,7 @@ export default defineConfig({
           remarkGfm,
           remarkToc,
         ],
-        rehypePlugins: [rehypeHighlight],
+        rehypePlugins: [rehypeHighlight, rehypeAutolinkHeadings],
       }),
     },
     remix({ ssr: false }),

@@ -15,8 +15,12 @@ export const EyeCatch: FC<Props> = ({
   className,
 }) => {
   return (
-    <figure className={cn("flex flex-col items-center", className)}>
-      <img src={src} alt={alt} />
+    <figure className={cn("flex flex-col gap-1 items-center", className)}>
+      <img
+        src={src}
+        alt={alt}
+        className="rounded-lg overflow-hidden shadow-md"
+      />
       <figcaption
         dangerouslySetInnerHTML={{ __html: caption }}
         className="text-slate-400 text-sm [&>a]:italic [&>a]:underline"
