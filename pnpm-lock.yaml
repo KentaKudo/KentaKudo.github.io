@@ -63,8 +63,8 @@ dependencies:
     specifier: ^1.0.7
     version: 1.0.7(tailwindcss@3.4.1)
   wasm-raytracer:
-    specifier: ^1.0.4
-    version: 1.0.4
+    specifier: 0.5.3
+    version: 0.5.3
 
 devDependencies:
   '@remix-run/dev':
@@ -7176,8 +7176,8 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /wasm-raytracer@1.0.4:
-    resolution: {integrity: sha512-4AkvMw7Hji6ABdwZWnMcwkB4IaIPcdgfR4vYCQhPrM97a5Gm8XccAXb1+A1gN26N9ENy+HAJ2Q+XmpvqUm2OmQ==}
+  /wasm-raytracer@0.5.3:
+    resolution: {integrity: sha512-fu+c/9jFwvjBTkJ8BAcrQQf0o8habHHOZgR9nfd/7x5kGwVflPHpmUVsF751hYhMHqSuHjG6M5jlTB6ug3jl8w==}
     dev: false
 
   /wcwidth@1.0.1:

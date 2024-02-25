@@ -30,7 +30,7 @@
     "remark-toc": "^9.0.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
-    "wasm-raytracer": "^1.0.4"
+    "wasm-raytracer": "0.5.3"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.7.2",

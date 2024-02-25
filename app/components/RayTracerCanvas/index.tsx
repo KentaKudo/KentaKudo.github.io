@@ -13,8 +13,10 @@ export const RayTracerCanvas: FC = () => {
     () =>
       Promise.resolve(() => setStatus("running"))
         .then(() => render(400, 255))
-        .then((imageData) =>
-          canvasRef.current?.getContext("2d")?.putImageData(imageData, 0, 0)
+        .then(
+          (imageData) =>
+            imageData &&
+            canvasRef.current?.getContext("2d")?.putImageData(imageData, 0, 0)
         )
         .finally(() => setStatus("hasRun")),
     []

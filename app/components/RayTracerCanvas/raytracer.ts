@@ -1,9 +1,17 @@
-//@ts-expect-error: TODO: check wasm-raytracer npm package settings
-import init, { render as wasmRender } from "wasm-raytracer";
-import wasm from "wasm-raytracer/binary.wasm?init";
+export const render: (
+  width: number,
+  height: number
+) => Promise<ImageData | null> = async (width, height) => {
+  if (!window.Worker) return Promise.resolve(null);
 
-export const render = async (width: number, height: number) => {
-  await init(wasm);
-  const rendered = wasmRender(width, height);
-  return new ImageData(rendered, width);
+  return new Promise((resolve) => {
+    const worker = new Worker(
+      new URL("/js/raytracer.worker.js", import.meta.url)
+    );
+    worker.postMessage([width, height]);
+    worker.onmessage = ({ data: rendered }: { data: Uint8ClampedArray }) => {
+      const imageData = new ImageData(rendered, width);
+      resolve(imageData);
+    };
+  });
 };
