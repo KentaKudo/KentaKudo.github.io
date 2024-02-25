@@ -48,7 +48,12 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Commit and push
+      - name: Count the number of files with any changes
+        id: count
+        run: echo "::set-output name=count::$(git diff --name-only | wc -l)"
+
+      - name: Commit and push if needed
+        if: steps.count.outputs.count > 0
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
