@@ -22,15 +22,12 @@ export const clientLoader = async ({
 };
 
 export const meta: MetaFunction<typeof clientLoader> = ({ data }) => {
-  return [
-    {
-      title: data.frontmatter.title,
-    },
-    {
-      name: "description",
-      content: data.frontmatter.description,
-    },
-  ];
+  const {
+    //@ts-expect-error: not fully sure why it isn't typed
+    frontmatter: { title, description },
+  } = data;
+
+  return [{ title }, { name: "description", content: description }];
 };
 
 export default function Post() {

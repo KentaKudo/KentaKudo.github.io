@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { useCallback, useRef, useState } from "react";
-import { render } from "./raytracer.client";
+import { render } from "./raytracer";
 
 export const RayTracerCanvas: FC = () => {
   const [status, setStatus] = useState<"notRunYet" | "running" | "hasRun">(
