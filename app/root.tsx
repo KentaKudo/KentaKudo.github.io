@@ -24,7 +24,7 @@ export const meta: MetaFunction = () => {
       property: "og:image",
       content: "https://kentakudo.com/images/river-themes.jpg",
     },
-    { name: "twitter:card", content: "summary" },
+    { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:creator", content: "@___________k_k_" },
   ];
 };
