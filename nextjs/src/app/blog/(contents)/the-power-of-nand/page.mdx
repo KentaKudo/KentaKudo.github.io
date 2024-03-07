@@ -24,10 +24,10 @@ NAND is one of the most basic **logic gates**. So first I need to explain what t
 
 A logic gate is a sort of a calculator that accepts one or more input and produces one or more output where both input and output values are either 0 or 1. Let's take a look at one of the simplest logic gates: AND.
 
-import andImgSrc from "./AND.svg";
+import AndGateImage from "./AND.svg";
 
 <figure className="my-4 mx-auto flex flex-col items-center gap-2">
-  <img src={andImgSrc} alt="AND gate" />
+  <AndGateImage />
   <figcaption className="text-sm text-slate-500">AND gate</figcaption>
 </figure>
 
@@ -47,10 +47,10 @@ As you can see it takes two inputs (a) and (b), then produce one output (out). B
 
 Let's take a look at another example: OR gate.
 
-import orImgSrc from "./OR.svg";
+import OrGateImage from "./OR.svg";
 
 <figure className="my-4 mx-auto flex flex-col items-center gap-2">
-  <img src={orImgSrc} alt="OR gate" />
+  <OrGateImage />
   <figcaption className="text-sm text-slate-500">OR gate</figcaption>
 </figure>
 
@@ -67,10 +67,10 @@ Now let's get back to the initial question: What is NAND?
 
 Like AND and OR gates, NAND is also a logic gate that receives two inputs and produces one output.
 
-import nandImgSrc from "./NAND.svg";
+import NandGateImage from "./NAND.svg";
 
 <figure className="my-4 mx-auto flex flex-col items-center gap-2">
-  <img src={nandImgSrc} alt="NAND gate" />
+  <NandGateImage />
   <figcaption className="text-sm text-slate-500">NAND gate</figcaption>
 </figure>
 
@@ -97,13 +97,10 @@ The steps are like this:
 
 An essential fact that makes these steps possible is that _any logic gates can be constructed by combining only NAND gates_. Let's take a look at an example.
 
-import andWithNandImgSrc from "./AND with NAND.svg";
+import AndWithNandGateImage from "./AND with NAND.svg";
 
 <figure className="mx-auto flex flex-col items-center gap-1">
-  <img
-    src={andWithNandImgSrc}
-    alt="Input (a) and (b) are connected to two different NANDs. The output of these two NANDs are connected to another NAND."
-  />
+  <AndWithNandGateImage />
   <figcaption className="text-sm text-slate-500">???</figcaption>
 </figure>
 
@@ -122,13 +119,10 @@ As you can see, it's identical to the AND gate; we successfully made an AND gate
 
 What about this one?
 
-import orWithNandImgSrc from "./OR with NAND.svg";
+import OrWithNandGateImage from "./OR with NAND.svg";
 
 <figure className="mx-auto flex flex-col items-center gap-1">
-  <img
-    src={orWithNandImgSrc}
-    alt="Input (a) are branched into two and connected to the same NAND. Same connection for (b). The output of these two NANDs are connected to another NAND."
-  />
+  <OrWithNandGateImage />
   <figcaption className="text-sm text-slate-500">???</figcaption>
 </figure>
 

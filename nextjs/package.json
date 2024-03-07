@@ -32,6 +32,7 @@
     "wasm-raytracer": "^0.5.3"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
