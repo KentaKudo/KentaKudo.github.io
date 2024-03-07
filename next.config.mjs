@@ -24,6 +24,7 @@ const nextConfig = {
   output: "export",
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   images: { unoptimized: true },
+  trailingSlash: true,
 
   webpack: (config) => {
     config.module.rules.push({
