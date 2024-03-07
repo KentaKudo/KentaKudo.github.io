@@ -19,7 +19,7 @@ const config = {
     },
     extend: {
       fontFamily: {
-        "permanent-marker": ['"Permanent Marker"', "Roboto"],
+        "permanent-marker": ["var(--font-permanent-marker)"],
       },
       colors: {
         border: "hsl(var(--border))",

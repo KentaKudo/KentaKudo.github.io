@@ -45,9 +45,6 @@ jobs:
       - name: Install deps
         run: pnpm install
 
-      - name: Type check
-        run: pnpm run typecheck
-
       - name: Lint
         run: pnpm run lint
 
@@ -73,7 +70,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./build/client"
+          path: "./out"
 
       - name: Deploy to GitHub Pages
         id: deployment

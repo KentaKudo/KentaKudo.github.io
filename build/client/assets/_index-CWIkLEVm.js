@@ -1,1 +1,0 @@
-import{j as e}from"./jsx-runtime-BlSqMCxk.js";function r(){return e.jsxs(e.Fragment,{children:[e.jsx("h1",{className:"hidden",children:"Kenta Kudo"}),e.jsx("img",{src:"/images/river-themes.jpg",alt:"The river Themes",className:"-z-10 w-full h-screen absolute top-0 right-0 bottom-0 left-0 object-center object-cover"})]})}export{r as default};
