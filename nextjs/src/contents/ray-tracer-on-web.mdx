@@ -16,7 +16,7 @@ First things first: demonstration. Try clicking the Run button below. It's going
 
 (NOTE: Web Worker must be [supported](https://caniuse.com/webworkers) on your browser.)
 
-import { RayTracerCanvas } from "./RayTracerCanvas";
+import { RayTracerCanvas } from "@/components/RayTracerCanvas";
 
 <RayTracerCanvas />
 
@@ -65,7 +65,7 @@ You can add other factors to objects to make it look more real. One such factor 
 - Metal — a material that reflects the ray to the direction calculated from the incoming ray's angle, and
 - Dielectric (glasses) — a material that refracts the ray to the inside of the object.
 
-import materialsImageSrc from "./materials.png";
+import materialsImageSrc from "./images/materials.png";
 
 <figure>
   <img
@@ -99,7 +99,7 @@ The tracing of the ray stops either
 (2) when it doesn't hit anything anymore, which means it reaches the ambient light (or sky so to speak).
 The final colour of the pixel is calculated at that point.
 
-import rayImageSrc from "./ray.png";
+import rayImageSrc from "./images/ray.png";
 
 <figure>
   <img
@@ -121,7 +121,7 @@ The first thing I had to do was make a decision on how JavaScript and Rust shoul
 
 To draw an image on the screen, I used the \<canvas\> HTML element. Its `putImageData()` API receives input image as an `ImageData` object, and the image data is given as `Uint8ClampedArray`, which is expected to be an array containing the pixel data in the RGBA order.
 
-import canvasApiImageSrc from "./canvas-api.png";
+import canvasApiImageSrc from "./images/canvas-api.png";
 
 <figure>
   <img

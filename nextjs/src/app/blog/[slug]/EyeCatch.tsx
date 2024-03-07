@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { cn, tailwindFullConfig } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 type Props = {

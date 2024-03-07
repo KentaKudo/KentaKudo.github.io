@@ -6,7 +6,7 @@ export const render: (
 
   return new Promise((resolve) => {
     const worker = new Worker(
-      new URL("./raytracer.worker.js", import.meta.url)
+      new URL("/public/js/raytracer.worker.js", import.meta.url)
     );
     worker.postMessage([width, height]);
     worker.onmessage = ({ data: rendered }: { data: Uint8ClampedArray }) => {

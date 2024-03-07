@@ -5,14 +5,16 @@ import "highlight.js/styles/a11y-dark.css";
 import { PublishedAt } from "@/components/PublishedAt";
 
 import "./blog.css";
-import { CONTENTS, Content } from ".";
 import { EyeCatch } from "./EyeCatch";
-import { Metadata, ResolvingMetadata } from "next";
 
-export async function generateMetadata(
-  { params: { slug } }: { params: { slug: string } },
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+import { Metadata } from "next";
+import { CONTENTS, Content } from "@/contents";
+
+export async function generateMetadata({
+  params: { slug },
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const content = CONTENTS[slug as Content];
   if (!content) return {};
 

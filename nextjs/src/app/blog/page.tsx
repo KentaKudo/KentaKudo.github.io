@@ -2,8 +2,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 import { PublishedAt } from "@/components/PublishedAt";
-
-import { CONTENTS } from "./[slug]";
+import { CONTENTS } from "@/contents";
 
 export const metadata: Metadata = {
   title: "Blog",
