@@ -1,22 +1,38 @@
-"use client";
-
 import { cn } from "@/lib/utils";
-import { usePathname } from "next/navigation";
+import { notFound } from "next/navigation";
 import "highlight.js/styles/a11y-dark.css";
 
 import { PublishedAt } from "@/components/PublishedAt";
 
 import "./blog.css";
-import { CONTENTS } from ".";
+import { CONTENTS, Content } from ".";
 import { EyeCatch } from "./EyeCatch";
+import { Metadata, ResolvingMetadata } from "next";
 
-export default function Layout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
-  const pathname = usePathname();
-  const { frontmatter } = CONTENTS.find(
-    ({ slug }) => slug === pathname.split("/").pop()
-  )!;
+export async function generateMetadata(
+  { params: { slug } }: { params: { slug: string } },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const content = CONTENTS[slug as Content];
+  if (!content) return {};
+
+  const [_, frontmatter] = content;
+  return { title: frontmatter.title, description: frontmatter.description };
+}
+
+export async function generateStaticParams() {
+  return Object.keys(CONTENTS).map((slug) => ({ slug }));
+}
+
+export default function Page({
+  params: { slug },
+}: {
+  params: { slug: string };
+}) {
+  const content = CONTENTS[slug as Content];
+  if (!content) notFound();
+
+  const [Content, frontmatter] = content;
 
   return (
     <>
@@ -40,7 +56,7 @@ export default function Layout({
           "[&_ul]:pl-4 [&_ul]:list-disc [&_ul]:list-outside [&_ul_ul]:pl-8"
         )}
       >
-        {children}
+        <Content />
       </main>
     </>
   );
