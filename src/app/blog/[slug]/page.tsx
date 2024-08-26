@@ -20,7 +20,21 @@ export async function generateMetadata({
   if (!content) return {};
 
   const [_, frontmatter] = content;
-  return { title: frontmatter.title, description: frontmatter.description };
+  const ogImage = frontmatter.image
+    ? `https://kentakudo.com/images/${frontmatter.image.src}`
+    : undefined;
+
+  return {
+    title: frontmatter.title,
+    description: frontmatter.description,
+    openGraph: {
+      title: `${frontmatter.title} | Kenta Kudo`,
+      description: frontmatter.description,
+      type: "article",
+      url: `https://kentakudo.com/blog/${slug}`,
+      images: ogImage ? [ogImage] : [],
+    },
+  };
 }
 
 export async function generateStaticParams() {
