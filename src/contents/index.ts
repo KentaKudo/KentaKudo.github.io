@@ -29,6 +29,9 @@ import SubtractionAsAddition, {
 import ThePowerOfNand, {
   frontmatter as thePowerOfNand,
 } from "./the-power-of-nand.mdx";
+import UncoolLife20240828, {
+  frontmatter as uncoolLife20240828,
+} from "./uncool-life-20240828.mdx";
 
 export const CONTENTS = {
   "about-shader-1": [AboutShader1, aboutShader1],
@@ -45,6 +48,7 @@ export const CONTENTS = {
   "ray-tracer-on-web": [RayTracerOnWeb, rayTracerOnWeb],
   "subtraction-as-addition": [SubtractionAsAddition, subtractionAsAddition],
   "the-power-of-nand": [ThePowerOfNand, thePowerOfNand],
+  "uncool-life-20240828": [UncoolLife20240828, uncoolLife20240828],
 } as const;
 
 export type Content = keyof typeof CONTENTS;
