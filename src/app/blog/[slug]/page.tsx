@@ -9,6 +9,7 @@ import { EyeCatch } from "./EyeCatch";
 
 import { Metadata } from "next";
 import { CONTENTS, Content } from "@/contents";
+import { ShareButton } from "@/components/ShareButton";
 
 export async function generateMetadata({
   params: { slug },
@@ -46,7 +47,10 @@ export default function Page({
           {frontmatter.image.credit}
         </EyeCatch>
       )}
-      <h1 className="mt-8 font-bold text-4xl">{frontmatter.title}</h1>
+      <div className="flex items-center justify-between mt-8">
+        <h1 className="font-bold text-4xl">{frontmatter.title}</h1>
+        <ShareButton url={`/blog/${slug}`} title={frontmatter.title} />
+      </div>
       <PublishedAt at={frontmatter.published} className="block mt-2 mb-8" />
 
       <main
