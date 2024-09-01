@@ -32,6 +32,9 @@ import ThePowerOfNand, {
 import UncoolLife20240828, {
   frontmatter as uncoolLife20240828,
 } from "./uncool-life-20240828.mdx";
+import UncoolLife20240901, {
+  frontmatter as uncoolLife20240901,
+} from "./uncool-life-20240901.mdx";
 
 export const CONTENTS = {
   "about-shader-1": [AboutShader1, aboutShader1],
@@ -49,6 +52,7 @@ export const CONTENTS = {
   "subtraction-as-addition": [SubtractionAsAddition, subtractionAsAddition],
   "the-power-of-nand": [ThePowerOfNand, thePowerOfNand],
   "uncool-life-20240828": [UncoolLife20240828, uncoolLife20240828],
+  "uncool-life-20240901": [UncoolLife20240901, uncoolLife20240901],
 } as const;
 
 export type Content = keyof typeof CONTENTS;
