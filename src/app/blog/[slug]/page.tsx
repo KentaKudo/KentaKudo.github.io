@@ -74,7 +74,7 @@ export default function Page({
           "[&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-slate-300",
           "[&_aside]:text-accent-foreground [&_aside]:bg-accent [&_aside]:rounded-md [&_aside]:p-5",
           "[&_ul]:pl-4 [&_ul]:list-disc [&_ul]:list-outside [&_ul_ul]:pl-8",
-          "[&_hr]:w-full [&_hr]:max-w-80 [&_hr]:my-10"
+          "[&_hr]:w-full [&_hr]:max-w-80 [&_hr]:my-10 [&_hr]:mx-auto"
         )}
       >
         <Content />
