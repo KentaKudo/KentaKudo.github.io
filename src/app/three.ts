@@ -87,7 +87,7 @@ fontLoader.load("/fonts/helvetiker_regular.typeface.json", (font) => {
   //   material.thickness = 0.5;
 
   // Text
-  const textGeometry = new TextGeometry("Hi! I'm Kenta Kudo", {
+  const textGeometry = new TextGeometry("Hi, I'm Kenta!", {
     font: font,
     size: 0.5,
     depth: 0.2,
