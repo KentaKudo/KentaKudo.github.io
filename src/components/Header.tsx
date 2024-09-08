@@ -28,6 +28,9 @@ export const Header: FC = () => {
               <Link href="/about">About</Link>
             </li>
             <li className="hover:text-foreground">
+              <Link href="/works">Works</Link>
+            </li>
+            <li className="hover:text-foreground">
               <Link href="/blog">Blog</Link>
             </li>
           </ul>
