@@ -35,6 +35,9 @@ import UncoolLife20240828, {
 import UncoolLife20240901, {
   frontmatter as uncoolLife20240901,
 } from "./uncool-life-20240901.mdx";
+import UncoolLife20240908, {
+  frontmatter as uncoolLife20240908,
+} from "./uncool-life-20240908.mdx";
 
 export const CONTENTS = {
   "about-shader-1": [AboutShader1, aboutShader1],
@@ -53,6 +56,7 @@ export const CONTENTS = {
   "the-power-of-nand": [ThePowerOfNand, thePowerOfNand],
   "uncool-life-20240828": [UncoolLife20240828, uncoolLife20240828],
   "uncool-life-20240901": [UncoolLife20240901, uncoolLife20240901],
+  "uncool-life-20240908": [UncoolLife20240908, uncoolLife20240908],
 } as const;
 
 export type Content = keyof typeof CONTENTS;
