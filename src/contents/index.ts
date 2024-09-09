@@ -29,6 +29,9 @@ import SubtractionAsAddition, {
 import ThePowerOfNand, {
   frontmatter as thePowerOfNand,
 } from "./the-power-of-nand.mdx";
+import PlateauHackChallenge2024, {
+  frontmatter as plateauHackChallenge2024,
+} from "./plateau-hack-challenge-2024.mdx";
 import UncoolLife20240828, {
   frontmatter as uncoolLife20240828,
 } from "./uncool-life-20240828.mdx";
@@ -54,6 +57,10 @@ export const CONTENTS = {
   "ray-tracer-on-web": [RayTracerOnWeb, rayTracerOnWeb],
   "subtraction-as-addition": [SubtractionAsAddition, subtractionAsAddition],
   "the-power-of-nand": [ThePowerOfNand, thePowerOfNand],
+  "plateau-hack-challenge-2024": [
+    PlateauHackChallenge2024,
+    plateauHackChallenge2024,
+  ],
   "uncool-life-20240828": [UncoolLife20240828, uncoolLife20240828],
   "uncool-life-20240901": [UncoolLife20240901, uncoolLife20240901],
   "uncool-life-20240908": [UncoolLife20240908, uncoolLife20240908],

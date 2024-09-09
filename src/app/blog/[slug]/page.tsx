@@ -63,9 +63,11 @@ export default function Page({
       )}
       <div className="flex items-center justify-between mt-8">
         <h1 className="font-bold text-4xl">{frontmatter.title}</h1>
+      </div>
+      <div className="flex items-center justify-between mt-2 mb-8 gap-4">
+        <PublishedAt at={frontmatter.published} className="block" />
         <ShareButton url={`/blog/${slug}`} title={frontmatter.title} />
       </div>
-      <PublishedAt at={frontmatter.published} className="block mt-2 mb-8" />
 
       <main
         className={cn(
