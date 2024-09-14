@@ -12,13 +12,13 @@ image:
 published: "2024-09-15"
 ---
 
+import { EmbedLinkCard } from "@/components/EmbedLinkCard";
+
 先週最後にちょろっと触れましたが、先週末に国交省が主導する PLATEAU プロジェクトをテーマにしたハッカソンに参加してきた。
 
 何を作ったかなどは以下にまとめているので良かったら見てみて下さい。
 
-<a href="/blog/plateau-hack-challenge-2024" target="_blank">
-  PLATEAU Hack Challenge 2024 in TOKYO に参加しました
-</a>
+<EmbedLinkCard url="https://kentakudo.com/blog/plateau-hack-challenge-2024" />
 
 ハッカソンに参加するのは昔の職場のメンバーで参加して以来 5 年以上ぶりで、新鮮だった。
 
@@ -28,7 +28,9 @@ published: "2024-09-15"
 
 ## 今週のニュース
 
-### <a href="https://qiita.com/scomup/items/92716342a3ef0b915e0c" target="_blank">写真から超リアルな 3D 空間をどうやって復元するか? 「3D Gaussian Splatting」学習の徹底解説</a>
+### 写真から超リアルな 3D 空間をどうやって復元するか? 「3D Gaussian Splatting」学習の徹底解説
+
+<EmbedLinkCard url="https://qiita.com/scomup/items/92716342a3ef0b915e0c" />
 
 [#2 で紹介した](http://localhost:3000/blog/uncool-life-20240901/#what-the-gaussian-splat-niantic-scaniverse-4-invites-everyone-to-share-their-world-in-3d)、Scaniverse の Gaussian Splat 機能で使われている、3D Gaussian Splatting という手法についての解説。
 
@@ -47,13 +49,17 @@ published: "2024-09-15"
 
 [^1]: [3D Gaussian Splatting for Real-Time Radiance Field Rendering](https://arxiv.org/abs/2308.04079)
 
-### <a href="https://zenn.dev/skanehira/articles/2024-08-12-go-rust-pros-cons" target="_blank">Gopher が Rust 入門したので違いをまとめてみた</a>
+### Gopher が Rust 入門したので違いをまとめてみた
+
+<EmbedLinkCard url="https://zenn.dev/skanehira/articles/2024-08-12-go-rust-pros-cons" />
 
 Rust と Go を比較した記事。どちらに偏ることなくフェアでかつ触れている範囲がとても網羅的。
 
 特に Rust の非同期を未だに雰囲気で書いているので非同期の項はとても勉強になった。と同時にいい加減雰囲気で書くのやめないとな......と反省。
 
-### <a href="https://speakerdeck.com/tumada/2024-nian-nosutatoatupunoshi-mefang-kao-efang" target="_blank">2024 年のスタートアップの始め方・考え方</a>
+### 2024 年のスタートアップの始め方・考え方
+
+<EmbedLinkCard url="https://speakerdeck.com/tumada/2024-nian-nosutatoatupunoshi-mefang-kao-efang" />
 
 および
 
@@ -69,7 +75,9 @@ Rust と Go を比較した記事。どちらに偏ることなくフェアで�
 
 より大きな絵を描くためには「とりあえずやってみる」という探索的な手よりも、時間軸、10 年後にあるべき姿を想像した上で今取るべきステップを逆算で求めていく必要がある。
 
-### <a href="https://zenn.dev/knowledgesense/articles/077ad1ab0f9ff6" target="_blank">RAG の「ベクトル検索」の弱みを、ナレッジグラフで補う</a>
+### RAG の「ベクトル検索」の弱みを、ナレッジグラフで補う
+
+<EmbedLinkCard url="https://zenn.dev/knowledgesense/articles/077ad1ab0f9ff6" />
 
 生成 AI に独自のナレッジを挿入して回答の精度を向上させる RAG という手法。その RAG の精度をさらに引き上げるためのアイデア HybridRAG についての解説記事。
 
@@ -81,13 +89,17 @@ RAG について雰囲気でしかわかっていないので、実際に何か�
 
 - [【Bedrock / Claude】AWS オンリーで RAG を使った生成 AI ボットを構築してみた【Kendra】](https://dev.classmethod.jp/articles/implement-rag-with-aws-services/)
 
-### <a href="https://toyokeizai.net/articles/-/822787" target="_blank">エネルギー基本計画は｢再エネ第一｣に組み替えを</a>
+### エネルギー基本計画は｢再エネ第一｣に組み替えを
+
+<EmbedLinkCard url="https://toyokeizai.net/articles/-/822787" />
 
 エネルギーといえばベースロード電源という、火力など一定の出力が安定的に出てかつコントロールしやすい電源をベースに、原子力などのすぐには出力をコントロールできない電源や、風力や太陽光などの出力が安定しない電源を組み合わせる、という考え方があるが、再生エネルギー技術が発展し、再エネ同士の平準化や蓄電池技術によりによりこの考え方はもう古くなっているらしい。
 
 このベースロード電源の考え方を知ったのは大学生の頃だったと思うので、10 年もするとこういった概念の部分もアップデートされる・自分が昔得た知識も疑ってかかる必要があるんだと驚かされた。
 
-### <a href="https://zenn.dev/cloud_ace/articles/firebase-anonymous-auth-best-practices" target="_blank">Firebase Auth の 匿名認証 で爆速オンボーディング！ユーザー離脱を防ぐベストプラクティス</a>
+### Firebase Auth の 匿名認証 で爆速オンボーディング！ユーザー離脱を防ぐベストプラクティス
+
+<EmbedLinkCard url="https://zenn.dev/cloud_ace/articles/firebase-anonymous-auth-best-practices" />
 
 Firebase の匿名認証機能を使って、サインアップさせずに User ID を発行してデータ保存のキーに使うテクニックの紹介。
 
@@ -95,13 +107,17 @@ User ID が紐づいているのでサインアップした後も複雑な処理
 
 UX 的にも DX 的にもいい手なので、覚えておいてここぞという時が来たら利用していきたい。
 
-### <a href="https://x.com/SakanaAILabs/status/1833723241485275515" target="_blank">Sakana AI GENIAC 成果報告</a>
+### Sakana AI GENIAC 成果報告
+
+<EmbedLinkCard url="https://x.com/SakanaAILabs/status/1833723241485275515" />
 
 昨日 NVIDIA からの出資を発表した Sakana AI。その Sakana AI が経産省/NEDO 主導の生成 AI 開発支援プロジェクト GENIAC で成果報告を行なった様子の動画。
 
 これまでの生成 AI とは違うアプローチを使い精度向上などの成果を上げているらしい。先の話なども合わせてこういったグローバルで通用する技術が日本から生まれる潮流ができつつあるのは嬉しい。
 
-### <a href="https://note.com/take/n/ne08dc62a0793?sub_rt=share_sb" target="_blank">コンテンツ作りは「取材」が９割</a>
+### コンテンツ作りは「取材」が９割
+
+<EmbedLinkCard url="https://note.com/take/n/ne08dc62a0793?sub_rt=share_sb" />
 
 取材をする際の準備や進め方のコツを紹介した記事。ユーザーインタビューや普段の会話にも利用できそうなポイントが多く、参考にしたい。
 
