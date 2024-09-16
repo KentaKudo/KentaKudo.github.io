@@ -10,6 +10,7 @@ import { EyeCatch } from "./EyeCatch";
 import { Metadata } from "next";
 import { CONTENTS, Content } from "@/contents";
 import { ShareButton } from "@/components/ShareButton";
+import Link from "next/link";
 
 export async function generateMetadata({
   params: { slug },
@@ -49,7 +50,8 @@ export default function Page({
   const content = CONTENTS[slug as Content];
   if (!content) notFound();
 
-  const [Content, frontmatter] = content;
+  const [Content, frontmatter, toc] = content;
+  console.log("toc:", toc);
 
   return (
     <>
@@ -69,18 +71,49 @@ export default function Page({
         <ShareButton url={`/blog/${slug}`} title={frontmatter.title} />
       </div>
 
-      <main
-        className={cn(
-          "flex flex-col gap-4 pt-20 pb-24",
-          "[&_h2]:text-2xl [&_h3]:text-xl [&_h4]:text-lg [&_:is(h2,h3,h4,h5,h6)]:font-bold [&_:is(h2,h3,h4,h5,h6)]:leading-relaxed [&_:is(h2,h3,h4,h5,h6)]:mt-8",
-          "[&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-slate-300",
-          "[&_aside]:text-accent-foreground [&_aside]:bg-accent [&_aside]:rounded-md [&_aside]:p-5",
-          "[&_ul]:pl-4 [&_ul]:list-disc [&_ul]:list-outside [&_ul_ul]:pl-8",
-          "[&_hr]:w-full [&_hr]:max-w-80 [&_hr]:my-10 [&_hr]:mx-auto"
-        )}
-      >
-        <Content />
-      </main>
+      <div className="w-full flex items-start gap-10 flex-col md:flex-row-reverse">
+        <aside className="w-60 shrink-0 sticky top-24 hidden md:flex flex-col gap-4">
+          <h3 className="uppercase">Table of contents</h3>
+          <ol className="text-sm text-muted-foreground flex flex-col gap-3">
+            {toc?.map((t) => (
+              <li key={t.id} className="flex flex-col gap-2">
+                <Link
+                  href={t.id ? `#${t.id}` : ""}
+                  className="hover:text-foreground"
+                >
+                  {t.value}
+                </Link>
+                <ol className="ps-4 flex flex-col gap-1">
+                  {t.children?.map((t) => (
+                    <li id={t.id}>
+                      <Link
+                        href={t.id ? `#${t.id}` : ""}
+                        className="hover:text-foreground"
+                      >
+                        {t.value}
+                      </Link>
+                    </li>
+                  ))}
+                </ol>
+              </li>
+            ))}
+          </ol>
+        </aside>
+
+        <main
+          className={cn(
+            "min-w-0 w-full",
+            "flex flex-col gap-4 pt-20 pb-24",
+            "[&_h2]:text-2xl [&_h3]:text-xl [&_h4]:text-lg [&_:is(h2,h3,h4,h5,h6)]:font-bold [&_:is(h2,h3,h4,h5,h6)]:leading-relaxed [&_:is(h2,h3,h4,h5,h6)]:mt-8",
+            "[&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-slate-300",
+            "[&_aside]:text-accent-foreground [&_aside]:bg-accent [&_aside]:rounded-md [&_aside]:p-5",
+            "[&_ul]:pl-4 [&_ul]:list-disc [&_ul]:list-outside [&_ul_ul]:pl-8",
+            "[&_hr]:w-full [&_hr]:max-w-80 [&_hr]:my-10 [&_hr]:mx-auto"
+          )}
+        >
+          <Content />
+        </main>
+      </div>
     </>
   );
 }
