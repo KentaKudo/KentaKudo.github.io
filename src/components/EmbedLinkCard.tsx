@@ -35,10 +35,12 @@ export const EmbedLinkCard: FC<Props> = async ({ url }) => {
   return (
     <Link href={url} target="_blank" className="!no-underline">
       <Card className="flex justify-between items-center overflow-hidden hover:bg-muted duration-200">
-        <div className="min-w-0 px-6 flex flex-col gap-4">
+        <div className="min-w-0 px-6 flex flex-col gap-3">
           <CardHeader className="p-0">
-            <CardTitle className="!m-0 !text-base truncate">{title}</CardTitle>
-            <CardDescription className="!m-0 truncate">
+            <CardTitle className="!m-0 !text-base line-clamp-2">
+              {title}
+            </CardTitle>
+            <CardDescription className="!m-0 line-clamp-1">
               {description}
             </CardDescription>
           </CardHeader>
@@ -55,14 +57,14 @@ export const EmbedLinkCard: FC<Props> = async ({ url }) => {
         </div>
         {image ? (
           <Image
-            className="flex-none w-[230px] h-[120px] object-center object-cover"
+            className="flex-none w-[120px] md:w-[230px] h-[120px] object-center object-cover"
             src={image.url}
             alt={image.alt ?? "page image"}
             width={230}
             height={120}
           />
         ) : (
-          <Skeleton className="flex-none w-[230px] h-[120px] " />
+          <Skeleton className="flex-none w-[120px] md:w-[230px] h-[120px] " />
         )}
       </Card>
     </Link>

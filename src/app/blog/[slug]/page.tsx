@@ -51,7 +51,6 @@ export default function Page({
   if (!content) notFound();
 
   const [Content, frontmatter, toc] = content;
-  console.log("toc:", toc);
 
   return (
     <>
