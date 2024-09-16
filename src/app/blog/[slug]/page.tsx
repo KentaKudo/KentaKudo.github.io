@@ -84,7 +84,7 @@ export default function Page({
                 </Link>
                 <ol className="ps-4 flex flex-col gap-1">
                   {t.children?.map((t) => (
-                    <li id={t.id}>
+                    <li key={t.id}>
                       <Link
                         href={t.id ? `#${t.id}` : ""}
                         className="hover:text-foreground"
