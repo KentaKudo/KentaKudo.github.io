@@ -11,6 +11,7 @@ import { Metadata } from "next";
 import { CONTENTS, Content } from "@/contents";
 import { ShareButton } from "@/components/ShareButton";
 import Link from "next/link";
+import { TableOfContents } from "./TableOfContents";
 
 export async function generateMetadata({
   params: { slug },
@@ -71,33 +72,7 @@ export default function Page({
       </div>
 
       <div className="w-full flex items-start gap-10 flex-col md:flex-row-reverse">
-        <aside className="w-60 shrink-0 sticky top-24 hidden md:flex flex-col gap-4">
-          <h3 className="uppercase">Table of contents</h3>
-          <ol className="text-sm text-muted-foreground flex flex-col gap-3">
-            {toc?.map((t) => (
-              <li key={t.id} className="flex flex-col gap-2">
-                <Link
-                  href={t.id ? `#${t.id}` : ""}
-                  className="hover:text-foreground"
-                >
-                  {t.value}
-                </Link>
-                <ol className="ps-4 flex flex-col gap-1">
-                  {t.children?.map((t) => (
-                    <li key={t.id}>
-                      <Link
-                        href={t.id ? `#${t.id}` : ""}
-                        className="hover:text-foreground"
-                      >
-                        {t.value}
-                      </Link>
-                    </li>
-                  ))}
-                </ol>
-              </li>
-            ))}
-          </ol>
-        </aside>
+        <TableOfContents toc={toc} className="shrink-0" />
 
         <main
           className={cn(
