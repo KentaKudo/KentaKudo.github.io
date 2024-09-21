@@ -66,18 +66,18 @@ export default function Page({
       <div className="flex items-center justify-between mt-8">
         <h1 className="font-bold text-4xl">{frontmatter.title}</h1>
       </div>
-      <div className="flex items-center justify-between mt-2 mb-8 gap-4">
+      <div className="flex items-center justify-between mt-2 gap-4">
         <PublishedAt at={frontmatter.published} className="block" />
         <ShareButton url={`/blog/${slug}`} title={frontmatter.title} />
       </div>
 
-      <div className="w-full flex items-start gap-10 flex-col md:flex-row-reverse">
+      <div className="mt-20 w-full flex items-start gap-10 flex-col md:flex-row-reverse">
         <TableOfContents toc={toc} className="shrink-0" />
 
         <main
           className={cn(
             "min-w-0 w-full",
-            "flex flex-col gap-4 pt-20 pb-24",
+            "flex flex-col gap-4 pb-24",
             "[&_h2]:text-2xl [&_h3]:text-xl [&_h4]:text-lg [&_:is(h2,h3,h4,h5,h6)]:font-bold [&_:is(h2,h3,h4,h5,h6)]:leading-relaxed [&_:is(h2,h3,h4,h5,h6)]:mt-8",
             "[&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-slate-300",
             "[&_aside]:text-accent-foreground [&_aside]:bg-accent [&_aside]:rounded-md [&_aside]:p-5",
