@@ -66,6 +66,10 @@ import UncoolLife20240922, {
   frontmatter as uncoolLife20240922,
   tableOfContents as uncoolLife20240922ToC,
 } from "./uncool-life-20240922.mdx";
+import UncoolLife20240929, {
+  frontmatter as uncoolLife20240929,
+  tableOfContents as uncoolLife20240929ToC,
+} from "./uncool-life-20240929.mdx";
 
 export const CONTENTS = {
   "about-shader-1": [AboutShader1, aboutShader1, aboutShader1Toc],
@@ -124,6 +128,11 @@ export const CONTENTS = {
     UncoolLife20240922,
     uncoolLife20240922,
     uncoolLife20240922ToC,
+  ],
+  "uncool-life-20240929": [
+    UncoolLife20240929,
+    uncoolLife20240929,
+    uncoolLife20240929ToC,
   ],
 } as const;
 
